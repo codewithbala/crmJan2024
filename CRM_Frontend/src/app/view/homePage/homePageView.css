@@ -1,0 +1,54 @@
+.box
+{
+    height: 500px;
+    padding: 20px;
+    border: 1px solid #1b1919;
+    max-width: 100%;
+}
+
+  /* Style the input and button */
+  input {
+    width: 70%;
+    padding: 10px;
+    margin-right: 10px;
+  }
+
+  button {
+    background-color: #007bff;
+    color: white;
+  }
+
+  /* Style the list */
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f8f9fa;
+    margin: 5px 0;
+    border-radius: 5px;
+  }
+
+  button.delete {
+    background-color: #dc3545;
+  }
+
+  hr.animated {
+    border: none;
+    height: 2px;
+    background-color: #000;
+    position: relative;
+    animation: expandLine 2s ease-out forwards;
+  }
+
+  @keyframes expandLine {
+    from {width: 0;}
+    to {width: 100%;}
+  }
+
+

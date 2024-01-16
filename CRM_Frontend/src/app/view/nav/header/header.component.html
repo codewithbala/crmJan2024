@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-light text-white cardBackGround border-bottom border-success">
+<div class="container-fluid justify-content-between">
+  <div class="collapse navbar-collapse " id="navbar">
+    <label class=" title" routerLink="">
+      {{title}}
+    </label>
+    <ul class="navbar-nav mb-2 mb-lg-0">
+      <li class="nav-item dropdown " style="caret-color: black;" >
+        <a class="nav-link dropdown-toggle ms-4 text-white text_middle text_font" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          ManageTools
+        </a>
+        <div class="dropdown-menu ps-2 pe-2 bg-dark text-white border-success" aria-labelledby="navbarSuperDropdownMenuLink">
+          <a class="dropdown-item text_font text-white" (click)="showAddNewUser()" *ngIf="canAddAccount==true">Add New User</a>
+          <a class="dropdown-item text_font text-white" (click)="accountlist()"  >Manage Users</a>
+          <a class="dropdown-item text_font text-white" (click)="newCandidate()"   *ngIf="addCandidate==true" >New Candidate</a>
+          <a class="dropdown-item text_font text-white" (click)="candidatelist()">Manage Candidate</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown " style="caret-color: black;" >
+        <a class="nav-link dropdown-toggle ms-4 text-white text_middle text_font" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          QuickLink
+        </a>
+        <div class="dropdown-menu ps-2 pe-2 bg-dark text-white border-success" aria-labelledby="navbarSuperDropdownMenuLink">
+          <a class="dropdown-item text_font text-white" (click)="goDashboard()">MyDashboard</a>
+          <a class="dropdown-item text_font text-white" (click)="myAccount()">MyAccount</a>
+        </div>
+      </li>
+    </ul>
+    <span class="nav-item dropdown ms-auto me-4" style="caret-color: black;" >
+      <a class="nav-link dropdown-toggle ms-4 text-white text_font text_middle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="bi bi-person-circle"></i> {{userName}}
+      </a>
+      <div class="dropdown-menu dropdown-menu-end ps-2 pe-0 bg-dark text-white border-success" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item text_font text-white" (click)="myAccount()">My Account</a>
+        <a class="dropdown-item text_font text-white" routerLink="">Message</a>
+        <a class="dropdown-item text_font text-white" (click)="logout()">Log Out</a>
+      </div>
+    </span>
+  </div>
+</div>
+</nav>

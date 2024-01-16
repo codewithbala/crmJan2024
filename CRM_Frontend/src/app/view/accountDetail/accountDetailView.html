@@ -1,41 +1,16 @@
 <div class="container mt-4 mb-4 pt-4" style="min-height: 800px;">
   <div class="row g-3 m-2">
     <div class="col-sm-3 p-2">
-      <div class="card border border-success cardBackGround" style="min-height: 600px;">
+      <div class="card border border-success cardBackGround" style="
+      min-height: 600px;">
         <div class="card-body text-center">
           <!-- left menu bar Read and Write-->
           <div class="row g-3" *ngIf="authorization == 'readAndWrite'">
-            <h5 class="text_font text-white">{{currentUser.firstName}}</h5>
-            <h5 class="text_font text-white mt-0">{{currentUser.lastName}}</h5>
-            <div class="col-sm-12 border-bottom text_hover mt-4">
-              <label class="h5 text_font text-white" (click)="changeStatus('accountInfo')"  >Account Info</label>
-            </div>
-            <div class="col-sm-12 border-bottom text_hover">
-              <label class="h5 text_font text-white" (click)="changeStatus('phoneNumber')"  >Phone Number</label>
-            </div>
-            <div class="col-sm-12 border-bottom text_hover">
-              <label class="h5 text_font text-white" (click)="changeStatus('mailAddress')"  >Mail Address</label>
-            </div>
-            <div class="col-sm-12 border-bottom text_hover">
-              <label class="h5 text_font text-white" (click)="changeStatus('resetPassword')">Reset Password</label>
-            </div>
+            <app-menu-bar [firstName]='currentUser.firstName' [lastName]='currentUser.lastName' (currentStatus) = 'changeStatus($event)'></app-menu-bar>
           </div>
           <!-- left menu bar Read Only-->
           <div class="row g-3" *ngIf="authorization != 'readAndWrite'">
-            <h5 class="text_font text-white">{{currentUser.firstName}}</h5>
-            <h5 class="text_font text-white mt-0">{{currentUser.lastName}}</h5>
-            <div class="col-sm-12 border-bottom">
-              <label class="h5 text_font text-white">Account Info</label>
-            </div>
-            <div class="col-sm-12 border-bottom">
-              <label class="h5 text_font text-white">Phone Number</label>
-            </div>
-            <div class="col-sm-12 border-bottom">
-              <label class="h5 text_font text-white">Mail Address</label>
-            </div>
-            <div class="col-sm-12 border-bottom">
-              <label class="h5 text_font text-white">Reset Password</label>
-            </div>
+            <app-menu-bar-read-only [firstName]='currentUser.firstName' [lastName]='currentUser.lastName'></app-menu-bar-read-only>
           </div>
         </div>
       </div>
@@ -45,159 +20,43 @@
         <div class="card-body text-center">
           <!-- Unknown My Account Role -->
           <div class="row g-0" *ngIf="authorization == 'notAccess'">
-            <h1 class="text-danger text_font" id = "loadDateError">You don't have authentication to access</h1>
+            <app-error-page></app-error-page>
           </div>
           <!-- Can Not Loading User Data -->
           <div class="row g-0" *ngIf="authorization != 'notAccess' && currentUser.userId == -1">
-            <h1 class="text-danger text_font"></h1>
+            <app-error-page></app-error-page>
           </div>
           <!-- Read Only -->
           <div class="row g-0" *ngIf="authorization == 'readOnly' && currentUser.userId != -1">
             <div class="card-body">
-              <h3 class="card-title text-center border-bottom pb-4 text-white text_font">Account Info</h3>
-              <div style="min-height: 260px">
-                <div class="row m-4 mt-4">
-                  <div class="col-4 pe-4 justify-content-end">
-                    <img class="img_lg img_radius" src="https://media.istockphoto.com/id/522855255/vector/male-profile-flat-blue-simple-icon-with-long-shadow.jpg?s=612x612&w=0&k=20&c=EQa9pV1fZEGfGCW_aEK5X_Gyob8YuRcOYCYZeuBzztM=">
-                  </div>
-                  <div class="col-8 text-start">
-                    <div class="row mt-2">
-                      <div class="col-4 text-end">
-                        <label class="text_font text-white">User Name:</label>
-                      </div>
-                      <div class="col-8">
-                        <label class="text_font text-white">{{this.currentUser.firstName + " " + this.currentUser.lastName}}</label>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-4 text-end">
-                        <label class="text_font text-white">Role:</label>
-                      </div>
-                      <div class="col-8">
-                        <label class="text_font text-white">{{this.currentUserRole}}</label>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-4 text-end">
-                        <label class="text_font text-white">Status:</label>
-                      </div>
-                      <div class="col-8">
-                        <label class="text_font text-white">{{this.currentUserStatus}}</label>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-4 text-end">
-                        <label class="text_font text-white">Phone:</label>
-                      </div>
-                      <div class="col-8">
-                        <label class="text_font text-white">{{this.currentUser.phone}}</label>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-4 text-end">
-                        <label class="text_font text-white">Email:</label>
-                      </div>
-                      <div class="col-8">
-                        <label class="text_font text-white">{{this.currentUser.username}}</label>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-4 text-end">
-                        <label class="text_font text-white">Address:</label>
-                      </div>
-                      <div class="col-8">
-                        <label class="text_font text-white">{{this.currentUser.addressLine1}}</label><br>
-                        <label class="text_font text-white">{{this.currentUser.addressLine2}}</label><br *ngIf = "this.currentUser.addressLine2!=''">
-                        <label class="text_font text-white">{{this.currentUser.addressCity + ", " + this.currentUser.addressState}}</label><br>
-                        <label class="text_font text-white">{{this.currentUser.addressZipCode}}</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-12 text-end mt-5 pt-2" *ngIf="canSuspend == true">
-                <button class="btn btn-danger  mb-3 btn-lg py-1 px-5 ms-4" (click)="suspendConfirm()" *ngIf="currentUser.accountNonLocked == true" >Suspend</button>
-                <button class="btn btn-success mb-3 btn-lg py-1 px-5 ms-4" (click)="activeConfirm()"  *ngIf="currentUser.accountNonLocked == false">Active</button>
-              </div>
+              <app-account-info-read-only [currentUser]='currentUser'></app-account-info-read-only>
+              <app-can-suspend [currentUser]='currentUser' [canSuspend]='canSuspend'></app-can-suspend>
             </div>
           </div>
           <!-- Read and Write -->
           <div class="row g-0" *ngIf="authorization == 'readAndWrite'  && currentUser.userId != -1">
             <div class="card-body" *ngIf="currentStatus == 'accountInfo'">
-              <h3 class="card-title text-center border-bottom pb-4 text-white text_font">Account Info</h3>
-              <div style="min-height: 260px">
-                <div class="row m-4 mt-4">
-                  <div class="col-4 pe-4 justify-content-end">
-                    <img class="img_lg img_radius" src="https://media.istockphoto.com/id/522855255/vector/male-profile-flat-blue-simple-icon-with-long-shadow.jpg?s=612x612&w=0&k=20&c=EQa9pV1fZEGfGCW_aEK5X_Gyob8YuRcOYCYZeuBzztM=">
-                  </div>
-                  <div class="col-8 text-start">
-                    <div class="row mt-4">
-                      <div class="col-4 text-end">
-                        <label class="text_font text-white">User Name:</label>
-                      </div>
-                      <div class="col-8">
-                        <label class="text_font text-white">{{this.currentUser.firstName + " " + this.currentUser.lastName}}</label>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-4 text-end">
-                        <label class="text_font text-white">Email:</label>
-                      </div>
-                      <div class="col-8">
-                        <label class="text_font text-white">{{this.currentUser.username}}</label>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-4 text-end">
-                        <label class="text_font text-white">Phone:</label>
-                      </div>
-                      <div class="col-8">
-                        <label class="text_font text-white">{{this.currentUser.phone}}</label>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-4 text-end">
-                        <label class="text_font text-white">Role:</label>
-                      </div>
-                      <div class="col-8">
-                        <label class="text_font text-white">{{this.currentUserRole}}</label>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-4 text-end">
-                        <label class="text_font text-white">Status:</label>
-                      </div>
-                      <div class="col-8">
-                        <label class="text_font text-white">{{this.currentUserStatus}}</label>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-                <div id="errorMessage"></div>
-              </div>
-              <div class="col-sm-12 text-end mt-5 pt-2" *ngIf="canSuspend == true">
-                <button class="btn btn-danger  mb-3 btn-lg py-1 px-5 ms-4" (click)="suspendConfirm()" *ngIf="currentUser.accountNonLocked == true" >Suspend</button>
-                <button class="btn btn-success mb-3 btn-lg py-1 px-5 ms-4" (click)="activeConfirm()"  *ngIf="currentUser.accountNonLocked == false">Active</button>
-              </div>
+              <app-account-info [currentUser]='currentUser'></app-account-info>
+              <app-can-suspend [currentUser]='currentUser' [canSuspend]='canSuspend'></app-can-suspend>
             </div>
             <!-- Update Phone -->
             <div class="card-body" *ngIf="currentStatus == 'phoneNumber'">
               <h3 class="card-title text-center border-bottom pb-4 text-white text_font">Phone Number</h3>
               <div style="min-height: 260px">
                 <div class="row m-3 mt-5">
-                  <div class="col-3 text-end">
+                  <div class="col-4 text-end">
                     <label class="text_font text-white">Original</label>
                   </div>
-                  <div class="col-7 text-end">
-                    <input class="form-control text_font" type="text" value="{{this.currentUser.phone}}" readonly>
+                  <div class="col-4 text-start">
+                    <label class="text_font text-white">{{this.currentUser.phone}}</label>
+                    <!--<input class="form-control text_font" type="text" value="{{this.currentUser.phone}}" readonly>-->
                   </div>
                 </div>
                 <div class="row m-3 mt-5">
-                  <div class="col-3 text-end">
+                  <div class="col-4 text-end">
                     <label class="text_font text-white">New</label>
                   </div>
-                  <div class="col-7 text-end">
+                  <div class="col-4 text-end">
                     <input class="form-control text_font" type="text" value="" id="newPhone">
                   </div>
                 </div>
@@ -266,7 +125,7 @@
                     <label class="text_font text-white">Country</label>
                   </div>
                   <div class="col-3">
-                    <select id="addressCountry" class="form-control text_font" formControlName="country" (change)="handleCountryChange()">
+                    <select id="addressCountry" class="form-select text_font" formControlName="country" (change)="handleCountryChange()">
                       <option>{{this.addressCountry}}</option>
                       <option *ngFor="let country of countries">{{country.label}}</option>
                     </select>
@@ -275,7 +134,7 @@
                     <label class="text_font text-white">State</label>
                   </div>
                   <div class="col-3">
-                    <select  id="addressState" class="form-control text_font" formControlName="state" (change)="handleStateChange()">
+                    <select  id="addressState" class="form-select text_font" formControlName="state" (change)="handleStateChange()">
                       <option>{{this.addressState}}</option>
                       <option *ngFor="let state of states">{{ state.label}}</option>
                     </select>
@@ -286,7 +145,7 @@
                     <label class="text_font text-white">City</label>
                   </div>
                   <div class="col-3">
-                    <select  id="addressCity" class="form-control text_font" formControlName="lga">
+                    <select  id="addressCity" class="form-select text_font" formControlName="lga">
                       <option>{{this.addressCity}}</option>
                       <option *ngFor="let lga of lgas">{{ lga.label }}</option>
                     </select>

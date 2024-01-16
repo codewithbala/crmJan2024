@@ -76,12 +76,12 @@ export class AddNewUser implements OnInit
         data =>
         {
           console.log(data)
-          this.redirectController.redirect("Add New Account Successful", '', '');
+          this.redirectController.redirect("Add New Account Successful", '', '', 'auto');
         },
         error =>
         {
           console.log(error)
-          this.redirectController.redirect("Add New Account Failed", error.message, '');
+          this.redirectController.redirect("Add New Account Failed", error.message, '', 'auto');
         });
       console.log(user);
     }

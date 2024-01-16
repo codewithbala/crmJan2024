@@ -1,3 +1,4 @@
+import { CandidateAttachments } from "./candidate-attachments";
 import { CandidateDetail } from "./candidate-detail";
 
 export class CandidateBack {
@@ -15,4 +16,5 @@ export class CandidateBack {
     degree:string = "";
 
     details:CandidateDetail=new CandidateDetail();
+    attachments:CandidateAttachments[]=new Array<CandidateAttachments>();
 }

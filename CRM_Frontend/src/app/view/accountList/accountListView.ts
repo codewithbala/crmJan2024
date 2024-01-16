@@ -23,6 +23,8 @@ export class AccountListView implements OnInit
   page:number = 1;
   pageSize:number = 1;
 
+  myRole:string ='';
+
   constructor(private modalService: BsModalService, private accountService:AccountService, public roleCheck:RoleCheck)
   {
   }
@@ -31,13 +33,15 @@ export class AccountListView implements OnInit
     this.getAllAccount();
     // @ts-ignore
     let myAccount = JSON.parse( window.sessionStorage.getItem('SNVA_CRM_USER') );
+    this.myRole = myAccount.role;
     this.userRole = this.roleCheck.getFrontendRoleType(myAccount.role);
     this.canAddAccount = this.roleCheck.addAccountCheck(myAccount.role);
   }
 
   getAllAccount(){
-    this.accountService.getAllUser().subscribe(data => {
-      this.accountList = data;
+    this.accountService.getAllUser().subscribe(data =>
+    {
+      this.accountList = data.filter(a => this.canCheck(a));
       this.filter();
       console.log(this.accountList);
     })
@@ -113,6 +117,15 @@ export class AccountListView implements OnInit
     this.showAccountList = this.currentAccountList.slice(0, 20);
     this.page = 1;
     this.pageSize = this.getMaxPage();
+  }
+
+  canCheck(user:User)
+  {
+    if(this.roleCheck.updateAccountCheck(this.myRole,user.role) != 'notAccess')
+    {
+      return true;
+    }
+    return false;
   }
 
   compare(user:User)

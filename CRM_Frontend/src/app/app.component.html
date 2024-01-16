@@ -1,11 +1,5 @@
 <!-- Background -->
-<ng-particles
-  id="tsparticles"
-  [options]="particlesOptions"
-  [particlesInit]="particlesInit"
-  (particlesLoaded)="particlesLoaded($event)"
->
-</ng-particles>
+<app-background></app-background>
 
 <!-- after login -->
 <div *ngIf="isLogin==true">

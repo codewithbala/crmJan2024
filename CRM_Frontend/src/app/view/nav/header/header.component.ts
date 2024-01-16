@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit
   @Input() userName: any;
   @Input() userRole: any;
   canAddAccount:boolean = false;
+  canSeeAccount:boolean = false;
   addCandidate:boolean  = false;
 
   ngOnInit(): void
@@ -24,7 +25,8 @@ export class HeaderComponent implements OnInit
     // @ts-ignore
     let myAccount = JSON.parse( window.sessionStorage.getItem('SNVA_CRM_USER') );
     this.canAddAccount = this.roleCheck.addAccountCheck(myAccount.role);
-    this.addCandidate = this.roleCheck.addCandidateCheck(myAccount.role);
+    this.addCandidate  = this.roleCheck.addCandidateCheck(myAccount.role);
+    this.canSeeAccount = this.roleCheck.seeAccountCheck(myAccount.role);
   }
 
   logout()

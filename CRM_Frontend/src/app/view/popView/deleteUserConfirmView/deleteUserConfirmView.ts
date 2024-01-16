@@ -34,12 +34,12 @@ export class DeleteUserConfirmView
       data =>
       {
         console.log(data)
-        this.redirectController.redirect(this.message + " Account Successful", '', '');
+        this.redirectController.redirect(this.message + " Account Successful", '', '', 'auto');
       },
       error =>
       {
         console.log(error.message)
-        this.redirectController.redirect(this.message + " Account Failed", error.message, '');
+        this.redirectController.redirect(this.message + " Account Failed", error.message, '', 'auto');
       });
   }
 }

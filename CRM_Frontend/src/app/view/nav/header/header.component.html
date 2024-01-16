@@ -11,7 +11,7 @@
         </a>
         <div class="dropdown-menu ps-2 pe-2 bg-dark text-white border-success" aria-labelledby="navbarSuperDropdownMenuLink">
           <a class="dropdown-item text_font text-white" (click)="showAddNewUser()" *ngIf="canAddAccount==true">Add New User</a>
-          <a class="dropdown-item text_font text-white" (click)="accountlist()"  >Manage Users</a>
+          <a class="dropdown-item text_font text-white" (click)="accountlist()"    *ngIf="canAddAccount==true">Manage Users</a>
           <a class="dropdown-item text_font text-white" (click)="newCandidate()"   *ngIf="addCandidate==true" >New Candidate</a>
           <a class="dropdown-item text_font text-white" (click)="candidatelist()">Manage Candidate</a>
         </div>

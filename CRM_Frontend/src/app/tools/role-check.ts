@@ -130,6 +130,15 @@ export class RoleCheck
     }
   }
 
+  seeAccountCheck(myRole:string):boolean
+  {
+    if(myRole == this.role[0] || myRole == this.role[1] || myRole == this.role[2] || myRole == this.role[3])
+    {
+      return true;
+    }
+    return false
+  }
+
   updateAccountCheck(myRole:string, targetRole:string):string
   {
     if(myRole == this.role[0])
@@ -151,7 +160,7 @@ export class RoleCheck
       }
       else
       {
-        return "readOnly";
+        return "notAccess";
       }
     }
     else if(myRole == this.role[2])
@@ -162,7 +171,7 @@ export class RoleCheck
       }
       else
       {
-        return "readOnly";
+        return "notAccess";
       }
     }
     else if(myRole == this.role[3])
@@ -173,12 +182,12 @@ export class RoleCheck
       }
       else
       {
-        return "readOnly";
+        return "notAccess";
       }
     }
     else if(myRole == this.role[4] || myRole == this.role[5] || myRole == this.role[6])
     {
-      return "readOnly";
+      return "notAccess";
     }
     else
     {

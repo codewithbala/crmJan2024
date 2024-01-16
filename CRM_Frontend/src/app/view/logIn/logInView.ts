@@ -38,11 +38,11 @@ export class LogInView
           console.log("[User end]");
           data.password = this.user.password;
           window.sessionStorage.setItem("SNVA_CRM_USER", JSON.stringify(data));
-          this.redirectController.redirect("Welcome Back " + data.username, '', this.jumpPage(data.role));
+          this.redirectController.redirect("Welcome Back " + data.username, '', this.jumpPage(data.role), 'auto');
         },
         error =>
         {
-          this.redirectController.redirect("Sorry, " + this.user.username, error.message, '');
+          this.redirectController.redirect("Sorry, Login Failed", 'Please Check you ID and Password', '', 'auto');
         })
     }
   }

@@ -45,6 +45,8 @@ class ResponseObject {
 	}
 	
 }
+
+@Deprecated
 @CrossOrigin(origins="http://localhost:4200/")
 @RestController
 public class AuthenticationController {

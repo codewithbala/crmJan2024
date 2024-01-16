@@ -38,7 +38,7 @@
                   </div>
                   <div class="col-4">
                     <label for="degree">Degree:</label>
-                    <select id="degree" name="degree"  class="form-control" [(ngModel)]="currentCandidate.degree">
+                    <select id="degree" name="degree"  class="form-select" [(ngModel)]="currentCandidate.degree">
                       <option>{{currentCandidate.degree}}</option>
                       <option *ngFor="let d of menuData.DEGREE">{{d}}</option>
                     </select>
@@ -47,7 +47,7 @@
                 <div class="row">
                   <div class="col-4">
                     <label for="visaStatus">Visa Status:</label>
-                    <select id="visaStatus" name="visaStatus"  class="form-control" [(ngModel)]="currentCandidate.visaStatus">
+                    <select id="visaStatus" name="visaStatus"  class="form-select" [(ngModel)]="currentCandidate.visaStatus">
                       <option>{{currentCandidate.visaStatus}}</option>
                       <option *ngFor="let v of menuData.VISA_STATUS">{{v}}</option>
                     </select>
@@ -64,13 +64,23 @@
                     <label for="resume">Resume:</label>
                   </div>
                   <div class="col-6">
-                    <input type="file" id="resume" name="resume" (change)="onFileSelected($event, 'resume')" class="form-control-file">
+                    <input type="file" id="resume" name="resume" (change)="onResumeUpload($event)" class="form-control-file">
+                  <p *ngIf="!isPdfResume">Files must be PDF</p>
                   </div>
                 </div>
                 <div class="row mt-4">
                   <div class="col-4 text-end"><label for="otherFile">Other Files:</label></div>
-                  <div class="col-6"><input type="file" id="otherFile" name="otherFile" (change)="onFileSelected($event, 'otherFile')" class="form-control-file"></div>
+                  <div class="col-6"><input type="file" id="otherFile" name="otherFile" (change)="onFileUpload($event)" class="form-control-file"></div>
+                  <p *ngIf="!isPdfFile">Files must be PDF</p>
                 </div>
+                 <div *ngIf="currentCandidate.attachments.length!=0" class="row mt-4">
+                  <div  class="col-4 text-end"><label for="otherFile">Uploaded Files:</label></div>
+                  <div class="col-6 text-end" >
+                    <a class="link-opacity-100" *ngFor="let attachment of currentCandidate.attachments" (click)="download(attachment.attachment)">{{attachment.attachment}} <br/></a>
+                  </div>
+                  
+                </div>
+                
               </div>
             </div>
           </div>
@@ -104,14 +114,14 @@
                   <div class="row mt-2">
                     <div class="col-5">
                       <label class="text_font text-white">Country</label>
-                      <select id="addressCountry" class="form-control text_font" formControlName="country" (change)="handleCountryChange()">
+                      <select id="addressCountry" class="form-select text_font" formControlName="country" (change)="handleCountryChange()">
                         <option>{{this.addressCountry}}</option>
                         <option *ngFor="let country of countries">{{country.label}}</option>
                       </select>
                     </div>
                     <div class="col-5">
                       <label class="text_font text-white">State</label>
-                      <select  id="addressState" class="form-control text_font" formControlName="state" (change)="handleStateChange()">
+                      <select  id="addressState" class="form-select text_font" formControlName="state" (change)="handleStateChange()">
                         <option>{{this.addressState}}</option>
                         <option *ngFor="let state of states">{{ state.label}}</option>
                       </select>
@@ -120,7 +130,7 @@
                   <div class="row mt-2">
                     <div class="col-6">
                       <label class="text_font text-white">City</label>
-                      <select  id="addressCity" class="form-control text_font" formControlName="lga">
+                      <select  id="addressCity" class="form-select text_font" formControlName="lga">
                         <option>{{this.addressCity}}</option>
                         <option *ngFor="let lga of lgas">{{ lga.label }}</option>
                       </select>
@@ -154,7 +164,7 @@
               <div class="row mt-4">
                 <div class="col-10">
                   <label>Communication Skill:{{currentCandidate.details.communicationSkill}}</label>
-                  <input type="range" max="10" class="form-control" [(ngModel)]="currentCandidate.details.communicationSkill">
+                  <input type="range" class='mt-2' max="10"  id="myRange" [(ngModel)]="currentCandidate.details.communicationSkill">
                 </div>
               </div>
               <h5 class="mt-5">Interview Schedule</h5>
@@ -317,23 +327,24 @@
                 </div>
                 <div class="row m-2">
                   <div class="col-5 text-end">
-                    <label> Feedback: </label>
+                    <label>Candidate Status: </label>
                   </div>
                   <div class="col-5">
-                    <input type="text" list="interviewFeedback" class="form-control" [(ngModel)]="currentCandidate.details.interviewerFeedback">
-                    <datalist id = 'interviewFeedback'>
-                      <option *ngFor="let i of menuData.INTERVIEW_FEEDBACK">{{i}}</option>
-                    </datalist>
+                    <select class="form-select" [(ngModel)]="currentCandidate.details.candidateInterviewStatus">
+                      <option *ngFor="let i of menuData.INTERVIEW_STATUS">{{i}}</option>
+                    </select>
                   </div>
                 </div>
                 <div class="row m-2">
                   <div class="col-5 text-end">
-                    <label>Candidate Status: </label>
+                    <label> Feedback: </label>
                   </div>
-                  <div class="col-5">
-                    <select class="form-control" [(ngModel)]="currentCandidate.details.candidateInterviewStatus">
-                      <option *ngFor="let i of menuData.INTERVIEW_STATUS">{{i}}</option>
-                    </select>
+                  <div class="col-7">
+                    <textarea class="form-control" [value]="currentCandidate.details.interviewerFeedback" [(ngModel)]="currentCandidate.details.interviewerFeedback"></textarea>
+                    <!--<input type="text" list="interviewFeedback" class="form-control" [(ngModel)]="currentCandidate.details.interviewerFeedback">-->
+                    <!--<datalist id = 'interviewFeedback'>
+                      <option *ngFor="let i of menuData.INTERVIEW_FEEDBACK">{{i}}</option>
+                    </datalist>-->
                   </div>
                 </div>
               </div>
@@ -351,18 +362,18 @@
                 </div>
                 <div class="row m-2">
                   <div class="col-5 text-end">
-                    <label> Feedback: </label>
-                  </div>
-                  <div class="col-5 text-start">
-                    <label>{{currentCandidate.details.interviewerFeedback}}</label>
-                  </div>
-                </div>
-                <div class="row m-2">
-                  <div class="col-5 text-end">
                     <label>Candidate Status: </label>
                   </div>
                   <div class="col-5 text-start">
                     <label>{{currentCandidate.details.candidateInterviewStatus}}</label>
+                  </div>
+                </div>
+                <div class="row m-2">
+                  <div class="col-5 text-end">
+                    <label> Feedback: </label>
+                  </div>
+                  <div class="col-5 text-start">
+                    <p>{{currentCandidate.details.interviewerFeedback}}</p>
                   </div>
                 </div>
               </div>
@@ -375,7 +386,7 @@
                   <label>LOI Sent:</label>
                 </div>
                 <div class="col-6">
-                  <select  id="loiSent" class="form-control text_font">
+                  <select  id="loiSent" class="form-select text_font">
                     <option>{{loiSent}}</option>
                     <option *ngFor="let l of menuData.LOI_SENT">{{l}}</option>
                   </select>
@@ -386,7 +397,7 @@
                   <label>LOI Accept:</label>
                 </div>
                 <div class="col-6">
-                  <select  id="loiAccepted" class="form-control text_font">
+                  <select  id="loiAccepted" class="form-select text_font">
                     <option>{{loiAccepted}}</option>
                     <option *ngFor="let l of menuData.LOI_ACCEPTED">{{l}}</option>
                   </select>
@@ -397,7 +408,7 @@
                   <label>Joined Batch:</label>
                 </div>
                 <div class="col-6">
-                  <select  id="joinBatch" class="form-control text_font">
+                  <select  id="joinBatch" class="form-select text_font">
                     <option>{{joinedBatch}}</option>
                     <option *ngFor="let l of menuData.JOIN_BATCH">{{l}}</option>
                   </select>

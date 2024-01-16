@@ -23,11 +23,24 @@ import { ResponeMessage } from './view/popView/responeMessage/responeMessage';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {StringCutOffPipe} from "./tools/string-cut-off-pipe";
 import { AddNewUser } from './view/popView/addNewUser/addNewUser';
 import { HttpInterceptorService } from './service/http-interceptor.service';
 import { BsDatepickerModule, BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GotoCandidateListConfirmView } from './view/popView/gotoCandidateListConfirmView/gotoCandidateListConfirmView';
+import { MenuBar } from './view/accountDetail/menuBar/menuBar';
+import { MenuBarReadOnly } from './view/accountDetail/menuBarReadOnly/menuBarReadOnly';
+import { ErrorPage } from './view/accountDetail/errorPage/errorPage';
+import { AccountInfo } from './view/accountDetail/accountInfo/accountInfo';
+import { AccountInfoReadOnly } from './view/accountDetail/accountInfoReadOnly/accountInfoReadOnly';
+import { CanSuspend } from './view/accountDetail/canSuspend/canSuspend';
+
+// Pipe
+import { SNVApipeStringCutOff     } from "./tools/SNVApipeStringCutOff";
+import { SNVApipeGetAccountRole   } from "./tools/SNVApipeGetAccountRole";
+import { SNVApipeGetAccountStatus } from "./tools/SNVApipeGetAccountStatus";
+import { BackgroundComponent } from './view/background/background.component';
+
 
 @NgModule({
     declarations: [
@@ -44,8 +57,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         DeleteUserConfirmView,
         ResponeMessage,
         AddNewUser,
-        StringCutOffPipe,
-        AddNewUser
+        AddNewUser,
+        GotoCandidateListConfirmView,
+        MenuBar,
+        MenuBarReadOnly,
+        ErrorPage,
+        AccountInfo,
+        AccountInfoReadOnly,
+
+        SNVApipeStringCutOff,
+        SNVApipeGetAccountRole,
+        SNVApipeGetAccountStatus,
+        CanSuspend,
+        BackgroundComponent
     ],
   imports: [
     BrowserModule,

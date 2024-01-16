@@ -28,7 +28,7 @@ public class UserManagementController {
         return authenticationService.getUserDetailsbyUserId(userId);
     }
 
-    @GetMapping("")
+    @GetMapping
     public List<User> getAllUsers() {
         LOGGER.info("pulling all users");
         return authenticationService.getAllUsers();
@@ -41,8 +41,7 @@ public class UserManagementController {
         return authenticationService.updatePassword(user);
     }
 
-    @PostMapping("")
-        //previous '/updateUser'
+    @PostMapping
     User updateUser(@RequestBody User user) {
         LOGGER.info("Updating " + user.getUsername() + " user");
         return authenticationService.updateUser(user);

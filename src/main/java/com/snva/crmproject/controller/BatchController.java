@@ -10,7 +10,7 @@ import com.snva.crmproject.service.BatchService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/batches")
+@RequestMapping("/api/v1/batches")
 public class BatchController {
 
     private final BatchService batchService;
@@ -20,12 +20,14 @@ public class BatchController {
         this.batchService = batchService;
     }
 
-    @PostMapping("/create")
+    @CrossOrigin(origins = "http://localhost:4200/")
+    @PostMapping
     public ResponseEntity<Batch> createBatch(@RequestBody Batch batch) {
-        batchService.createBatch(batch.getStartDate(), batch.getBatchType(), batch.getStatus());
-        return ResponseEntity.ok(batch);
+        Batch createdBatch = batchService.createBatch(batch);
+        return ResponseEntity.ok(createdBatch);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200/")
     @GetMapping("/{id}")
     public ResponseEntity<Batch> getBatchById(@PathVariable Long id) {
         return batchService.findBatchById(id)
@@ -33,14 +35,16 @@ public class BatchController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @CrossOrigin(origins = "http://localhost:4200/")
     @GetMapping
     public List<Batch> getAllBatches() {
         return batchService.findAllBatches();
     }
 
+    @CrossOrigin(origins = "http://localhost:4200/")
     @PutMapping("/{id}")
-    public ResponseEntity<Batch> updateBatch(@RequestBody Batch batch) {
-        Batch updatedBatch = batchService.updateBatch(batch.getId(), batch.getStartDate(), batch.getBatchType(), batch.getStatus());
+    public ResponseEntity<Batch> updateBatch(@PathVariable Long id, @RequestBody Batch batch) {
+        Batch updatedBatch = batchService.updateBatch(id, batch);
         if (updatedBatch != null) {
             return ResponseEntity.ok(updatedBatch);
         } else {
@@ -48,6 +52,7 @@ public class BatchController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:4200/")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBatch(@PathVariable Long id) {
         batchService.deleteBatch(id);

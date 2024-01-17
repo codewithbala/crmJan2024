@@ -22,33 +22,31 @@ public class BatchServiceImpl implements BatchService {
 
     @Override
     @Transactional
-    public Batch createBatch(Date startDate, String batchType, String status) {
-        Batch batch = new Batch();
-        batch.setStartDate(startDate);
-        batch.setBatchType(batchType);
-        batch.setStatus(status);
+    public Batch createBatch(Batch batch) {
         return batchRepository.save(batch);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Optional<Batch> findBatchById(Long id) {
         return batchRepository.findById(id);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Batch> findAllBatches() {
         return batchRepository.findAll();
     }
 
     @Override
     @Transactional
-    public Batch updateBatch(Long id, Date startDate, String batchType, String status) {
-        return batchRepository.findById(id).map(batch -> {
-            batch.setStartDate(startDate);
-            batch.setBatchType(batchType);
-            batch.setStatus(status);
-            return batchRepository.save(batch);
-        }).orElse(null);
+    public Batch updateBatch(Long id, Batch updatedBatch) {
+        return batchRepository.findById(id).map(existingBatch -> {
+            existingBatch.setStartDate(updatedBatch.getStartDate());
+            existingBatch.setBatchType(updatedBatch.getBatchType());
+            existingBatch.setStatus(updatedBatch.getStatus());
+            return batchRepository.save(existingBatch);
+        }).orElse(null); // Return null if the batch with the given id is not found
     }
 
     @Override

@@ -1,8 +1,7 @@
 <div class="container mt-4 mb-4 pt-4" style="min-height: 800px;">
   <div class="row g-3 m-2">
     <div class="col-sm-3 p-2">
-      <div class="card border border-success cardBackGround" style="
-      min-height: 600px;">
+      <div class="card border border-success cardBackGround" style="min-height: 600px;">
         <div class="card-body text-center">
           <!-- left menu bar Read and Write-->
           <div class="row g-3" *ngIf="authorization == 'readAndWrite'">
@@ -20,11 +19,11 @@
         <div class="card-body text-center">
           <!-- Unknown My Account Role -->
           <div class="row g-0" *ngIf="authorization == 'notAccess'">
-            <app-error-page></app-error-page>
+            <app-error-page [erroeMessage]='erroeMessage'></app-error-page>
           </div>
           <!-- Can Not Loading User Data -->
           <div class="row g-0" *ngIf="authorization != 'notAccess' && currentUser.userId == -1">
-            <app-error-page></app-error-page>
+            <app-error-page [erroeMessage]='erroeMessage'></app-error-page>
           </div>
           <!-- Read Only -->
           <div class="row g-0" *ngIf="authorization == 'readOnly' && currentUser.userId != -1">
@@ -41,129 +40,15 @@
             </div>
             <!-- Update Phone -->
             <div class="card-body" *ngIf="currentStatus == 'phoneNumber'">
-              <h3 class="card-title text-center border-bottom pb-4 text-white text_font">Phone Number</h3>
-              <div style="min-height: 260px">
-                <div class="row m-3 mt-5">
-                  <div class="col-4 text-end">
-                    <label class="text_font text-white">Original</label>
-                  </div>
-                  <div class="col-4 text-start">
-                    <label class="text_font text-white">{{this.currentUser.phone}}</label>
-                    <!--<input class="form-control text_font" type="text" value="{{this.currentUser.phone}}" readonly>-->
-                  </div>
-                </div>
-                <div class="row m-3 mt-5">
-                  <div class="col-4 text-end">
-                    <label class="text_font text-white">New</label>
-                  </div>
-                  <div class="col-4 text-end">
-                    <input class="form-control text_font" type="text" value="" id="newPhone">
-                  </div>
-                </div>
-                <div id="errorMessage"></div>
-              </div>
-              <div class="col-sm-12 text-end mt-4 pt-2">
-                <button class="btn btn-primary mb-3 btn-lg py-1 px-5 ms-4" (click)="updatePhone()">Update</button>
-              </div>
+              <app-phone-number [currentUser]='currentUser' [isMyAccount]="isMyAccount"></app-phone-number>
             </div>
             <!-- Reset Password -->
             <div class="card-body" *ngIf="currentStatus == 'resetPassword'">
-              <h3 class="card-title text-center border-bottom pb-4 text-white text_font">Reset Password</h3>
-              <div style="min-height: 260px">
-                <div class="row m-3 mt-5" *ngIf="this.isMyAccount == true">
-                  <div class="col-3 text-end">
-                    <label class="text_font text-white">Original</label>
-                  </div>
-                  <div class="col-7 text-end">
-                    <input class="form-control text_font" type="password" value="" id="originalPassword">
-                  </div>
-                </div>
-                <div class="row m-3 mt-5">
-                  <div class="col-3 text-end">
-                    <label class="text_font text-white">New</label>
-                  </div>
-                  <div class="col-7 text-end">
-                    <input class="form-control text_font" type="password" value="" id="newPassword">
-                  </div>
-                </div>
-                <div class="row m-3">
-                  <div class="col-3 text-end">
-                    <label class="text_font text-white">Confirm</label>
-                  </div>
-                  <div class="col-7 text-end">
-                    <input class="form-control text_font" type="password" value="" id="confirmPassword">
-                  </div>
-                </div>
-                <div id="errorMessage"></div>
-              </div>
-              <div class="col-sm-12 text-end mt-4 pt-2">
-                <button class="btn btn-primary mb-3 btn-lg py-1 px-5 ms-4" (click)="resetPassword()">Update</button>
-              </div>
+              <app-password [currentUser]='currentUser' [isMyAccount]="isMyAccount"></app-password>
             </div>
             <!-- Update Address -->
             <div class="card-body" *ngIf="currentStatus == 'mailAddress'">
-              <h3 class="card-title text-center border-bottom pb-4 text-white text_font">Mail Address</h3>
-              <div style="min-height: 260px" [formGroup]="countryForm">
-                <div class="row m-3 mt-5">
-                  <div class="col-3 text-end">
-                    <label class="text_font text-white">Line 1</label>
-                  </div>
-                  <div class="col-7 text-end">
-                    <input class="form-control text_font" type="text" value="{{this.currentUser.addressLine1}}" id="addressLine1">
-                  </div>
-                </div>
-                <div class="row m-3">
-                  <div class="col-3 text-end">
-                    <label class="text_font text-white">Line 2</label>
-                  </div>
-                  <div class="col-6 text-end">
-                    <input class="form-control text_font" type="text" value="{{this.currentUser.addressLine2}}" id="addressLine2">
-                  </div>
-                </div>
-                <div class="row m-3">
-                  <div class="col-3 text-end">
-                    <label class="text_font text-white">Country</label>
-                  </div>
-                  <div class="col-3">
-                    <select id="addressCountry" class="form-select text_font" formControlName="country" (change)="handleCountryChange()">
-                      <option>{{this.addressCountry}}</option>
-                      <option *ngFor="let country of countries">{{country.label}}</option>
-                    </select>
-                  </div>
-                  <div class="col-1 text-end">
-                    <label class="text_font text-white">State</label>
-                  </div>
-                  <div class="col-3">
-                    <select  id="addressState" class="form-select text_font" formControlName="state" (change)="handleStateChange()">
-                      <option>{{this.addressState}}</option>
-                      <option *ngFor="let state of states">{{ state.label}}</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="row m-3">
-                  <div class="col-3 text-end">
-                    <label class="text_font text-white">City</label>
-                  </div>
-                  <div class="col-3">
-                    <select  id="addressCity" class="form-select text_font" formControlName="lga">
-                      <option>{{this.addressCity}}</option>
-                      <option *ngFor="let lga of lgas">{{ lga.label }}</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="row m-3 mb-5">
-                  <div class="col-3 text-end">
-                    <label class="text_font text-white">ZipCode</label>
-                  </div>
-                  <div class="col-4 text-end">
-                    <input class="form-control text_font" type="text" value="{{this.currentUser.addressZipCode}}" id="addressZipCode">
-                  </div>
-                </div>
-                <div id="errorMessage"></div>
-              </div>
-              <div class="col-sm-12 text-end mt-4 pt-2">
-                <button class="btn btn-primary mb-3 btn-lg py-1 px-5 ms-4" (click)="updateAddress()">Update</button>
-              </div>
+              <app-address [currentUser]='currentUser' [isMyAccount]="isMyAccount"></app-address>
             </div>
           </div>
         </div>

@@ -40,6 +40,9 @@ import { SNVApipeStringCutOff     } from "./tools/SNVApipeStringCutOff";
 import { SNVApipeGetAccountRole   } from "./tools/SNVApipeGetAccountRole";
 import { SNVApipeGetAccountStatus } from "./tools/SNVApipeGetAccountStatus";
 import { BackgroundComponent } from './view/background/background.component';
+import { PhoneNumber } from './view/accountDetail/phoneNumber/phoneNumber';
+import { PasswordComponent } from './view/accountDetail/password/password.component';
+import { AddressComponent } from './view/accountDetail/address/address.component';
 
 
 @NgModule({
@@ -69,7 +72,10 @@ import { BackgroundComponent } from './view/background/background.component';
         SNVApipeGetAccountRole,
         SNVApipeGetAccountStatus,
         CanSuspend,
-        BackgroundComponent
+        BackgroundComponent,
+        PhoneNumber,
+        PasswordComponent,
+        AddressComponent
     ],
   imports: [
     BrowserModule,

@@ -9,11 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,7 +33,7 @@ public class CandidateController {
 
     @Autowired
     private CandidateService candidateService;
-    
+
 
     private final CandidateDetailsService candidateDetailsService;
     private final CandidateBasicDetailsService candidateBasicDetailsService;
@@ -51,32 +48,12 @@ public class CandidateController {
         this.candidateAttachmentsService = candidateAttachmentsService;
     }
 
-    @PostMapping("/add")
-    public CandidateBasicDetails addCandidate(@RequestBody CandidateBasicDetails candidateBasicDetails) {
-        System.out.println(candidateBasicDetails.toString());
-//        System.out.println(candidateBasicDetails.getAttachments().get(0).toString());
-    	return candidateService.addNewCandidate(candidateBasicDetails);
-    }
 
-    @GetMapping("/all")
-    public List<CandidateBasicDetails> getAllCandidates() {
-        return candidateService.getAllCandidates();
-    }
-
-    @GetMapping("/{candidateId}")
-    public CandidateBasicDetails getCandidateById(@PathVariable String candidateId) {
-        return candidateService.getCandidateById(candidateId);
-    }
-
-    @PutMapping("/update")
-    public String updateCandidate(@RequestBody CandidateBasicDetails updatedCandidate) {
-        return candidateService.updateCandidate(updatedCandidate);
-    }
     @PutMapping("/updateTechCandidate/{candidateId}")
     public ResponseEntity<?> updateTechCandidate(@PathVariable String candidateId,
-                                                        @RequestParam String techInterviewDate,
-                                                        @RequestParam String interviewerFeedback,
-                                                        @RequestParam String candidateInterviewStatus) {
+                                                 @RequestParam String techInterviewDate,
+                                                 @RequestParam String interviewerFeedback,
+                                                 @RequestParam String candidateInterviewStatus) {
         CandidateDetails updatedCandidateDetails = candidateDetailsService.updateTechCandidateFields(
                 candidateId, techInterviewDate, interviewerFeedback, candidateInterviewStatus);
 
@@ -89,10 +66,10 @@ public class CandidateController {
 
     @PutMapping("/updateBDCandidate/{candidateId}")
     public ResponseEntity<?> updateBDCandidate(@PathVariable String candidateId,
-                                                     @RequestParam boolean loiSent,
-                                                     @RequestParam boolean loiAccepted,
-                                                     @RequestParam boolean joinedBatch,
-                                                     @RequestParam String batchStartDate) {
+                                               @RequestParam boolean loiSent,
+                                               @RequestParam boolean loiAccepted,
+                                               @RequestParam boolean joinedBatch,
+                                               @RequestParam String batchStartDate) {
         CandidateDetails updatedBDCandidateDetails = candidateDetailsService.updateBDCandidateFields(
                 candidateId, loiSent, loiAccepted, joinedBatch, batchStartDate);
 
@@ -104,8 +81,8 @@ public class CandidateController {
     }
     @RequestMapping("/next")
     CandidateBasicDetails getLatestId(){
-    	CandidateBasicDetails next = new CandidateBasicDetails();
-    	next.setCandidateId(String.format("SDP%1$" + 5 + "s", candidateService.getLatestId().toString()).replace(' ', '0'));
-    	return next;
+        CandidateBasicDetails next = new CandidateBasicDetails();
+        next.setCandidateId(String.format("SDP%1$" + 5 + "s", candidateService.getLatestId().toString()).replace(' ', '0'));
+        return next;
     }
 }

@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +21,8 @@ import com.snva.crmproject.entity.LetterOfIntent;
 import com.snva.crmproject.service.LetterOfIntentService;
 
 @RestController
-@RequestMapping("/api/letter-of-intent")
+@CrossOrigin(origins = "http://localhost:4200/")
+@RequestMapping("/api/v1/letter-of-intent")
 public class LetterOfIntentController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(LetterOfIntentController.class);
 
@@ -44,16 +47,17 @@ public class LetterOfIntentController {
 		return letterOfIntentService.saveLetterOfIntent(letterOfIntent);
 	}
 
-	/*
-	 * @DeleteMapping("/{id}") public void deleteLetterOfIntent(@PathVariable Long
-	 * id) { LOGGER.info("Deleting Letter of Intent by ID: {}", id);
-	 * letterOfIntentService.deleteLetterOfIntent(id); }
-	 */
+	@DeleteMapping("/{id}")
+	public void deleteLetterOfIntent(@PathVariable Long id) {
+		LOGGER.info("Deleting Letter of Intent by ID: {}", id);
+		letterOfIntentService.deleteLetterOfIntent(id);
+	}
 
-	@PutMapping("update-bd-candidate")
-	public void updateBDCandidate(@RequestBody LetterOfIntent letterOfIntent) {
-		LOGGER.info("Updating BD Candidate for Letter of Intent with ID: {}", letterOfIntent.getId());
-		letterOfIntentService.updateBDCandidate(letterOfIntent);
+	@PutMapping("/{id}")
+	public ResponseEntity<String> updateLetterOfIntent(@PathVariable Long id,@RequestBody LetterOfIntent updatedLetterOfIntent) {
+		LOGGER.info("Updating Letter of Intent with ID: {}", id);
+		ResponseEntity<String> response = letterOfIntentService.updateLetterOfIntent(id, updatedLetterOfIntent);
+		return response;
 	}
 
 }

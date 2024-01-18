@@ -8,7 +8,6 @@ import com.snva.crmproject.entity.CandidateDetails;
 
 import jakarta.persistence.*;
 
-import lombok.AllArgsConstructor;
 
 import lombok.Data;
 
@@ -84,9 +83,7 @@ public class Batch {
         this.status = status;
     }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+
 	
 	   @Override
 		public String toString() {

@@ -1,20 +1,11 @@
 package com.snva.crmproject.entity.batchDetails;
-
-
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-
 import com.snva.crmproject.entity.CandidateDetails;
-
 import jakarta.persistence.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
-
 @Entity
-@Table(name = "batch_candidates")
+@Table(name = "batch_candidates", uniqueConstraints = {
+	    @UniqueConstraint(columnNames = {"candidate_id"})
+	})
 @IdClass(BatchCandidatesId.class)
 public class BatchCandidates {
 

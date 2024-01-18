@@ -99,9 +99,7 @@ public class CandidateServiceImpl implements CandidateService {
             existingDetails.setAddressZipCode(updatedCandidate.getDetails().getAddressZipCode());
             existingDetails.setSource(updatedCandidate.getDetails().getSource());
             existingDetails.setRemarks(updatedCandidate.getDetails().getRemarks());
-            existingDetails.setInterviewDate(updatedCandidate.getDetails().getInterviewDate());
-            existingDetails.setInterviewerFeedback(updatedCandidate.getDetails().getInterviewerFeedback());
-            existingDetails.setCandidateInterviewStatus(updatedCandidate.getDetails().getCandidateInterviewStatus());
+        
             existingDetails.setLOISent(updatedCandidate.getDetails().getLOISent());
             existingDetails.setLOIAccepted(updatedCandidate.getDetails().getLOIAccepted());
             existingDetails.setJoinedBatch(updatedCandidate.getDetails().isJoinedBatch());

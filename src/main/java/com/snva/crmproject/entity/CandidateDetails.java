@@ -19,7 +19,11 @@ import jakarta.persistence.Table;
 
 
 public class CandidateDetails {
+	
+	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	private String candidateId;
 	private String skillSet;
 	private int communicationSkill;
@@ -39,6 +43,13 @@ public class CandidateDetails {
 	private boolean lOIAccepted;
 	private boolean joinedBatch;
 	private String startDate;
+	
+	
+
+	
+	@OneToOne
+    @JoinColumn(name = "tech_interview_id")  
+    private TechInterview techInterview;
 	
 	
 	public CandidateDetails(String candidateId, String skillSet, int communicationSkill, String addressLine1,
@@ -203,6 +214,9 @@ public class CandidateDetails {
         if (candidateBasicDetails != null) {
             candidateBasicDetails.setDetails(this);
         }
+        
+        
+      
     }
 	
 	

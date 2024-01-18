@@ -1,15 +1,13 @@
 package com.snva.crmproject.entity.batchDetails;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import com.snva.crmproject.entity.CandidateDetails;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -35,7 +33,13 @@ public class Batch {
     private String status; // 'upcoming', 'in progress', 'completed'
 
 
-
+    @ManyToMany
+    @JoinTable(
+        name = "batch_candidates",
+        joinColumns = @JoinColumn(name = "batch_id"),
+        inverseJoinColumns = @JoinColumn(name = "candidate_id")
+    )
+    private Set<CandidateDetails> candidates = new HashSet<>();
 
 	public Batch() {
     }
@@ -93,8 +97,10 @@ public class Batch {
 		public String toString() {
 			return "Batch [id=" + id + ", startDate=" + startDate + ", batchType=" + batchType + ", status=" + status + "]";
 		}
+   public void setCandidates(Set<CandidateDetails> candidates) {
+        this.candidates = candidates;
+    }
 
-	
 	
 	
 }

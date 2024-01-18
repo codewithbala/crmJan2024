@@ -9,8 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,7 +51,27 @@ public class CandidateController {
         this.candidateAttachmentsService = candidateAttachmentsService;
     }
 
+//    @PostMapping("/add")
+//    public CandidateBasicDetails addCandidate(@RequestBody CandidateBasicDetails candidateBasicDetails) {
+//        System.out.println(candidateBasicDetails.toString());
+////        System.out.println(candidateBasicDetails.getAttachments().get(0).toString());
+//    	return candidateService.addNewCandidate(candidateBasicDetails);
+//    }
 
+//    @GetMapping("/all")
+//    public List<CandidateBasicDetails> getAllCandidates() {
+//        return candidateService.getAllCandidates();
+//    }
+
+//    @GetMapping("/{candidateId}")
+//    public CandidateBasicDetails getCandidateById(@PathVariable String candidateId) {
+//        return candidateService.getCandidateById(candidateId);
+//    }
+
+    //    @PutMapping("/update")
+//    public String updateCandidate(@RequestBody CandidateBasicDetails updatedCandidate) {
+//        return candidateService.updateCandidate(updatedCandidate);
+//    }
     @PutMapping("/updateTechCandidate/{candidateId}")
     public ResponseEntity<?> updateTechCandidate(@PathVariable String candidateId,
                                                  @RequestParam String techInterviewDate,

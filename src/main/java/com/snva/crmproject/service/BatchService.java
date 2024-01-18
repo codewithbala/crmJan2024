@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.snva.crmproject.entity.batchDetails.Batch;
+import com.snva.crmproject.entity.batchDetails.BatchCandidates;
 
 public interface BatchService {
     Batch createBatch(Batch batch);
@@ -11,4 +12,6 @@ public interface BatchService {
     List<Batch> findAllBatches();
     Batch updateBatch(Long id, Batch batch);
     void deleteBatch(Long id);
+    
+
 }

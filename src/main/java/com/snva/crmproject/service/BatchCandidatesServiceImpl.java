@@ -24,11 +24,7 @@ public class BatchCandidatesServiceImpl implements BatchCandidatesService {
         return batchCandidatesRepository.save(batchCandidate);
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public Optional<BatchCandidates> findBatchCandidateById(Long id) {
-        return batchCandidatesRepository.findById(id);
-    }
+  
 
     @Override
     @Transactional(readOnly = true)

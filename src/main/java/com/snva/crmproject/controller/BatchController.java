@@ -9,6 +9,7 @@ import com.snva.crmproject.service.BatchService;
 
 import java.util.List;
 
+@CrossOrigin(origins = "${fontEnd.origins}")
 @RestController
 @RequestMapping("/api/v1/batches")
 public class BatchController {
@@ -20,14 +21,12 @@ public class BatchController {
         this.batchService = batchService;
     }
 
-    @CrossOrigin(origins = "http://localhost:4200/")
     @PostMapping
     public ResponseEntity<Batch> createBatch(@RequestBody Batch batch) {
         Batch createdBatch = batchService.createBatch(batch);
         return ResponseEntity.ok(createdBatch);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200/")
     @GetMapping("/{id}")
     public ResponseEntity<Batch> getBatchById(@PathVariable Long id) {
         return batchService.findBatchById(id)
@@ -35,13 +34,11 @@ public class BatchController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @CrossOrigin(origins = "http://localhost:4200/")
     @GetMapping
     public List<Batch> getAllBatches() {
         return batchService.findAllBatches();
     }
 
-    @CrossOrigin(origins = "http://localhost:4200/")
     @PutMapping("/{id}")
     public ResponseEntity<Batch> updateBatch(@PathVariable Long id, @RequestBody Batch batch) {
         Batch updatedBatch = batchService.updateBatch(id, batch);
@@ -52,7 +49,6 @@ public class BatchController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200/")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBatch(@PathVariable Long id) {
         batchService.deleteBatch(id);

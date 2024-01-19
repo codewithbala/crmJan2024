@@ -60,6 +60,7 @@ export class CandidateDetailView implements OnInit
   ngOnInit(): void
   {
     this.candidateId = this.router.snapshot.params['id'];
+    console.log(this.candidateId);
     this.bsConfig = Object.assign({}, {dateInputFormat: 'YYYY-MM-DD', showWeekNumbers: false});
     // @ts-ignore
     let myAccount = JSON.parse( window.sessionStorage.getItem('SNVA_CRM_USER') );

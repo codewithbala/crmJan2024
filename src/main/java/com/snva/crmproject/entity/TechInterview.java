@@ -21,21 +21,12 @@ public class TechInterview {
 	    private String interviewerFeedback;
 	    private String candidateInterviewStatus;
 
-//	    @OneToOne(fetch = FetchType.LAZY)
-//	    @JoinColumn(name = "candidate_id", unique = true)
-//	    private CandidateBasicDetails candidateBasicDetails;
-//
+
 	    @OneToOne
 	    @JoinColumn(name = "details_id")  
 	    private CandidateBasicDetails candidateDetails; 
 	    
-//	    @OneToOne
-//	    @JoinColumn(name = "tech_interview_id") 
-//	    private TechInterview techInterview;
-	    
-	   
-	    
-	    TechInterview() {
+        public TechInterview() {
 	        
 	    }
 

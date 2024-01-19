@@ -1,16 +1,18 @@
 <!-- Background -->
-<app-background></app-background>
+<app-background *ngIf="uiconfigure.BACKGROUND.particles == true"></app-background>
 
-<!-- after login -->
-<div *ngIf="isLogin==true">
-  <app-header [title] = 'title' [userID] = 'userID' [userName] = 'userName' [userRole] = 'userRole'></app-header>
-  <div style="min-height: 800px">
-    <router-outlet></router-outlet>
+<div class="{{uiconfigure.BACKGROUND.css}}" style="{{uiconfigure.BACKGROUND.style}}">
+  <!-- after login -->
+  <div *ngIf="isLogin==true">
+    <app-header [title] = 'title' [userID] = 'userID' [userName] = 'userName' [userRole] = 'userRole'></app-header>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+    <app-footer></app-footer>
   </div>
-  <app-footer></app-footer>
+  <!-- before login -->
+  <div *ngIf="isLogin==false">
+    <app-log-in></app-log-in>
+  </div>
 </div>
 
-<!-- before login -->
-<div *ngIf="isLogin==false">
-  <app-log-in></app-log-in>
-</div>

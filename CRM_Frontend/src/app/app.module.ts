@@ -40,13 +40,10 @@ import { SNVApipeStringCutOff     } from "./tools/SNVApipeStringCutOff";
 import { SNVApipeGetAccountRole   } from "./tools/SNVApipeGetAccountRole";
 import { SNVApipeGetAccountStatus } from "./tools/SNVApipeGetAccountStatus";
 import { BackgroundComponent } from './view/background/background.component';
-<<<<<<< HEAD
 import { CadidateRecruiterDetailViewComponent } from './view/cadidate-recruiter-detail-view/cadidate-recruiter-detail-view.component';
-=======
 import { PhoneNumber } from './view/accountDetail/phoneNumber/phoneNumber';
 import { PasswordComponent } from './view/accountDetail/password/password.component';
 import { AddressComponent } from './view/accountDetail/address/address.component';
->>>>>>> 2545b71fed68b64de386e91a9b4c96e7400e9cfd
 
 
 @NgModule({
@@ -77,13 +74,10 @@ import { AddressComponent } from './view/accountDetail/address/address.component
         SNVApipeGetAccountStatus,
         CanSuspend,
         BackgroundComponent,
-<<<<<<< HEAD
-        CadidateRecruiterDetailViewComponent
-=======
+        CadidateRecruiterDetailViewComponent,
         PhoneNumber,
         PasswordComponent,
         AddressComponent
->>>>>>> 2545b71fed68b64de386e91a9b4c96e7400e9cfd
     ],
   imports: [
     BrowserModule,

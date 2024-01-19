@@ -5,12 +5,8 @@ import {AccountService} from "../../service/account.service";
 import {InputCheck} from "../../tools/input-check";
 import {RedirectController} from "../../tools/redirect-controller";
 import {RoleCheck} from "../../tools/role-check";
-import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
+import {UIconfigure} from "../../config/UIconfigure";
 
-import { FormControl, FormGroup } from '@angular/forms';
-import CountryRegion from 'countryregionjs'
-import { CountryRegionResponse } from 'src/models';
-import { ApiResponse } from 'src/models';
 
 @Component({
   selector: 'app-account-detail-view',
@@ -29,7 +25,7 @@ export class AccountDetailView implements OnInit
   inputCheck:InputCheck = new InputCheck();
   isMyAccount:boolean = false;
 
-  constructor(private router:ActivatedRoute, private modalService: BsModalService, private accountService:AccountService, private redirectController:RedirectController, private roleCheck:RoleCheck)
+  constructor(private router:ActivatedRoute, private accountService:AccountService, private redirectController:RedirectController, private roleCheck:RoleCheck, public uiconfigure:UIconfigure)
   {
   }
 
@@ -64,7 +60,7 @@ export class AccountDetailView implements OnInit
         },
         error =>
         {
-          this.erroeMessage = "Can Not Load Account Information<br>Please Try Again";
+          this.erroeMessage = "Can Not Load Account Information, Please Try Again";
         }
       )
     }

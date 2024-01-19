@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import {Container, Engine, ISourceOptions} from "tsparticles-engine";
 import {loadFull} from "tsparticles";
+import {UIconfigure} from "../../config/UIconfigure";
 
 @Component({
   selector: 'app-background',
   templateUrl: './background.component.html',
   styleUrls: ['./background.component.css']
 })
-export class BackgroundComponent {
-
+export class BackgroundComponent
+{
   particlesOptions: ISourceOptions =
       {
         background: { color: { value: "#000", }, },

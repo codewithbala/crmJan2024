@@ -1,19 +1,19 @@
-<h3 class="card-title text-center border-bottom pb-4 text-white text_font">Mail Address</h3>
-<div style="min-height: 260px" [formGroup]="countryForm">
-    <div class="row m-3 mt-5">
-        <div class="col-3 text-end">
-            <label class="text_font text-white">Line 1</label>
+<div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.TITLE.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.TITLE.style}}">Mail Address</div>
+<div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.style}}" [formGroup]="countryForm">
+    <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE1.ROW.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE1.ROW.style}}">
+        <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE1.LABEL.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE1.LABEL.style}}">
+            <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE1.LABEL.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE1.LABEL.TEXT.style}}">Line 1</label>
         </div>
-        <div class="col-7 text-end">
-            <input class="form-control text_font" type="text" value="{{this.currentUser.addressLine1}}" id="addressLine1">
+        <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE1.VALUE.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE1.VALUE.style}}">
+            <input class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE1.VALUE.INPUT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE1.VALUE.INPUT.style}}" type="text" value="{{this.currentUser.addressLine1}}" id="addressLine1">
         </div>
     </div>
-    <div class="row m-3">
-        <div class="col-3 text-end">
-            <label class="text_font text-white">Line 2</label>
+    <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE2.ROW.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE2.ROW.style}}">
+        <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE2.LABEL.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE2.LABEL.style}}">
+            <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE2.LABEL.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE2.LABEL.TEXT.style}}">Line 2</label>
         </div>
-        <div class="col-6 text-end">
-            <input class="form-control text_font" type="text" value="{{this.currentUser.addressLine2}}" id="addressLine2">
+        <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE2.VALUE.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE2.VALUE.style}}">
+            <input class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE2.VALUE.INPUT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE2.VALUE.INPUT.style}}" type="text" value="{{this.currentUser.addressLine2}}" id="addressLine2">
         </div>
     </div>
     <div class="row m-3">
@@ -57,6 +57,6 @@
     </div>
     <div id="errorMessage"></div>
 </div>
-<div class="col-sm-12 text-end mt-4 pt-2">
-    <button class="btn btn-primary mb-3 btn-lg py-1 px-5 ms-4" (click)="updateAddress()">Update</button>
+<div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BUTTON.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BUTTON.style}}">
+    <button class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BUTTON.BUTTON.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BUTTON.BUTTON.style}}" (click)="updateAddress()">Update</button>
 </div>

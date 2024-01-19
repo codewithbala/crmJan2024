@@ -54,11 +54,10 @@ public class BatchCandidatesController {
         }
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteBatchCandidate(@PathVariable Long id) {
-        LOGGER.info("deleting candidate data for batch with id:" + id);
-
-        batchCandidatesService.deleteBatchCandidate(id);
+    @DeleteMapping("/{id}/{candidateId}")
+    public ResponseEntity<Void> deleteBatchCandidate(@PathVariable Long id,@PathVariable String candidateId) {
+        LOGGER.info("deleting candidate data for batch with id:" + id + " for candidate " + candidateId);
+        batchCandidatesService.deleteBatchCandidate(id,candidateId);
         return ResponseEntity.ok().build();
     }
 }

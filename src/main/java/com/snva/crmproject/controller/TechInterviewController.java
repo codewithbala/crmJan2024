@@ -20,7 +20,7 @@ import com.snva.crmproject.entity.TechInterview;
 import com.snva.crmproject.service.TechInterviewService;
 
 @RestController
-@RequestMapping("/api/techInterviews")
+@RequestMapping("/api/v1/tech-interviews")
 public class TechInterviewController {
 	private static final Logger logger = LoggerFactory.getLogger(TechInterviewController.class);
 

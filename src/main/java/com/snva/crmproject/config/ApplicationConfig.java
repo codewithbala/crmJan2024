@@ -15,7 +15,8 @@ import io.swagger.v3.oas.models.info.Info;
 public class ApplicationConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    	
+       return new BCryptPasswordEncoder();
     }
 
     @Bean

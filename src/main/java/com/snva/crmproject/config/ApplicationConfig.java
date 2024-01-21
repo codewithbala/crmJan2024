@@ -24,7 +24,7 @@ public class ApplicationConfig {
                 .csrf().disable()
                 .authorizeRequests().requestMatchers(
                 "/api/v1/authentication/**",
-                "/api/v1/register/**",
+                "/api/v1/users/register/**",
                 "/register/**",
                 "/login/**")
                 .permitAll().anyRequest().authenticated()

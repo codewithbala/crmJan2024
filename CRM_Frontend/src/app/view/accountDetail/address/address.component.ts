@@ -5,6 +5,7 @@ import {RedirectController} from "../../../tools/redirect-controller";
 import {FormControl, FormGroup} from "@angular/forms";
 import {ApiResponse, CountryRegionResponse} from "../../../../models";
 import CountryRegion from "countryregionjs";
+import {UIconfigure} from "../../../config/UIconfigure";
 
 @Component({
   selector: 'app-address',
@@ -22,7 +23,7 @@ export class AddressComponent implements OnInit
   addressState:string = '';
   addressCountry:string = ''
 
-  constructor(private accountService:AccountService, private redirectController:RedirectController)
+  constructor(private accountService:AccountService, private redirectController:RedirectController, public uiconfigure:UIconfigure)
   {
     this.countryForm = new FormGroup({
       country: new FormControl(''),

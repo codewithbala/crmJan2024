@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 
 
 import { User } from './model/user'
+import {UIconfigure} from "./config/UIconfigure";
 
 
 @Component({
@@ -19,7 +20,7 @@ export class AppComponent
   userName:string = '';
   userRole:string = 'superAdmin';
 
-  constructor()
+  constructor(public uiconfigure:UIconfigure)
   {
     // @ts-ignore
     this.user = JSON.parse( window.sessionStorage.getItem('SNVA_CRM_USER') );

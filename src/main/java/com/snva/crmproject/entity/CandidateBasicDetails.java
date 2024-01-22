@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name ="CandidateBasicDetails")
@@ -125,11 +126,10 @@ public class CandidateBasicDetails {
 	}
 
 	@OneToOne(mappedBy = "candidateBasicDetails", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    
     private CandidateDetails details;
 
-//	    @OneToMany(mappedBy = "candidateId")
-//	    private List<CandidateAttachments> attachments;
+	   @Transient
+	    private List<CandidateAttachments> attachments;
 	    
 	    
 	    public CandidateDetails getDetails() {
@@ -142,14 +142,14 @@ public class CandidateBasicDetails {
 //	            details.setCandidateBasicDetails(this);
 //	        }
 	    }
+	    
 
-//	    public List<CandidateAttachments> getAttachments() {
-//	        return attachments;
-//	    }
-//
-//	    public void setAttachments(List<CandidateAttachments> attachments) {
-//	        this.attachments = attachments;
-//	    }
+	    public List<CandidateAttachments> getAttachments() {
+			return attachments;
+		}
+		public void setAttachments(List<CandidateAttachments> attachments) {
+			this.attachments = attachments;
+		}
 		@Override
 		public String toString() {
 			return "CandidateBasicDetails [candidateId=" + candidateId + ", firstName=" + firstName + ", middleName="

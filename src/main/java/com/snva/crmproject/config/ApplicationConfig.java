@@ -15,7 +15,8 @@ import io.swagger.v3.oas.models.info.Info;
 public class ApplicationConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    	
+       return new BCryptPasswordEncoder();
     }
 
     @Bean
@@ -24,7 +25,7 @@ public class ApplicationConfig {
                 .csrf().disable()
                 .authorizeRequests().requestMatchers(
                 "/api/v1/authentication/**",
-                "/api/v1/register/**",
+                "/api/v1/users/register/**",
                 "/register/**",
                 "/login/**")
                 .permitAll().anyRequest().authenticated()

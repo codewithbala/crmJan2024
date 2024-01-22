@@ -5,6 +5,7 @@ import {AddNewUser} from "../popView/addNewUser/addNewUser";
 import { User } from 'src/app/model/user';
 import { AccountService } from 'src/app/service/account.service';
 import {RoleCheck} from "../../tools/role-check";
+import {UIconfigure} from "../../config/UIconfigure";
 @Component({
   selector: 'app-account-list',
   templateUrl: './accountListView.html',
@@ -25,7 +26,7 @@ export class AccountListView implements OnInit
 
   myRole:string ='';
 
-  constructor(private modalService: BsModalService, private accountService:AccountService, public roleCheck:RoleCheck)
+  constructor(private modalService: BsModalService, private accountService:AccountService, public roleCheck:RoleCheck, private UIconfigure:UIconfigure)
   {
   }
   ngOnInit()

@@ -6,15 +6,15 @@ import com.snva.crmproject.entity.CandidateBasicDetails;
 import com.snva.crmproject.entity.batchDetails.Batch;
 import com.snva.crmproject.entity.batchDetails.BatchCandidates;
 import com.snva.crmproject.entity.CandidateDetails;
+import com.snva.crmproject.repository.batch.BatchCandidatesRepository;
 import com.snva.crmproject.repository.batch.BatchRepository;
 import com.snva.crmproject.repository.candidate.CandidateBasicDetailsRepository;
 import com.snva.crmproject.repository.candidate.CandidateDetailsRepository;
 import com.snva.crmproject.utility.TestUser;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.*;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,11 +42,15 @@ public class BatchCandidateControllerTest {
     private ObjectMapper objectMapper;
 
     private static Batch testingBatch;
+    private static BatchCandidates testingBatchCandidate;
     private static CandidateDetails testingCandidate;
     private static CandidateBasicDetails testingCandidateBD;
+    private static String resourceCall = "/api/v1/batch-candidates";
 
     @Autowired
     private BatchRepository batchRepository;
+    @Autowired
+    private BatchCandidatesRepository batchCandidatesRepository;
     @Autowired
     private CandidateDetailsRepository candidateDetailsRepository;
     @Autowired
@@ -54,109 +58,89 @@ public class BatchCandidateControllerTest {
 
     @BeforeEach
     public void setup() {
-        //creating a candidate
-        if(testingCandidateBD == null){
             testingCandidateBD = new CandidateBasicDetails();
             testingCandidateBD.setCandidateId("SDPTEST01");
             testingCandidateBD.setFirstName("John");
-
             candidateRepository.save(testingCandidateBD);
-        }
-        //creating details for the candidate
-        if (testingCandidate == null) {
-            testingCandidate = new CandidateDetails();
 
+            testingCandidate = new CandidateDetails();
             testingCandidate.setCandidateId(testingCandidateBD.getCandidateId());
             testingCandidate.setAddressCity("test city");
 
             testingCandidateBD.setDetails(testingCandidate);
             testingCandidate.setCandidateBasicDetails(testingCandidateBD);
-
             candidateRepository.save(testingCandidateBD);
-        }
 
-        if (testingBatch == null) {
             testingBatch = new Batch();
             testingBatch.setBatchType("test type");
             testingBatch.setStatus("test status");
             testingBatch.setStartDate(new Date());
-
             batchRepository.save(testingBatch);
-        }
+
+            testingBatchCandidate = new BatchCandidates(testingBatch, testingCandidate);
+            batchCandidatesRepository.save(testingBatchCandidate);
     }
 
     @AfterEach
-    public void cleanup(){
+    public void cleanup() {
+        batchCandidatesRepository.delete(testingBatchCandidate);
         batchRepository.delete(testingBatch);
         candidateRepository.delete(testingCandidateBD);
     }
 
     @Test
-    public void bubalamara(){
-        LOGGER.info("mana mana");
-    }
-
-    @Test
     public void testCreateBatchCandidate() throws Exception {
+        //removing batch candidate that we created in preparation phase
+        batchCandidatesRepository.delete(testingBatchCandidate);
+
         LOGGER.info("Creating a batch candidate for testing");
-
-        Date startDate = new Date();
-        Batch batch = new Batch(2L, startDate, "regular", "upcoming");
-        CandidateDetails candidate = new CandidateDetails("C124", null, 0, null, null, null, null, null, null, null,
-                null, null, null, null, null, false, false, false, null);
-        BatchCandidates batchCandidate = new BatchCandidates(batch, candidate);
-
-        mockMvc.perform(post("/api/v1/batch-candidates").contentType(MediaType.APPLICATION_JSON)
+        BatchCandidates batchCandidate = new BatchCandidates(testingBatch, testingCandidate);
+        mockMvc.perform(post(resourceCall).contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(batchCandidate)).header("Authorization", authorization))
-                .andExpect(status().isOk()).andExpect(jsonPath("$.batch.id").value(2L))
-                .andExpect(jsonPath("$.candidate.candidateId").value("C124"));
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.batch.id").value(testingBatch.getId()))
+                .andExpect(jsonPath("$.candidate.candidateId").value(testingCandidate.getCandidateId()));
     }
 
     @Test
-    public void testGetBatchCandidateById() throws Exception {
+    public void testGetBatchCandidatesByBatchId() throws Exception {
         LOGGER.info("Getting a batch candidate for testing");
+        BatchCandidates batchCandidate = new BatchCandidates(testingBatch, testingCandidate);
+        batchCandidatesRepository.save(batchCandidate);
 
-        Long batchCandidateId = 1L;
+        mockMvc.perform(get(resourceCall + "/{id}", testingBatch.getId()).header("Authorization", authorization))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$.length()").value(Matchers.greaterThan(0)));
 
-        mockMvc.perform(get("/api/v1/batch-candidates/{id}", batchCandidateId).header("Authorization", authorization))
-                .andExpect(status().isOk());
-        // .andExpect(jsonPath("$.id").value(batchCandidateId));
+        batchCandidatesRepository.delete(batchCandidate);
     }
 
     @Test
     public void testGetAllBatchCandidates() throws Exception {
         LOGGER.info("Getting all candidate for testing");
-
-        mockMvc.perform(get("/api/v1/batch-candidates").header("Authorization", authorization))
-                .andExpect(status().isOk()).andExpect(jsonPath("$").isArray());
+        mockMvc.perform(get(resourceCall).header("Authorization", authorization))
+                .andExpect(status().isOk()).andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$.length()").value(Matchers.greaterThan(0)));
     }
 
     @Test
     public void testUpdateBatchCandidate() throws Exception {
 
         LOGGER.info("Updating a batch candidate for testing");
+        BatchCandidates batchCandidate = new BatchCandidates(testingBatch, testingCandidate);
 
-        Long batchCandidateId = 1L;
-        Date startDate = new Date();
-        Batch batch = new Batch(1L, startDate, "regular", "upcoming");
-        CandidateDetails candidate = new CandidateDetails("C123", null, 0, null, null, null, null, null, null, null,
-                null, null, null, null, null, false, false, false, null);
-        BatchCandidates batchCandidate = new BatchCandidates(batch, candidate);
-
-        mockMvc.perform(put("/api/v1/batch-candidates/{id}", batchCandidateId).contentType(MediaType.APPLICATION_JSON)
+        mockMvc.perform(put(resourceCall + "/{id}", testingBatch.getId()).contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(batchCandidate)).header("Authorization", authorization))
-                .andExpect(status().isOk()).andExpect(jsonPath("$.batch.id").value(1L))
-                .andExpect(jsonPath("$.candidate.candidateId").value("C123"));
+                .andExpect(status().isOk()).andExpect(jsonPath("$.batch.id").value(testingBatch.getId()))
+                .andExpect(jsonPath("$.candidate.candidateId").value(testingCandidate.getCandidateId()));
     }
 
     @Test
     public void testDeleteBatchCandidate() throws Exception {
         LOGGER.info("Deleting a batch candidate for testing");
 
-        Long batchId = 2L;
-        String candidateId = "C124";
-
-        mockMvc.perform(delete("/api/v1/batch-candidates/{batchId}/{candidateId}", batchId, candidateId)
+        mockMvc.perform(delete(resourceCall+"/{batchId}/{candidateId}", testingBatch.getId(),testingCandidate.getCandidateId())
                 .header("Authorization", authorization)).andExpect(status().isOk());
     }
 

@@ -8,26 +8,15 @@ import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.snva.crmproject.entity.batchDetails.Batch;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 @Entity
 @Table(name = "CandidateDetails")
 
 
 public class CandidateDetails {
-	
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	private String candidateId;
 	private String skillSet;
 	private int communicationSkill;
@@ -50,10 +39,7 @@ public class CandidateDetails {
 	
     @ManyToMany(mappedBy = "candidates")
     private Set<Batch> batches = new HashSet<>();
-	
-	
 
-	
 	@OneToOne
     @JoinColumn(name = "tech_interview_id")  
     private TechInterview techInterview;
@@ -221,10 +207,32 @@ public class CandidateDetails {
         if (candidateBasicDetails != null) {
             candidateBasicDetails.setDetails(this);
         }
-        
-        
-      
     }
-	
-	
+
+	@Override
+	public String toString() {
+		return "CandidateDetails{" +
+				"candidateId='" + candidateId + '\'' +
+				", skillSet='" + skillSet + '\'' +
+				", communicationSkill=" + communicationSkill +
+				", addressLine1='" + addressLine1 + '\'' +
+				", addressLine2='" + addressLine2 + '\'' +
+				", addressCity='" + addressCity + '\'' +
+				", addressState='" + addressState + '\'' +
+				", addressCounty='" + addressCounty + '\'' +
+				", addressZipCode='" + addressZipCode + '\'' +
+				", source='" + source + '\'' +
+				", remarks='" + remarks + '\'' +
+				", interviewDate='" + interviewDate + '\'' +
+				", interviewer='" + interviewer + '\'' +
+				", interviewerFeedback='" + interviewerFeedback + '\'' +
+				", candidateInterviewStatus='" + candidateInterviewStatus + '\'' +
+				", lOISent=" + lOISent +
+				", lOIAccepted=" + lOIAccepted +
+				", joinedBatch=" + joinedBatch +
+				", startDate='" + startDate + '\'' +
+				", batches=" + batches +
+				", techInterview=" + techInterview +
+				'}';
+	}
 }

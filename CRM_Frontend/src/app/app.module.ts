@@ -44,6 +44,8 @@ import { CadidateRecruiterDetailViewComponent } from './view/cadidate-recruiter-
 import { PhoneNumber } from './view/accountDetail/phoneNumber/phoneNumber';
 import { PasswordComponent } from './view/accountDetail/password/password.component';
 import { AddressComponent } from './view/accountDetail/address/address.component';
+import { CandidateTechViewComponent } from './view/candidate-tech-view/candidate-tech-view.component';
+import { CandidateBDViewComponent } from './view/candidate-bdview/candidate-bdview.component';
 
 
 @NgModule({
@@ -77,7 +79,9 @@ import { AddressComponent } from './view/accountDetail/address/address.component
         CadidateRecruiterDetailViewComponent,
         PhoneNumber,
         PasswordComponent,
-        AddressComponent
+        AddressComponent,
+        CandidateTechViewComponent,
+        CandidateBDViewComponent
     ],
   imports: [
     BrowserModule,

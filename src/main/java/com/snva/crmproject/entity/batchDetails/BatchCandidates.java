@@ -20,7 +20,6 @@ public class BatchCandidates {
     private CandidateDetails candidate;
 
 
-    // Constructors, getters, and setters
 
     public BatchCandidates() {
     }

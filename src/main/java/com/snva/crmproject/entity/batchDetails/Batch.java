@@ -8,12 +8,10 @@ import com.snva.crmproject.entity.CandidateDetails;
 
 import jakarta.persistence.*;
 
-import lombok.AllArgsConstructor;
+
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
-
 
 @Entity
 public class Batch {
@@ -42,56 +40,50 @@ public class Batch {
     private Set<CandidateDetails> candidates = new HashSet<>();
 
 	public Batch() {
+
+    }
+
+    public Batch(Long id, Date startDate, String batchType, String status) {
+        super();
+        this.id = id;
+        this.startDate = startDate;
+        this.batchType = batchType;
+        this.status = status;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getBatchType() {
+        return batchType;
+    }
+
+    public void setBatchType(String batchType) {
+        this.batchType = batchType;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 
-	public Batch(Long id, Date startDate, String batchType, String status) {
-		super();
-		this.id = id;
-		this.startDate = startDate;
-		this.batchType = batchType;
-		this.status = status;
-	}
-
-
-	public Long getId() {
-		return id;
-	}
-
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-
-	public Date getStartDate() {
-		return startDate;
-	}
-
-
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-
-
-	public String getBatchType() {
-		return batchType;
-	}
-
-
-	public void setBatchType(String batchType) {
-		this.batchType = batchType;
-	}
-
-
-	public String getStatus() {
-		return status;
-	}
-
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
 	
 	   @Override
 		public String toString() {
@@ -103,4 +95,5 @@ public class Batch {
 
 	
 	
+
 }

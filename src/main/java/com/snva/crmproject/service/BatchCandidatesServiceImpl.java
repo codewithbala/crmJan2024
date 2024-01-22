@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.snva.crmproject.entity.batchDetails.BatchCandidates;
+import com.snva.crmproject.entity.batchDetails.BatchCandidatesId;
 import com.snva.crmproject.repository.batch.BatchCandidatesRepository;
 import java.util.List;
 import java.util.Optional;
@@ -40,7 +41,8 @@ public class BatchCandidatesServiceImpl implements BatchCandidatesService {
 
     @Override
     @Transactional
-    public void deleteBatchCandidate(Long id) {
+    public void deleteBatchCandidate(Long batchId, String candidateId) {
+        BatchCandidatesId id = new BatchCandidatesId(batchId, candidateId);
         batchCandidatesRepository.deleteById(id);
     }
     

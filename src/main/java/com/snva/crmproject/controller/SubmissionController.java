@@ -34,6 +34,7 @@ public class SubmissionController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Submission> getSubmissionById(@PathVariable Long id) {
+        LOGGER.info("Pulling data for submission with id", id);
         return submissionService.findSubmissionById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -41,18 +42,21 @@ public class SubmissionController {
 
     @GetMapping
     public ResponseEntity<List<Submission>> getAllSubmissions() {
+        LOGGER.info("Pulling data for all submission");
         List<Submission> submissions = submissionService.findAllSubmissions();
         return ResponseEntity.ok(submissions);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Submission> updateSubmission(@PathVariable Long id, @RequestBody Submission submission) {
-        Submission updatedSubmission = submissionService.updateSubmission(id, submission);
+        LOGGER.info("Updating data for submission for id " + id);
+    	Submission updatedSubmission = submissionService.updateSubmission(id, submission);
         return ResponseEntity.ok(updatedSubmission);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteSubmission(@PathVariable Long id) {
+        LOGGER.info("Deleting data for submission :" + id);
         submissionService.deleteSubmission(id);
         return ResponseEntity.ok().build();
     }

@@ -33,7 +33,9 @@ public class CandidateBasicDetailsService {
 
     public CandidateBasicDetails update(String candidateId, CandidateBasicDetails candidateBasicDetails) {
         if (candidateBasicDetailsRepository.existsById(candidateId)) {
-            candidateBasicDetails.setCandidateId(candidateId);
+            if (!candidateId.equals(candidateBasicDetails.getCandidateId())) {
+                throw new IllegalArgumentException("Mismatched ID in request.");
+            }
             return candidateBasicDetailsRepository.save(candidateBasicDetails);
         } else {
             throw new RuntimeException("Candidate not found");

@@ -2,10 +2,10 @@ package com.snva.crmproject.controller;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.snva.crmproject.entity.userDetails.User;
-import com.snva.crmproject.entity.userDetails.UserPersonalDetails;
 import com.snva.crmproject.service.AuthenticationService;
 
 import lombok.Data;
@@ -25,11 +24,11 @@ import lombok.Data;
 @Data
 class ResponseObject {
 	private boolean isCreated;
-	private String messsage;
+	private String message;
 	public ResponseObject(boolean isCreated, String messsage) {
 		super();
 		this.isCreated = isCreated;
-		this.messsage = messsage;
+		this.message = messsage;
 	}
 	public boolean isCreated() {
 		return isCreated;
@@ -37,11 +36,11 @@ class ResponseObject {
 	public void setCreated(boolean isCreated) {
 		this.isCreated = isCreated;
 	}
-	public String getMesssage() {
-		return messsage;
+	public String getMessage() {
+		return message;
 	}
-	public void setMesssage(String messsage) {
-		this.messsage = messsage;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 	
 }
@@ -137,20 +136,19 @@ public class AuthenticationController {
 	@RequestMapping("/loginEndpoints")
 
 	  public User login(Principal user) {
-//		System.out.println(user.toString());
 		System.out.println(user.getName().isEmpty());
-		return authenticationService.getUserDetailsbyUserName(user.getName());
+		return authenticationService.getUserByUsername(user.getName()).get();
 	  }
 	@RequestMapping("/")
 	  public User user(Principal user) {
 		System.out.println(user.getName().isEmpty());
-		return authenticationService.getUserDetailsbyUserName(user.getName());
+		return authenticationService.getUserByUsername(user.getName()).get();
 	  }
 	
 	@RequestMapping("/getUserById/{userId}")
-	  public User user(@PathVariable long userId) {
+	  public Optional<User> user(@PathVariable long userId) {
 		System.out.println(userId);
-		return authenticationService.getUserDetailsbyUserId(userId);
+		return authenticationService.getUserByUserId(userId);
 	  }
 	@RequestMapping("/getAllUsers")
 	  public List<User> getAllUsers() {

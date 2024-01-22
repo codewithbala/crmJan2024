@@ -8,4 +8,5 @@ public interface Roles {
     String TRAINER ="TECH_USER";
     String BUSINESS_DEV_ADMIN ="BD_ADMIN";
     String BUSINESS_DEV ="BD_USER";
+    String TEST ="TEST";
 }

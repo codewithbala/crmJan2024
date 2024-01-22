@@ -36,7 +36,7 @@ public class CandidateController {
 
     @Autowired
     private CandidateService candidateService;
-    
+
 
     private final CandidateDetailsService candidateDetailsService;
     private final CandidateBasicDetailsService candidateBasicDetailsService;
@@ -68,15 +68,15 @@ public class CandidateController {
         return candidateService.getCandidateById(candidateId);
     }
 
-    @PutMapping("/update")
+        @PutMapping("/update")
     public String updateCandidate(@RequestBody CandidateBasicDetails updatedCandidate) {
         return candidateService.updateCandidate(updatedCandidate);
     }
     @PutMapping("/updateTechCandidate/{candidateId}")
     public ResponseEntity<?> updateTechCandidate(@PathVariable String candidateId,
-                                                        @RequestParam String techInterviewDate,
-                                                        @RequestParam String interviewerFeedback,
-                                                        @RequestParam String candidateInterviewStatus) {
+                                                 @RequestParam String techInterviewDate,
+                                                 @RequestParam String interviewerFeedback,
+                                                 @RequestParam String candidateInterviewStatus) {
         CandidateDetails updatedCandidateDetails = candidateDetailsService.updateTechCandidateFields(
                 candidateId, techInterviewDate, interviewerFeedback, candidateInterviewStatus);
 
@@ -89,10 +89,10 @@ public class CandidateController {
 
     @PutMapping("/updateBDCandidate/{candidateId}")
     public ResponseEntity<?> updateBDCandidate(@PathVariable String candidateId,
-                                                     @RequestParam boolean loiSent,
-                                                     @RequestParam boolean loiAccepted,
-                                                     @RequestParam boolean joinedBatch,
-                                                     @RequestParam String batchStartDate) {
+                                               @RequestParam boolean loiSent,
+                                               @RequestParam boolean loiAccepted,
+                                               @RequestParam boolean joinedBatch,
+                                               @RequestParam String batchStartDate) {
         CandidateDetails updatedBDCandidateDetails = candidateDetailsService.updateBDCandidateFields(
                 candidateId, loiSent, loiAccepted, joinedBatch, batchStartDate);
 
@@ -104,8 +104,8 @@ public class CandidateController {
     }
     @RequestMapping("/next")
     CandidateBasicDetails getLatestId(){
-    	CandidateBasicDetails next = new CandidateBasicDetails();
-    	next.setCandidateId(String.format("SDP%1$" + 5 + "s", candidateService.getLatestId().toString()).replace(' ', '0'));
-    	return next;
+        CandidateBasicDetails next = new CandidateBasicDetails();
+        next.setCandidateId(String.format("SDP%1$" + 5 + "s", candidateService.getLatestId().toString()).replace(' ', '0'));
+        return next;
     }
 }

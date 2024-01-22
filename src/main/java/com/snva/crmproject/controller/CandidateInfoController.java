@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200/")
-@RequestMapping("/Candidates")
+@CrossOrigin(origins="${fontEnd.origins}")
+@RequestMapping("/api/v1/candidates")
 
 public class CandidateInfoController {
     private static  final Logger logger = LoggerFactory.getLogger(CandidateInfoController.class);
@@ -31,7 +31,7 @@ public class CandidateInfoController {
 
     }
 
-    @GetMapping("/all")
+    @GetMapping()
     public ResponseEntity<List<CandidateBasicDetails>> getAllCandidates() {
         return new ResponseEntity<>(candidateBasicDetailsService.findAll(), HttpStatus.OK);
     }
@@ -41,18 +41,18 @@ public class CandidateInfoController {
     }
 
 
-    @PutMapping("/update")
-    public ResponseEntity<CandidateBasicDetails> updateCandidate(@RequestBody CandidateBasicDetails candidateBasicDetails) {
-        return new ResponseEntity<>(candidateBasicDetailsService.update(candidateBasicDetails), HttpStatus.OK);
+    @PutMapping("/{id}")
+    public ResponseEntity<CandidateBasicDetails> updateCandidate(@PathVariable String id, @RequestBody CandidateBasicDetails candidateBasicDetails) {
+        return new ResponseEntity<>(candidateBasicDetailsService.update(id, candidateBasicDetails), HttpStatus.OK);
     }
 
 
-    @PostMapping("/add")
+    @PostMapping()
     public ResponseEntity<CandidateBasicDetails> addCandidate(@RequestBody CandidateBasicDetails candidateBasicDetails) {
         return new ResponseEntity<>(candidateBasicDetailsService.add(candidateBasicDetails), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/delete/{candidateId}")
+    @DeleteMapping("/{candidateId}")
     public ResponseEntity<String> deleteCandidate(@PathVariable String candidateId) {
         candidateBasicDetailsService.delete(candidateId);
         return new ResponseEntity<>("Candidate deleted successfully", HttpStatus.OK);

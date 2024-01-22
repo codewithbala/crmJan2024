@@ -51,27 +51,27 @@ public class CandidateController {
         this.candidateAttachmentsService = candidateAttachmentsService;
     }
 
-//    @PostMapping("/add")
-//    public CandidateBasicDetails addCandidate(@RequestBody CandidateBasicDetails candidateBasicDetails) {
-//        System.out.println(candidateBasicDetails.toString());
-////        System.out.println(candidateBasicDetails.getAttachments().get(0).toString());
-//    	return candidateService.addNewCandidate(candidateBasicDetails);
-//    }
+    @PostMapping("/add")
+    public CandidateBasicDetails addCandidate(@RequestBody CandidateBasicDetails candidateBasicDetails) {
+        System.out.println(candidateBasicDetails.toString());
+//        System.out.println(candidateBasicDetails.getAttachments().get(0).toString());
+    	return candidateService.addNewCandidate(candidateBasicDetails);
+    }
 
-//    @GetMapping("/all")
-//    public List<CandidateBasicDetails> getAllCandidates() {
-//        return candidateService.getAllCandidates();
-//    }
+    @GetMapping("/all")
+    public List<CandidateBasicDetails> getAllCandidates() {
+        return candidateService.getAllCandidates();
+    }
 
-//    @GetMapping("/{candidateId}")
-//    public CandidateBasicDetails getCandidateById(@PathVariable String candidateId) {
-//        return candidateService.getCandidateById(candidateId);
-//    }
+    @GetMapping("/{candidateId}")
+    public CandidateBasicDetails getCandidateById(@PathVariable String candidateId) {
+        return candidateService.getCandidateById(candidateId);
+    }
 
-    //    @PutMapping("/update")
-//    public String updateCandidate(@RequestBody CandidateBasicDetails updatedCandidate) {
-//        return candidateService.updateCandidate(updatedCandidate);
-//    }
+        @PutMapping("/update")
+    public String updateCandidate(@RequestBody CandidateBasicDetails updatedCandidate) {
+        return candidateService.updateCandidate(updatedCandidate);
+    }
     @PutMapping("/updateTechCandidate/{candidateId}")
     public ResponseEntity<?> updateTechCandidate(@PathVariable String candidateId,
                                                  @RequestParam String techInterviewDate,

@@ -31,13 +31,15 @@ public class CandidateBasicDetailsService {
                 .orElseThrow(() -> new RuntimeException("Candidate not found"));
     }
 
-    public CandidateBasicDetails update(CandidateBasicDetails candidateBasicDetails) {
-        if (candidateBasicDetailsRepository.existsById(candidateBasicDetails.getCandidateId())) {
+    public CandidateBasicDetails update(String candidateId, CandidateBasicDetails candidateBasicDetails) {
+        if (candidateBasicDetailsRepository.existsById(candidateId)) {
+            candidateBasicDetails.setCandidateId(candidateId);
             return candidateBasicDetailsRepository.save(candidateBasicDetails);
         } else {
             throw new RuntimeException("Candidate not found");
         }
     }
+
 
     public void delete(String candidateId) {
         candidateBasicDetailsRepository.deleteById(candidateId);

@@ -73,13 +73,13 @@ public class CandidateInfoControllerTest {
         updatedCandidate.setCandidateId("123");
         updatedCandidate.setFirstName("Mark");
 
-        when(candidateBasicDetailsService.update(any(CandidateBasicDetails.class))).thenReturn(updatedCandidate);
+        when(candidateBasicDetailsService.update(eq("123"), any(CandidateBasicDetails.class))).thenReturn(updatedCandidate);
 
-        ResponseEntity<CandidateBasicDetails> response = candidateInfoController.updateCandidate(updatedCandidate);
+        ResponseEntity<CandidateBasicDetails> response = candidateInfoController.updateCandidate(updatedCandidate.getCandidateId(),updatedCandidate);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(updatedCandidate, response.getBody());
-        verify(candidateBasicDetailsService, times(1)).update(updatedCandidate);
+        verify(candidateBasicDetailsService, times(1)).update(eq("123"), any(CandidateBasicDetails.class));
     }
 
     // Test for adding a new candidate

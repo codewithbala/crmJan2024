@@ -1,16 +1,20 @@
 <div class="container mt-4 mb-4 pt-4" style="min-height: 800px;">
   <div *ngIf="pageStatus=='recruiter'"><!-- For Recruiter -->
-    <app-candidate-recruiter-detail [currentCandidate]="currentCandidate" [candidateP1Right]='candidateP1Right' [countries]='countries' [states]='states' [lgas]='lgas' [bsConfig]='bsConfig' [candidateId]='candidateId'
-    [addressCity]="addressCity"[addressState]="addressState" [addressCountry]="addressCountry">
-    (addEvent)="add($event)" (saveEvent)="save($event)" (countryChangeEvent)="handleCountryChange()" (stateChangeEvent)="handleStateChange()" (changeStatusEvent)="chanegStatus($event)"
-    ></app-candidate-recruiter-detail>
+
+    <app-candidate-recruiter-detail [currentCandidate]="currentCandidate" [candidateP1Right]='candidateP1Right'
+      [countries]='countries' [states]='states' [lgas]='lgas' [bsConfig]='bsConfig' [candidateId]='candidateId'
+      [addressCity]="addressCity" [addressState]="addressState" [addressCountry]="addressCountry">
+      (addEvent)="add($event)" (saveEvent)="save($event)" (countryChangeEvent)="handleCountryChange()"
+      (stateChangeEvent)="handleStateChange()" (changeStatusEvent)="chanegStatus($event)"
+      ></app-candidate-recruiter-detail>
+
   </div>
 
   <div *ngIf="pageStatus =='techBD'">
     <div class="row g-3 m-2">
       <div class="col-sm-1 p-2">
         <div class="d-flex justify-content-center align-items-center" (click)="chanegStatus('recruiter')">
-          <button class="btn btn-secondary btn-lg ps-2">
+          <button class="btn btn-primary btn-lg ps-2">
             <i class="bi bi-arrow-left"></i>
           </button>
         </div>
@@ -18,163 +22,40 @@
       <div class="col-sm-10 p-2">
         <div class="card cardBackGround border-success text-white text_font">
           <div class="row mt-2">
-            <div class="col-4"><h5>CandidateName:</h5></div>
-            <div class="col-4"><h5>RecruiterName:</h5></div>
-            <div class="col-4"><h5>Interviewer:</h5></div>
+            <div class="col-4">
+              <h5>CandidateName:</h5>
+            </div>
+            <div class="col-4">
+              <h5>RecruiterName:</h5>
+            </div>
+            <div class="col-4">
+              <h5>Interviewer:</h5>
+            </div>
           </div>
           <div class="row mt-2">
-            <div class="col-4"><h5>{{currentCandidate.firstName + ' ' + currentCandidate.middleName + " " + currentCandidate.lastName}}</h5></div>
-            <div class="col-4"><h5>{{currentCandidate.recruiterName}}</h5></div>
-            <div class="col-4"><h5>{{currentCandidate.details.interviewer}}</h5></div>
+            <div class="col-4">
+              <h5>{{currentCandidate.firstName + ' ' + currentCandidate.middleName + " " + currentCandidate.lastName}}
+              </h5>
+            </div>
+            <div class="col-4">
+              <h5>{{currentCandidate.recruiterName}}</h5>
+            </div>
+            <div class="col-4">
+              <h5>{{currentCandidate.details.interviewer}}</h5>
+            </div>
           </div>
           <hr>
           <div class="row mt-2 mb-4">
 
             <!-- Tech -->
-            <div class="col-6" *ngIf="candidateP2Right == true">
-              <div class="row">
-                <div class="col-12"><h5>Interview Feedback</h5><hr></div>
-                <div class="row m-2">
-                  <div class="col-5 text-end">
-                    <label>Interview Time: </label>
-                  </div>
-                  <div class="col-7 text-start">
-                    <label>{{currentCandidate.details.interviewDate}}</label>
-                  </div>
-                </div>
-                <div class="row m-2">
-                  <div class="col-5 text-end">
-                    <label>Candidate Status: </label>
-                  </div>
-                  <div class="col-5">
-                    <select class="form-select" [(ngModel)]="currentCandidate.details.candidateInterviewStatus">
-                      <option *ngFor="let i of menuData.INTERVIEW_STATUS">{{i}}</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="row m-2">
-                  <div class="col-5 text-end">
-                    <label> Feedback: </label>
-                  </div>
-                  <div class="col-7">
-                    <textarea class="form-control" [value]="currentCandidate.details.interviewerFeedback" [(ngModel)]="currentCandidate.details.interviewerFeedback"></textarea>
-                    <!--<input type="text" list="interviewFeedback" class="form-control" [(ngModel)]="currentCandidate.details.interviewerFeedback">-->
-                    <!--<datalist id = 'interviewFeedback'>
-                      <option *ngFor="let i of menuData.INTERVIEW_FEEDBACK">{{i}}</option>
-                    </datalist>-->
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-6" *ngIf="candidateP2Right == false">
-              <div class="row">
-                <div class="col-12"><h5>Interview Feedback</h5><hr></div>
-                <div class="row m-2">
-                  <div class="col-5 text-end">
-                    <label>Interview Time: </label>
-                  </div>
-                  <div class="col-7 text-start">
-                    <label>{{currentCandidate.details.interviewDate}}</label>
-                  </div>
-                </div>
-                <div class="row m-2">
-                  <div class="col-5 text-end">
-                    <label>Candidate Status: </label>
-                  </div>
-                  <div class="col-5 text-start">
-                    <label>{{currentCandidate.details.candidateInterviewStatus}}</label>
-                  </div>
-                </div>
-                <div class="row m-2">
-                  <div class="col-5 text-end">
-                    <label> Feedback: </label>
-                  </div>
-                  <div class="col-5 text-start">
-                    <p>{{currentCandidate.details.interviewerFeedback}}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
 
+            <candidate-tech-view [candidateP2Right]="candidateP2Right"
+              [currentCandidate]="currentCandidate"></candidate-tech-view>
             <!-- BD -->
-            <div class="col-6" *ngIf="candidateP3Right == true">
-              <div class="row mt-4">
-                <div class="col-5 text-end">
-                  <label>LOI Sent:</label>
-                </div>
-                <div class="col-6">
-                  <select  id="loiSent" class="form-select text_font">
-                    <option>{{loiSent}}</option>
-                    <option *ngFor="let l of menuData.LOI_SENT">{{l}}</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row mt-4">
-                <div class="col-5 text-end">
-                  <label>LOI Accept:</label>
-                </div>
-                <div class="col-6">
-                  <select  id="loiAccepted" class="form-select text_font">
-                    <option>{{loiAccepted}}</option>
-                    <option *ngFor="let l of menuData.LOI_ACCEPTED">{{l}}</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row mt-4">
-                <div class="col-5 text-end">
-                  <label>Joined Batch:</label>
-                </div>
-                <div class="col-6">
-                  <select  id="joinBatch" class="form-select text_font">
-                    <option>{{joinedBatch}}</option>
-                    <option *ngFor="let l of menuData.JOIN_BATCH">{{l}}</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row mt-4">
-                <div class="col-5 text-end">
-                  <label>Batch Start Date:</label>
-                </div>
-                <div class="col-6">
-                  <input type="text" class="form-control" placeholder="{{currentCandidate.details.startDate}}" bsDatepicker formControlName="effectiveTime" placement="top" [bsConfig]="bsConfig" id="batchStartDate">
-                </div>
-              </div>
-            </div>
-            <div class="col-6" *ngIf="candidateP3Right == false">
-              <div class="row mt-4">
-                <div class="col-5 text-end">
-                  <label>LOI Sent:</label>
-                </div>
-                <div class="col-6 text-start">
-                  <label>{{loiSent}}</label>
-                </div>
-              </div>
-              <div class="row mt-4">
-                <div class="col-5 text-end">
-                  <label>LOI Accepted:</label>
-                </div>
-                <div class="col-6 text-start">
-                  <label>{{loiAccepted}}</label>
-                </div>
-              </div>
-              <div class="row mt-4">
-                <div class="col-5 text-end">
-                  <label>Joined Batch:</label>
-                </div>
-                <div class="col-6 text-start">
-                  <label>{{joinedBatch}}</label>
-                </div>
-              </div>
-              <div class="row mt-4">
-                <div class="col-5 text-end">
-                  <label>Batch Start Date:</label>
-                </div>
-                <div class="col-6 text-start">
-                  <label>{{currentCandidate.details.startDate}}</label>
-                </div>
-              </div>
-            </div>
-
+            <candidate-bdview [bsConfig]="bsConfig" [candidateP3Right]="candidateP3Right"
+              [currentCandidate]="currentCandidate" [joinedBatch]="joinedBatch" [loiAccepted]="loiAccepted"
+              [loiAccepted]="loiAccepted" [loiSent]="loiSent">
+            </candidate-bdview>
             <div class="row mt-5">
               <div class="col-9">
                 <div id="errorMessage"></div>
@@ -191,5 +72,3 @@
     </div>
   </div>
 </div>
-
-

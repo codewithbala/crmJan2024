@@ -1,51 +1,50 @@
-<h3 class="card-title text-center border-bottom pb-4 text-white text_font">Account Info</h3>
-<div style="min-height: 260px">
-    <div class="row m-4 mt-4">
-        <div class="col-4 pe-4 justify-content-end">
-            <img class="img_lg img_radius" [src]="imageUrl" alt="Profile Picture" *ngIf="imageUrl" />
-            <input type="file" class="mt-3" (change)="onFileSelected($event)" accept="image/*" />
+<div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.TITLE.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.TITLE.style}}">Account Info</div>
+<div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.style}}">
+    <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.style}}">
+        <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.ICON.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.ICON.style}}">
+            <img class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.ICON.IMG.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.ICON.IMG.style}}" [src]="imageUrl" alt="Profile Picture" *ngIf="imageUrl" />
+            <input class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.ICON.INPUT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.ICON.INPUT.style}}" type="file" (change)="onFileSelected($event)" accept="image/*" />
         </div>
-        <div class="col-8 text-start">
-            <div class="row mt-4">
-                <div class="col-3">
-                    <label class="text_font text-white">User Name</label>
+        <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.style}}">
+            <div class="row">
+                <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.style}}">
+                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.style}}">User Name</label>
                 </div>
-                <div class="col-8">
-                    <label class="text_font text-white">{{this.currentUser.firstName + " " + this.currentUser.lastName}}</label>
+                <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.style}}">
+                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.style}}">{{this.currentUser.firstName + " " + this.currentUser.lastName}}</label>
                 </div>
             </div>
             <div class="row">
-                <div class="col-3">
-                    <label class="text_font text-white">Email</label>
+                <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.style}}">
+                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.style}}">Role</label>
                 </div>
-                <div class="col-8">
-                    <label class="text_font text-white">{{this.currentUser.username}}</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-3">
-                    <label class="text_font text-white">Phone</label>
-                </div>
-                <div class="col-8">
-                    <label class="text_font text-white">{{this.currentUser.phone}}</label>
+                <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.style}}">
+                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.style}}">{{this.currentUser.role | SNVApipeGetAccountRole}}</label>
                 </div>
             </div>
             <div class="row">
-                <div class="col-3">
-                    <label class="text_font text-white">Role</label>
+                <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.style}}">
+                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.style}}">Status</label>
                 </div>
-                <div class="col-8">
-                    <label class="text_font text-white">{{this.currentUser.role | SNVApipeGetAccountRole}}</label>
+                <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.style}}">
+                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.style}}">{{this.currentUser.accountNonLocked | SNVApipeGetAccountStatus}}</label>
                 </div>
             </div>
             <div class="row">
-                <div class="col-3">
-                    <label class="text_font text-white">Status</label>
+                <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.style}}">
+                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.style}}">Phone</label>
                 </div>
-                <div class="col-8">
-                    <label class="text_font text-white">{{this.currentUser.accountNonLocked | SNVApipeGetAccountStatus}}</label>
+                <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.style}}">
+                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.style}}">{{this.currentUser.phone}}</label>
                 </div>
-
+            </div>
+            <div class="row">
+                <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.style}}">
+                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.style}}">Email</label>
+                </div>
+                <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.style}}">
+                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.style}}">{{this.currentUser.username}}</label>
+                </div>
             </div>
         </div>
     </div>

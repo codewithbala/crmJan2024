@@ -29,44 +29,43 @@ public class CandidateServiceImpl implements CandidateService {
 
     @Override
     public CandidateBasicDetails addNewCandidate(CandidateBasicDetails candidate) {
-        basicDetailsRepository.save(candidate);
+    	   basicDetailsRepository.save(candidate);
+           System.out.println(candidate.getAttachments());
+           if (candidate.getAttachments() != null) {
+               for (CandidateAttachments attachment : candidate.getAttachments()) {
+                   attachment.setCandidateId(candidate.getCandidateId());
+                   attachmentsRepository.save(attachment);
+               }
+           }
 
-//        if (candidate.getAttachments() != null) {
-//            for (CandidateAttachments attachment : candidate.getAttachments()) {
-//                attachment.setCandidateId(candidate.getCandidateId());
-//                attachmentsRepository.save(attachment);
-//            }
-//        }
+           if (candidate.getDetails() != null) {
+               candidate.getDetails().setCandidateId(candidate.getCandidateId());
+               detailsRepository.save(candidate.getDetails());
+           }
 
-        if (candidate.getDetails() != null) {
-            candidate.getDetails().setCandidateId(candidate.getCandidateId());
-            detailsRepository.save(candidate.getDetails());
-        }
-
-        return candidate;
-    }
+           return candidate;
+       }
 
     @Override
     public List<CandidateBasicDetails> getAllCandidates() {
         List<CandidateBasicDetails> candidates = basicDetailsRepository.findAll();
 
-//        for (CandidateBasicDetails candidate : candidates) {
-////            candidate.setAttachments(attachmentsRepository.findByCandidateId(candidate.getCandidateId()));
-//            candidate.setDetails(detailsRepository.findById(candidate.getCandidateId()).orElse(null));
-//        }
-
+        for (CandidateBasicDetails candidate : candidates) {
+            candidate.setAttachments(attachmentsRepository.findByCandidateId(candidate.getCandidateId()));
+            candidate.setDetails(detailsRepository.findById(candidate.getCandidateId()).orElse(null));
+        }
         return candidates;
     }
 
     @Override
     public CandidateBasicDetails getCandidateById(String candidateId) {
         Optional<CandidateBasicDetails> optionalBasicDetails = basicDetailsRepository.findById(candidateId);
-
+        System.out.println("Hi");
         if (optionalBasicDetails.isPresent()) {
-            CandidateBasicDetails candidate = optionalBasicDetails.get();
-//            candidate.setAttachments(attachmentsRepository.findByCandidateId(candidateId));
-            candidate.setDetails(detailsRepository.findById(candidateId).orElse(null));
-            return candidate;
+        	 CandidateBasicDetails candidate = optionalBasicDetails.get();
+             candidate.setAttachments(attachmentsRepository.findByCandidateId(candidateId));
+             candidate.setDetails(detailsRepository.findById(candidateId).orElse(null));
+             return candidate;
         }
 
         return null;
@@ -77,13 +76,12 @@ public class CandidateServiceImpl implements CandidateService {
         
         basicDetailsRepository.save(updatedCandidate);
         attachmentsRepository.deleteByCandidateId(updatedCandidate.getCandidateId());
-//        if (updatedCandidate.getAttachments() != null) {
-//            for (CandidateAttachments attachment : updatedCandidate.getAttachments()) {
-//                attachment.setCandidateId(updatedCandidate.getCandidateId());
-//                attachmentsRepository.save(attachment);
-//            }
-//        }
-
+        if (updatedCandidate.getAttachments() != null) {
+            for (CandidateAttachments attachment : updatedCandidate.getAttachments()) {
+                attachment.setCandidateId(updatedCandidate.getCandidateId());
+                attachmentsRepository.save(attachment);
+            }
+        }
        
         CandidateDetails existingDetails = detailsRepository.findById(updatedCandidate.getCandidateId()).orElse(null);
 

@@ -2,8 +2,11 @@ package com.snva.crmproject.entity;
 
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.snva.crmproject.entity.batchDetails.Batch;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -12,6 +15,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 @Entity
@@ -19,7 +23,11 @@ import jakarta.persistence.Table;
 
 
 public class CandidateDetails {
+	
+	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	private String candidateId;
 	private String skillSet;
 	private int communicationSkill;
@@ -39,6 +47,16 @@ public class CandidateDetails {
 	private boolean lOIAccepted;
 	private boolean joinedBatch;
 	private String startDate;
+	
+    @ManyToMany(mappedBy = "candidates")
+    private Set<Batch> batches = new HashSet<>();
+	
+	
+
+	
+	@OneToOne
+    @JoinColumn(name = "tech_interview_id")  
+    private TechInterview techInterview;
 	
 	
 	public CandidateDetails(String candidateId, String skillSet, int communicationSkill, String addressLine1,
@@ -203,6 +221,9 @@ public class CandidateDetails {
         if (candidateBasicDetails != null) {
             candidateBasicDetails.setDetails(this);
         }
+        
+        
+      
     }
 	
 	

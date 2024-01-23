@@ -34,6 +34,11 @@ public class Vendor {
 			this.state = state;
 			this.city = city;
 		}
+		public Vendor() {
+			
+		}
+		
+		
 		public Long getId() {
 			return id;
 		}

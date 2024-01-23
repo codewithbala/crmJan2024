@@ -1,6 +1,5 @@
 package com.snva.crmproject.controller;
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +15,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.snva.crmproject.entity.Vendor;
-import com.snva.crmproject.service.VendorService;
+import com.snva.crmproject.service.VenderService;
+
 @RestController
 @RequestMapping("/api/v1/vendors")
 public class VendorController {
 	
 private static final Logger logger = LoggerFactory.getLogger(VendorController.class);
 
-	    @Autowired
-	   private VendorService vendorService;
+
+
+ @Autowired
+VenderService vendorService;
+ 
 
 	    @GetMapping
 	    public ResponseEntity<List<Vendor>> getAllVendors() {

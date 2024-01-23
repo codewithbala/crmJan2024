@@ -3,45 +3,18 @@ package com.snva.crmproject.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.snva.crmproject.entity.EndClient;
-import com.snva.crmproject.repository.EndClientRepository;
 
-public class EndClientService {
+public interface EndClientService {
 
-	@Autowired
-	EndClientRepository endClientRepository;
+	List<EndClient> getAllEndClients();
 
-	public List<EndClient> getAllEndClients() {
+	Optional<EndClient> getEndClientById(Long id);
 
-		return endClientRepository.findAll();
-	}
+	EndClient saveEndClient(EndClient endClient);
 
-	public Optional<EndClient> getEndClientById(Long id) {
+	void deleteEndClient(Long id);
 
-		return endClientRepository.findById(id);
-	}
-
-	public EndClient saveEndClient(EndClient endClient) {
-		return endClientRepository.save(endClient);
-	}
-
-	public void deleteEndClient(Long id) {
-		endClientRepository.deleteById(id);
-
-	}
-
-	public Optional<EndClient> updateEndClient(Long id, EndClient updatedEndClient) {
-		Optional<EndClient> existingEndClient = getEndClientById(id);
-		if (existingEndClient.isPresent()) {
-			EndClient endClient = existingEndClient.get();
-			endClient.setEndClient(updatedEndClient.getEndClient());
-			endClient.setCity(updatedEndClient.getCity());
-			endClient.setState(updatedEndClient.getState());
-			return Optional.of(saveEndClient(endClient));
-		}
-		return Optional.empty();
-	}
+	Optional<EndClient> updateEndClient(Long id, EndClient updatedEndClient);
 
 }

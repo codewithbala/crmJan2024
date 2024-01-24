@@ -11,6 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.util.Date;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -30,25 +31,24 @@ public class CustomerInterviewControllerTest {
 
         private CustomerInterview existingInterview;
         private CustomerInterview updatedInterview;
-        private final String interviewId = "interview123";
+        private final Long interviewId = 123L;
         private CustomerInterview interview;
         @BeforeEach
         void setUp() {
             existingInterview = new CustomerInterview();
             existingInterview.setInterviewID(interviewId);
-            existingInterview.setInterviewDate("2021-01-01");
-            existingInterview.setInterviewTime("10:00");
+            existingInterview.setInterviewDate(new Date());
+            existingInterview.setInterviewTime(new Date());
             existingInterview.setInterviewResult("Passed");
             existingInterview.setInterviewFeedback("Excellent");
 
             updatedInterview = new CustomerInterview();
-            updatedInterview.setInterviewID("newId");
-            updatedInterview.setInterviewDate("2021-01-02");
-            updatedInterview.setInterviewTime("11:00");
+            updatedInterview.setInterviewID(interviewId);
+            updatedInterview.setInterviewDate(new Date());
+            updatedInterview.setInterviewTime(new Date());
             updatedInterview.setInterviewResult("Failed");
             updatedInterview.setInterviewFeedback("Needs improvement");
 
-            interview = new CustomerInterview("1", "2023-01-01", "10:00", "Passed", "Excellent");
         }
 
     @Test
@@ -79,22 +79,19 @@ public class CustomerInterviewControllerTest {
 
     @Test
         void testUpdateInterview() {
-            given(customerInterviewService.findByInterviewId(interviewId)).willReturn(Optional.of(existingInterview));
-            given(customerInterviewService.saveNewInterview(any(CustomerInterview.class))).willAnswer(invocation -> invocation.getArgument(0));
+        given(customerInterviewService.findByInterviewId(interviewId)).willReturn(Optional.of(existingInterview));
+        given(customerInterviewService.saveNewInterview(any(CustomerInterview.class))).willReturn(updatedInterview);
 
-            ResponseEntity<CustomerInterview> response = customerInterviewController.updateInterview(interviewId, updatedInterview);
+        ResponseEntity<CustomerInterview> response = customerInterviewController.updateInterview(interviewId, updatedInterview);
 
-            assertEquals(HttpStatus.OK, response.getStatusCode());
-            assertNotNull(response.getBody());
-            assertEquals(interviewId, response.getBody().getInterviewID());
-            assertEquals("2021-01-02", response.getBody().getInterviewDate());
-            assertEquals("11:00", response.getBody().getInterviewTime());
-            assertEquals("Failed", response.getBody().getInterviewResult());
-            assertEquals("Needs improvement", response.getBody().getInterviewFeedback());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertNotNull(response.getBody());
+        assertEquals(updatedInterview, response.getBody());
 
-            verify(customerInterviewService).findByInterviewId(interviewId);
-            verify(customerInterviewService).saveNewInterview(any(CustomerInterview.class));
+        verify(customerInterviewService).findByInterviewId(interviewId);
+        verify(customerInterviewService).saveNewInterview(any(CustomerInterview.class));
         }
+
 
         @Test
         void testUpdateInterview_NotFound() {

@@ -30,7 +30,7 @@ public class CustomerInterviewController {
         return new ResponseEntity<>(customerInterviewService.findAllInterviews(), HttpStatus.OK);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<CustomerInterview> getInterviewById(@PathVariable String id) {
+    public ResponseEntity<CustomerInterview> getInterviewById(@PathVariable Long id) {
         return customerInterviewService.findByInterviewId(id)
                 .map(interview -> new ResponseEntity<>(interview, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
@@ -42,7 +42,7 @@ public class CustomerInterviewController {
         return new ResponseEntity<>(savedInterview, HttpStatus.CREATED);
     }
     @PutMapping("/{id}")
-    public ResponseEntity<CustomerInterview> updateInterview(@PathVariable String id, @RequestBody CustomerInterview customerInterview) {
+    public ResponseEntity<CustomerInterview> updateInterview(@PathVariable Long id, @RequestBody CustomerInterview customerInterview) {
         return customerInterviewService.findByInterviewId(id)
                 .map(existingInterview -> {
                     customerInterview.setInterviewID(id);
@@ -52,7 +52,7 @@ public class CustomerInterviewController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteInterview(@PathVariable String id) {
+    public ResponseEntity<Void> deleteInterview(@PathVariable Long id) {
         if (!customerInterviewService.findByInterviewId(id).isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

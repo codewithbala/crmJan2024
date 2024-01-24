@@ -18,17 +18,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.snva.crmproject.entity.EndClient;
 import com.snva.crmproject.service.EndClientService;
-import com.snva.crmproject.service.EndClientServiceImpl;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200/")
+@CrossOrigin(origins = "${fontEnd.origins}")
 @RequestMapping("/api/v1/end-clients")
 public class EndClientController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(EndClientController.class);
 
 	@Autowired
-	private EndClientServiceImpl endClientService;
+	private EndClientService endClientService;
 
 	@GetMapping
 	public List<EndClient> getAllEndClients() {

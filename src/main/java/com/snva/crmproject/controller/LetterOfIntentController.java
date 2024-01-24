@@ -21,7 +21,7 @@ import com.snva.crmproject.entity.LetterOfIntent;
 import com.snva.crmproject.service.LetterOfIntentService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200/")
+@CrossOrigin(origins = "${fontEnd.origins}")
 @RequestMapping("/api/v1/letter-of-intent")
 public class LetterOfIntentController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(LetterOfIntentController.class);

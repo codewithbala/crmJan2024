@@ -48,6 +48,7 @@ class UserManagementControllerTest {
             LOGGER.info("Creating a user for testing");
 
             testingUser = new User();
+            testingUser.setId(0);
             testingUser.setUsername("Test User");
             testingUser.setPassword("1234");
             testingUser.setAccountNonLocked(true);

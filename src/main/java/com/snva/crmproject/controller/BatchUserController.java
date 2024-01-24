@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins="${fontEnd.origins}")
-@RequestMapping("/api/v1/batchusers")
+@RequestMapping("/api/v1/batch-users")
 public class BatchUserController {
     private static  final Logger logger = LoggerFactory.getLogger(BatchUserController.class);
     @Autowired

@@ -4,7 +4,7 @@ import com.snva.crmproject.entity.batchDetails.Batch;
 import com.snva.crmproject.entity.batchUser.BatchUser;
 import com.snva.crmproject.entity.batchUser.BatchUsersId;
 import com.snva.crmproject.entity.userDetails.User;
-import com.snva.crmproject.service.BatchUserService;
+import com.snva.crmproject.service.BatchUserServiceImp;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,9 +24,9 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class BatchUserControllerTest {
+public class BatchUserServiceControllerTest {
     @Mock
-    private BatchUserService batchUserService;
+    private BatchUserServiceImp batchUserServiceImp;
 
     @InjectMocks
     private BatchUserController batchUserController;
@@ -59,18 +59,18 @@ public class BatchUserControllerTest {
 
     @Test
     void testCreateBatchUser() {
-        when(batchUserService.createBatchUser(any(BatchUser.class))).thenReturn(batchUser);
+        when(batchUserServiceImp.createBatchUser(any(BatchUser.class))).thenReturn(batchUser);
         ResponseEntity<BatchUser> response = batchUserController.createBatchUser(batchUser);
 
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
         assertNotNull(response.getBody());
         assertEquals(batchUser, response.getBody());
-        verify(batchUserService, times(1)).createBatchUser(batchUser);
+        verify(batchUserServiceImp, times(1)).createBatchUser(batchUser);
     }
 
     @Test
     void testGetBatchUserById() {
-        when(batchUserService.getBatchUserById(any(BatchUsersId.class))).thenReturn(Optional.of(batchUser));
+        when(batchUserServiceImp.getBatchUserById(any(BatchUsersId.class))).thenReturn(Optional.of(batchUser));
 
         Long batchId = batchUsersId.getBatch();
         Long userId = batchUsersId.getUser();
@@ -79,13 +79,13 @@ public class BatchUserControllerTest {
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
-        verify(batchUserService).getBatchUserById(argThat(id -> id.getBatch().equals(batchId) && id.getUser().equals(userId)));
+        verify(batchUserServiceImp).getBatchUserById(argThat(id -> id.getBatch().equals(batchId) && id.getUser().equals(userId)));
     }
 
 
     @Test
     void testUpdateBatchUser() {
-        when(batchUserService.updateBatchUser(any(BatchUser.class))).thenReturn(batchUser);
+        when(batchUserServiceImp.updateBatchUser(any(BatchUser.class))).thenReturn(batchUser);
         Long batchId = batchUsersId.getBatch();
         Long userId = batchUsersId.getUser();
         ResponseEntity<BatchUser> response = batchUserController.updateBatchUser(batchId, userId,batchUser);
@@ -93,29 +93,29 @@ public class BatchUserControllerTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
         assertEquals(batchUser, response.getBody());
-        verify(batchUserService, times(1)).updateBatchUser(any(BatchUser.class));
+        verify(batchUserServiceImp, times(1)).updateBatchUser(any(BatchUser.class));
     }
 
     @Test
     void testDeleteBatchUser() {
-        doNothing().when(batchUserService).deleteBatchUser(any(BatchUsersId.class));
+        doNothing().when(batchUserServiceImp).deleteBatchUser(any(BatchUsersId.class));
         Long batchId = batchUsersId.getBatch();
         Long userId = batchUsersId.getUser();
 
         ResponseEntity<Void> response = batchUserController.deleteBatchUser(batchId, userId);
 
         assertEquals(HttpStatus.NO_CONTENT.value(), response.getStatusCodeValue());
-        verify(batchUserService).deleteBatchUser(argThat(id -> id.getBatch().equals(batchId) && id.getUser().equals(userId)));
+        verify(batchUserServiceImp).deleteBatchUser(argThat(id -> id.getBatch().equals(batchId) && id.getUser().equals(userId)));
     }
     @Test
     void testGetAllBatchUsers() {
-        when(batchUserService.getAllBatchUsers()).thenReturn(batchUserList);
+        when(batchUserServiceImp.getAllBatchUsers()).thenReturn(batchUserList);
 
         ResponseEntity<List<BatchUser>> response = batchUserController.getAllBatchUsers();
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
         assertEquals(2, response.getBody().size());
-        verify(batchUserService, times(1)).getAllBatchUsers();
+        verify(batchUserServiceImp, times(1)).getAllBatchUsers();
     }
 }

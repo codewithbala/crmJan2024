@@ -41,6 +41,10 @@ public class CandidateDetails {
     @JoinColumn(name = "tech_interview_id")  
     private TechInterview techInterview;
 
+	@OneToOne
+	@JoinColumn(name = "loi_id")
+	private LetterOfIntent letterOfIntent;
+
 	public CandidateDetails(String candidateId, String skillSet, int communicationSkill, String addressLine1,
 			String addressLine2, String addressCity, String addressState, String addressCounty, String addressZipCode,
 			String source, String remarks, String interviewDate, String interviewer, String interviewerFeedback,

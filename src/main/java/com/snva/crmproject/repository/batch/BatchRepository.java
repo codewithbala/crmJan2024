@@ -2,7 +2,7 @@ package com.snva.crmproject.repository.batch;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-
+import com.snva.crmproject.entity.CandidateDetails;
 import com.snva.crmproject.entity.batchDetails.Batch;
 import org.springframework.stereotype.Repository;
 

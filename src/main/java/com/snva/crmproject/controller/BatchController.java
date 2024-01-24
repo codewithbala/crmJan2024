@@ -1,5 +1,7 @@
 package com.snva.crmproject.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,7 @@ import java.util.List;
 public class BatchController {
 
     private final BatchService batchService;
+    private static final Logger LOGGER = LoggerFactory.getLogger(BatchCandidatesController.class);
 
     @Autowired
     public BatchController(BatchService batchService) {
@@ -24,11 +27,14 @@ public class BatchController {
     @PostMapping
     public ResponseEntity<Batch> createBatch(@RequestBody Batch batch) {
         Batch createdBatch = batchService.createBatch(batch);
+        LOGGER.info("creating data for batch with id:" + batch.getId());
         return ResponseEntity.ok(createdBatch);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Batch> getBatchById(@PathVariable Long id) {
+        LOGGER.info("pulling data for batch with id:" + id);
+
         return batchService.findBatchById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -36,12 +42,16 @@ public class BatchController {
 
     @GetMapping
     public List<Batch> getAllBatches() {
+        LOGGER.info("pulling data for entire batch");
+
         return batchService.findAllBatches();
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Batch> updateBatch(@PathVariable Long id, @RequestBody Batch batch) {
-        Batch updatedBatch = batchService.updateBatch(id, batch);
+        LOGGER.info("Updating data for batch " + id);
+
+    	Batch updatedBatch = batchService.updateBatch(id, batch);
         if (updatedBatch != null) {
             return ResponseEntity.ok(updatedBatch);
         } else {
@@ -51,6 +61,7 @@ public class BatchController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBatch(@PathVariable Long id) {
+        LOGGER.info("deleting data for batch with id:" + id);
         batchService.deleteBatch(id);
         return ResponseEntity.ok().build();
     }

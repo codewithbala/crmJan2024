@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.snva.crmproject.entity.batchDetails.Batch;
+import com.snva.crmproject.entity.batchDetails.BatchCandidates;
+import com.snva.crmproject.repository.batch.BatchCandidatesRepository;
 import com.snva.crmproject.repository.batch.BatchRepository;
 
 import java.util.Date;
@@ -14,12 +16,18 @@ import java.util.Optional;
 public class BatchServiceImpl implements BatchService {
 
     private final BatchRepository batchRepository;
+    private final BatchCandidatesRepository batchCandidatesRepository;
 
     @Autowired
-    public BatchServiceImpl(BatchRepository batchRepository) {
+    public BatchServiceImpl(BatchRepository batchRepository, BatchCandidatesRepository batchCandidatesRepository) {
         this.batchRepository = batchRepository;
+        this.batchCandidatesRepository = batchCandidatesRepository;
+
     }
 
+    
+    
+    
     @Override
     @Transactional
     public Batch createBatch(Batch batch) {
@@ -54,4 +62,6 @@ public class BatchServiceImpl implements BatchService {
     public void deleteBatch(Long id) {
         batchRepository.deleteById(id);
     }
+
+
 }

@@ -21,7 +21,7 @@ import com.snva.crmproject.service.EndClientService;
 import com.snva.crmproject.service.EndClientServiceImpl;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200/")
+@CrossOrigin(origins = "${fontEnd.origins}")
 @RequestMapping("/api/v1/end-clients")
 public class EndClientController {
 

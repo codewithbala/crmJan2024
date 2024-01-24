@@ -1,7 +1,6 @@
 package com.snva.crmproject.entity;
 
 
-import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,8 +11,6 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "CandidateDetails")
-
-
 public class CandidateDetails {
 
 	@Id
@@ -43,8 +40,7 @@ public class CandidateDetails {
 	@OneToOne
     @JoinColumn(name = "tech_interview_id")  
     private TechInterview techInterview;
-	
-	
+
 	public CandidateDetails(String candidateId, String skillSet, int communicationSkill, String addressLine1,
 			String addressLine2, String addressCity, String addressState, String addressCounty, String addressZipCode,
 			String source, String remarks, String interviewDate, String interviewer, String interviewerFeedback,

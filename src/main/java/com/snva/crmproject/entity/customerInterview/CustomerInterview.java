@@ -1,23 +1,32 @@
 package com.snva.crmproject.entity.customerInterview;
 
-import com.snva.crmproject.entity.CandidateBasicDetails;
+
 import jakarta.persistence.*;
+
+import java.util.Date;
 
 @Entity
 @Table(name = "customer_interview")
 public class CustomerInterview {
     @Id
-    private String interviewID;
-    private  String interviewDate;
-    private String interviewTime;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long interviewID;
+
+    @Column(name = "interview_date")
+    @Temporal(TemporalType.DATE)
+    private Date interviewDate;
+
+    @Column(name = "interview_time")
+    @Temporal(TemporalType.TIME)
+    private Date interviewTime;
+
     private String interviewResult;
-    private  String interviewFeedback;
+    private String interviewFeedback;
 
+    public CustomerInterview() {}
 
-    public  CustomerInterview(){}
-    public CustomerInterview(String interviewID, String interviewDate,
-                             String interviewTime, String interviewResult,
-                             String interviewFeedback) {
+    public CustomerInterview(Long interviewID, Date interviewDate, Date interviewTime,
+                             String interviewResult, String interviewFeedback) {
         this.interviewID = interviewID;
         this.interviewDate = interviewDate;
         this.interviewTime = interviewTime;
@@ -25,27 +34,27 @@ public class CustomerInterview {
         this.interviewFeedback = interviewFeedback;
     }
 
-    public String getInterviewID() {
+    public Long getInterviewID() {
         return interviewID;
     }
 
-    public void setInterviewID(String interviewID) {
+    public void setInterviewID(Long interviewID) {
         this.interviewID = interviewID;
     }
 
-    public String getInterviewDate() {
+    public Date getInterviewDate() {
         return interviewDate;
     }
 
-    public void setInterviewDate(String interviewDate) {
+    public void setInterviewDate(Date interviewDate) {
         this.interviewDate = interviewDate;
     }
 
-    public String getInterviewTime() {
+    public Date getInterviewTime() {
         return interviewTime;
     }
 
-    public void setInterviewTime(String interviewTime) {
+    public void setInterviewTime(Date interviewTime) {
         this.interviewTime = interviewTime;
     }
 
@@ -68,9 +77,9 @@ public class CustomerInterview {
     @Override
     public String toString() {
         return "CustomerInterview{" +
-                "interviewID='" + interviewID + '\'' +
-                ", interviewDate='" + interviewDate + '\'' +
-                ", interviewTime='" + interviewTime + '\'' +
+                "interviewID=" + interviewID +
+                ", interviewDate=" + interviewDate +
+                ", interviewTime=" + interviewTime +
                 ", interviewResult='" + interviewResult + '\'' +
                 ", interviewFeedback='" + interviewFeedback + '\'' +
                 '}';

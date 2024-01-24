@@ -22,7 +22,7 @@ public class CustomerInterviewService {
         return customerInterviewRepository.findAll();
     }
 
-    public Optional<CustomerInterview> findByInterviewId(String id) {
+    public Optional<CustomerInterview> findByInterviewId(Long id) {
         return customerInterviewRepository.findById(id);
     }
 
@@ -30,7 +30,7 @@ public class CustomerInterviewService {
         return customerInterviewRepository.save(customerInterview);
     }
 
-    public void deleteByInterviewId(String id) {
+    public void deleteByInterviewId(Long id) {
         customerInterviewRepository.deleteById(id);
     }
 }

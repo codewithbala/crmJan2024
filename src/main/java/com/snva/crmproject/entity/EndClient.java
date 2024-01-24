@@ -1,5 +1,7 @@
 package com.snva.crmproject.entity;
 
+import com.snva.crmproject.entity.SubmissionDetails.Submission;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,6 +19,12 @@ public class EndClient {
     private String city;
     private String state;
 
+    
+    @OneToOne(mappedBy = "endClient")
+    private Submission submission;
+    
+    
+    
 	public EndClient() {
 
     }

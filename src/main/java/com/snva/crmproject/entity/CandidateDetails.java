@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.snva.crmproject.entity.SubmissionDetails.Submission;
 import com.snva.crmproject.entity.batchDetails.Batch;
 
 import jakarta.persistence.*;
@@ -44,6 +45,9 @@ public class CandidateDetails {
 	@OneToOne
 	@JoinColumn(name = "loi_id")
 	private LetterOfIntent letterOfIntent;
+	
+    @OneToOne(mappedBy = "candidateDetails", cascade = CascadeType.ALL)
+    private Submission submission;
 
 	public CandidateDetails(String candidateId, String skillSet, int communicationSkill, String addressLine1,
 			String addressLine2, String addressCity, String addressState, String addressCounty, String addressZipCode,

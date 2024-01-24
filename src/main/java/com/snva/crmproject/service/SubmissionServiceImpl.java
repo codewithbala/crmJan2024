@@ -41,9 +41,9 @@ public class SubmissionServiceImpl implements SubmissionService {
                 existingSubmission.setDateOfSubmission(submissionDetails.getDateOfSubmission());
                 existingSubmission.setBdeName(submissionDetails.getBdeName());
                 existingSubmission.setPositionTitle(submissionDetails.getPositionTitle());
-                existingSubmission.setCandidateId(submissionDetails.getCandidateId());
+                existingSubmission.setCandidateDetails(submissionDetails.getCandidateDetails());
                 existingSubmission.setVendorId(submissionDetails.getVendorId());
-                existingSubmission.setEndClientId(submissionDetails.getEndClientId());
+                existingSubmission.setEndClient(submissionDetails.getEndClient());
                 existingSubmission.setBillRate(submissionDetails.getBillRate());
                 existingSubmission.setBillRateAnnual(submissionDetails.getBillRateAnnual());
                 existingSubmission.setSubmissionStatus(submissionDetails.getSubmissionStatus());

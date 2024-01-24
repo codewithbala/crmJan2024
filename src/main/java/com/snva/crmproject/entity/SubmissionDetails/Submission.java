@@ -1,6 +1,10 @@
 package com.snva.crmproject.entity.SubmissionDetails;
 
 import java.util.Date;
+
+import com.snva.crmproject.entity.CandidateDetails;
+import com.snva.crmproject.entity.EndClient;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -12,6 +16,11 @@ public class Submission {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "candidate_id")
+    private CandidateDetails candidateDetails;
+
+    
     @Column(name = "date_of_submission", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateOfSubmission;
@@ -22,14 +31,14 @@ public class Submission {
     @Column(name = "position_title", nullable = false)
     private String positionTitle;
 
-    @Column(name = "candidate_id")
-    private Long candidateId; // Placeholder for Candidate entity
-
+   
     @Column(name = "vendor_id")
     private Long vendorId; // Placeholder for Vendor entity
 
-    @Column(name = "end_client_id")
-    private Long endClientId; // Placeholder for EndClient entity
+    
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "id")
+    private EndClient endClient;  // @ManyToOne for EndClient
 
     @Column(name = "bill_rate")
     private double billRate;
@@ -86,13 +95,7 @@ public class Submission {
 		this.positionTitle = positionTitle;
 	}
 
-	public Long getCandidateId() {
-		return candidateId;
-	}
 
-	public void setCandidateId(Long candidateId) {
-		this.candidateId = candidateId;
-	}
 
 	public Long getVendorId() {
 		return vendorId;
@@ -102,13 +105,7 @@ public class Submission {
 		this.vendorId = vendorId;
 	}
 
-	public Long getEndClientId() {
-		return endClientId;
-	}
 
-	public void setEndClientId(Long endClientId) {
-		this.endClientId = endClientId;
-	}
 
 	public double getBillRate() {
 		return billRate;
@@ -167,46 +164,55 @@ public class Submission {
 	}
 
 	
+	public EndClient getEndClient() {
+		return endClient;
+	}
+
+	public void setEndClient(EndClient endClient) {
+		this.endClient = endClient;
+	}
+
 	public Submission() {
 
     }
-	public Submission(Long id, Date dateOfSubmission, String bdeName, String positionTitle, Long candidateId,
-			Long vendorId, Long endClientId, double billRate, double billRateAnnual, String submissionStatus,
-			Long interviewId, Date projectStartDate, Date projectEndDate, String remarks) {
-		super();
-		this.id = id;
-		this.dateOfSubmission = dateOfSubmission;
-		this.bdeName = bdeName;
-		this.positionTitle = positionTitle;
-		this.candidateId = candidateId;
-		this.vendorId = vendorId;
-		this.endClientId = endClientId;
-		this.billRate = billRate;
-		this.billRateAnnual = billRateAnnual;
-		this.submissionStatus = submissionStatus;
-		this.interviewId = interviewId;
-		this.projectStartDate = projectStartDate;
-		this.projectEndDate = projectEndDate;
-		this.remarks = remarks;
-	}
-	 public String toString() {
-	        return "Submission{" +
-	                "id=" + id +
-	                ", dateOfSubmission=" + dateOfSubmission +
-	                ", bdeName='" + bdeName + '\'' +
-	                ", positionTitle='" + positionTitle + '\'' +
-	                ", candidateId=" + candidateId +
-	                ", vendorId=" + vendorId +
-	                ", endClientId=" + endClientId +
-	                ", billRate=" + billRate +
-	                ", billRateAnnual=" + billRateAnnual +
-	                ", submissionStatus='" + submissionStatus + '\'' +
-	                ", interviewId=" + interviewId +
-	                ", projectStartDate=" + projectStartDate +
-	                ", projectEndDate=" + projectEndDate +
-	                ", remarks='" + remarks + '\'' +
-	                '}';
+	
+	 public CandidateDetails getCandidateDetails() {
+	        return candidateDetails;
 	    }
 
-   
+	    public void setCandidateDetails(CandidateDetails candidateDetails) {
+	        this.candidateDetails = candidateDetails;
+	    }
+
+		public Submission(Long id, CandidateDetails candidateDetails, Date dateOfSubmission, String bdeName,
+				String positionTitle, Long vendorId, EndClient endClient, double billRate, double billRateAnnual,
+				String submissionStatus, Long interviewId, Date projectStartDate, Date projectEndDate, String remarks) {
+			super();
+			this.id = id;
+			this.candidateDetails = candidateDetails;
+			this.dateOfSubmission = dateOfSubmission;
+			this.bdeName = bdeName;
+			this.positionTitle = positionTitle;
+			this.vendorId = vendorId;
+			this.endClient = endClient;
+			this.billRate = billRate;
+			this.billRateAnnual = billRateAnnual;
+			this.submissionStatus = submissionStatus;
+			this.interviewId = interviewId;
+			this.projectStartDate = projectStartDate;
+			this.projectEndDate = projectEndDate;
+			this.remarks = remarks;
+		}
+
+		@Override
+		public String toString() {
+			return "Submission [id=" + id + ", candidateDetails=" + candidateDetails + ", dateOfSubmission="
+					+ dateOfSubmission + ", bdeName=" + bdeName + ", positionTitle=" + positionTitle + ", vendorId="
+					+ vendorId + ", endClient=" + endClient + ", billRate=" + billRate + ", billRateAnnual="
+					+ billRateAnnual + ", submissionStatus=" + submissionStatus + ", interviewId=" + interviewId
+					+ ", projectStartDate=" + projectStartDate + ", projectEndDate=" + projectEndDate + ", remarks="
+					+ remarks + "]";
+		}
+
+	
 }

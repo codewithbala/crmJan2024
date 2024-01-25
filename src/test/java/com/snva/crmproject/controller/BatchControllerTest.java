@@ -42,7 +42,7 @@ public class BatchControllerTest {
     private ObjectMapper objectMapper;
 
     @BeforeEach
-    public void createBatchBeforeDeletion() throws Exception {
+    public void setup() throws Exception {
         if (testingBatch == null) {
             LOGGER.info("Creating a batch for testing");
             testingBatch = new Batch();
@@ -58,6 +58,17 @@ public class BatchControllerTest {
             int batchId = JsonPath.read(result.andReturn().getResponse().getContentAsString(), "$.id");
             testingBatch.setId(Long.valueOf(batchId));
             LOGGER.info("Created batch got '" + testingBatch.getId() + "' id");
+        }
+    }
+
+    @AfterEach
+    public void cleanUp() throws Exception {
+        if (testingBatch != null) {
+            LOGGER.info("Deleting testing batch");
+            mockMvc.perform(delete("/api/v1/batches/{id}", testingBatch.getId())
+                    .header("Authorization", authorization))
+                    .andExpect(status().isOk());
+            testingBatch = null;
         }
     }
 
@@ -134,17 +145,6 @@ public class BatchControllerTest {
                 .header("Authorization", authorization))
                 .andExpect(status().isOk());
         testingBatch = null;
-    }
-
-    @AfterEach
-    public void cleanUp() throws Exception {
-        if (testingBatch != null) {
-            LOGGER.info("Deleting testing batch");
-            mockMvc.perform(delete("/api/v1/batches/{id}", testingBatch.getId())
-                    .header("Authorization", authorization))
-                    .andExpect(status().isOk());
-            testingBatch = null;
-        }
     }
 
 }

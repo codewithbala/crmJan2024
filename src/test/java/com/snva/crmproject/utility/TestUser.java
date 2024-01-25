@@ -3,8 +3,11 @@ package com.snva.crmproject.utility;
 import java.util.Base64;
 
 public class TestUser {
+    public static String TEST_USERNAME = "TEST";
+    public static String TEST_PASSWORD = "1234";
+
     public static String getBase64Credentials() {
-        return getBase64Credentials("TEST", "1234");
+        return getBase64Credentials(TEST_USERNAME, TEST_PASSWORD);
     }
 
     public static String getBase64Credentials(String username, String password) {

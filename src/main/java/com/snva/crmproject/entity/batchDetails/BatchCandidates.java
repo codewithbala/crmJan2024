@@ -1,15 +1,16 @@
 package com.snva.crmproject.entity.batchDetails;
+
 import com.snva.crmproject.entity.CandidateDetails;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "batch_candidates", uniqueConstraints = {
-	    @UniqueConstraint(columnNames = {"candidate_id"})
-	})
+        @UniqueConstraint(columnNames = {"candidate_id"})
+})
 @IdClass(BatchCandidatesId.class)
 public class BatchCandidates {
 
-	@Id
+    @Id
     @ManyToOne
     @JoinColumn(name = "batch_id", nullable = false)
     private Batch batch;
@@ -19,8 +20,6 @@ public class BatchCandidates {
     @JoinColumn(name = "candidate_id", nullable = false)
     private CandidateDetails candidate;
 
-
-
     public BatchCandidates() {
     }
 
@@ -28,9 +27,6 @@ public class BatchCandidates {
         this.batch = batch;
         this.candidate = candidate;
     }
-
-    // Getters and setters
-  
 
     public Batch getBatch() {
         return batch;

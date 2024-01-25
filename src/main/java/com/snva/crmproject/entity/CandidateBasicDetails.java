@@ -126,7 +126,6 @@ public class CandidateBasicDetails {
 	}
 
 	@OneToOne(mappedBy = "candidateBasicDetails", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    
     private CandidateDetails details;
 
 	   @Transient

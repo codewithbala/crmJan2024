@@ -7,20 +7,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.snva.crmproject.entity.TechInterview;
 import com.snva.crmproject.service.TechInterviewService;
 
+@CrossOrigin(origins = "${fontEnd.origins}")
 @RestController
-@RequestMapping("/api/v1/tech-interviews")
+@RequestMapping("/api/v1/tech-interviews") 
 public class TechInterviewController {
 	private static final Logger logger = LoggerFactory.getLogger(TechInterviewController.class);
 
@@ -35,7 +29,7 @@ public class TechInterviewController {
 	        return new ResponseEntity<>(techInterviews, HttpStatus.OK);
 	    }
 
-	    @GetMapping("/{id}")
+	    @GetMapping("/{id}")   
 	    public ResponseEntity<TechInterview> getTechInterviewById(@PathVariable Long id) {
 	    	 logger.info("Request to get tech interview by ID: {}", id);
 	        TechInterview techInterview = techInterviewService.getTechInterviewById(id);

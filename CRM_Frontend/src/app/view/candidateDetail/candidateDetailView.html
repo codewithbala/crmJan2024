@@ -1,11 +1,13 @@
 <div class="container mt-4 mb-4 pt-4" style="min-height: 800px;">
   <div *ngIf="pageStatus=='recruiter'"><!-- For Recruiter -->
+
     <app-candidate-recruiter-detail [currentCandidate]="currentCandidate" [candidateP1Right]='candidateP1Right'
       [countries]='countries' [states]='states' [lgas]='lgas' [bsConfig]='bsConfig' [candidateId]='candidateId'
       [addressCity]="addressCity" [addressState]="addressState" [addressCountry]="addressCountry">
       (addEvent)="add($event)" (saveEvent)="save($event)" (countryChangeEvent)="handleCountryChange()"
       (stateChangeEvent)="handleStateChange()" (changeStatusEvent)="chanegStatus($event)"
       ></app-candidate-recruiter-detail>
+
   </div>
 
   <div *ngIf="pageStatus =='techBD'">

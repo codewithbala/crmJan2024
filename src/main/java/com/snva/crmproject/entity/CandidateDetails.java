@@ -1,28 +1,21 @@
 package com.snva.crmproject.entity;
 
 
-import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.snva.crmproject.entity.SubmissionDetails.Submission;
 import com.snva.crmproject.entity.batchDetails.Batch;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 @Entity
 @Table(name = "CandidateDetails")
-
-
 public class CandidateDetails {
+
 	@Id
 	private String candidateId;
 	private String skillSet;
@@ -46,8 +39,21 @@ public class CandidateDetails {
 	
     @ManyToMany(mappedBy = "candidates")
     private Set<Batch> batches = new HashSet<>();
+
+	@OneToOne
+    @JoinColumn(name = "tech_interview_id")  
+    private TechInterview techInterview;
+
+	@OneToOne
+	@JoinColumn(name = "loi_id")
+	private LetterOfIntent letterOfIntent;
 	
-	
+	@OneToMany(mappedBy = "candidateDetails")
+	private List<Submission> submissions = new ArrayList<>();
+
+	 public CandidateDetails() {
+	    }
+	 
 	public CandidateDetails(String candidateId, String skillSet, int communicationSkill, String addressLine1,
 			String addressLine2, String addressCity, String addressState, String addressCounty, String addressZipCode,
 			String source, String remarks, String interviewDate, String interviewer, String interviewerFeedback,
@@ -74,10 +80,14 @@ public class CandidateDetails {
 		this.joinedBatch = joinedBatch;
 		this.startDate = startDate;
 	}
-	public CandidateDetails() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    public List<Submission> getSubmissions() {
+        return submissions;
+    }
+
+    public void setSubmissions(List<Submission> submissions) {
+        this.submissions = submissions;
+    }
+    
 	public String getCandidateId() {
 		return candidateId;
 	}
@@ -211,6 +221,31 @@ public class CandidateDetails {
             candidateBasicDetails.setDetails(this);
         }
     }
-	
-	
+
+	@Override
+	public String toString() {
+		return "CandidateDetails{" +
+				"candidateId='" + candidateId + '\'' +
+				", skillSet='" + skillSet + '\'' +
+				", communicationSkill=" + communicationSkill +
+				", addressLine1='" + addressLine1 + '\'' +
+				", addressLine2='" + addressLine2 + '\'' +
+				", addressCity='" + addressCity + '\'' +
+				", addressState='" + addressState + '\'' +
+				", addressCounty='" + addressCounty + '\'' +
+				", addressZipCode='" + addressZipCode + '\'' +
+				", source='" + source + '\'' +
+				", remarks='" + remarks + '\'' +
+				", interviewDate='" + interviewDate + '\'' +
+				", interviewer='" + interviewer + '\'' +
+				", interviewerFeedback='" + interviewerFeedback + '\'' +
+				", candidateInterviewStatus='" + candidateInterviewStatus + '\'' +
+				", lOISent=" + lOISent +
+				", lOIAccepted=" + lOIAccepted +
+				", joinedBatch=" + joinedBatch +
+				", startDate='" + startDate + '\'' +
+				", batches=" + batches +
+				", techInterview=" + techInterview +
+				'}';
+	}
 }

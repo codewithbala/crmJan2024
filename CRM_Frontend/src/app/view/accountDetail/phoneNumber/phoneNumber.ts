@@ -6,6 +6,7 @@ import {RedirectController} from "../../../tools/redirect-controller";
 import {RoleCheck} from "../../../tools/role-check";
 import {FormControl, FormGroup} from "@angular/forms";
 import {InputCheck} from "../../../tools/input-check";
+import {UIconfigure} from "../../../config/UIconfigure";
 
 @Component({
   selector: 'app-phone-number',
@@ -19,7 +20,7 @@ export class PhoneNumber
 
   inputCheck:InputCheck = new InputCheck();
 
-  constructor(private accountService:AccountService, private redirectController:RedirectController)
+  constructor(private accountService:AccountService, private redirectController:RedirectController, public uiconfigure:UIconfigure)
   {
   }
 

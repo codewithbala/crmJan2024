@@ -1,22 +1,18 @@
-<div class="container mt-4 mb-4 pt-4" style="min-height: 800px;">
+<div class="{{uiconfigure.ACCOUNT_DETAIL.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.style}}">
   <div class="row g-3 m-2">
-    <div class="col-sm-3 p-2">
-      <div class="card border border-success cardBackGround" style="min-height: 600px;">
-        <div class="card-body text-center">
+    <div class="{{uiconfigure.ACCOUNT_DETAIL.MENU_BAR.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.MENU_BAR.style}}">
+      <div class="{{uiconfigure.ACCOUNT_DETAIL.MENU_BAR.CARD.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.MENU_BAR.CARD.style}}">
+        <div class="{{uiconfigure.ACCOUNT_DETAIL.MENU_BAR.CARD.BODY.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.MENU_BAR.CARD.BODY.style}}">
           <!-- left menu bar Read and Write-->
-          <div class="row g-3" *ngIf="authorization == 'readAndWrite'">
-            <app-menu-bar [firstName]='currentUser.firstName' [lastName]='currentUser.lastName' (currentStatus) = 'changeStatus($event)'></app-menu-bar>
-          </div>
+          <app-menu-bar *ngIf="authorization == 'readAndWrite'" [firstName]='currentUser.firstName' [lastName]='currentUser.lastName' (currentStatus) = 'changeStatus($event)'></app-menu-bar>
           <!-- left menu bar Read Only-->
-          <div class="row g-3" *ngIf="authorization != 'readAndWrite'">
-            <app-menu-bar-read-only [firstName]='currentUser.firstName' [lastName]='currentUser.lastName'></app-menu-bar-read-only>
-          </div>
+          <app-menu-bar-read-only *ngIf="authorization != 'readAndWrite'" [firstName]='currentUser.firstName' [lastName]='currentUser.lastName'></app-menu-bar-read-only>
         </div>
       </div>
     </div>
-    <div class="col-sm-9 p-2">
-      <div class="card border border-success p-2 cardBackGround" style="height: 600px;">
-        <div class="card-body text-center">
+    <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.style}}">
+      <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.style}}">
+        <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.style}}">
           <!-- Unknown My Account Role -->
           <div class="row g-0" *ngIf="authorization == 'notAccess'">
             <app-error-page [erroeMessage]='erroeMessage'></app-error-page>
@@ -27,27 +23,27 @@
           </div>
           <!-- Read Only -->
           <div class="row g-0" *ngIf="authorization == 'readOnly' && currentUser.userId != -1">
-            <div class="card-body">
+            <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.style}}">
               <app-account-info-read-only [currentUser]='currentUser'></app-account-info-read-only>
               <app-can-suspend [currentUser]='currentUser' [canSuspend]='canSuspend'></app-can-suspend>
             </div>
           </div>
           <!-- Read and Write -->
           <div class="row g-0" *ngIf="authorization == 'readAndWrite'  && currentUser.userId != -1">
-            <div class="card-body" *ngIf="currentStatus == 'accountInfo'">
+            <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.style}}" *ngIf="currentStatus == 'accountInfo'">
               <app-account-info [currentUser]='currentUser'></app-account-info>
               <app-can-suspend [currentUser]='currentUser' [canSuspend]='canSuspend'></app-can-suspend>
             </div>
             <!-- Update Phone -->
-            <div class="card-body" *ngIf="currentStatus == 'phoneNumber'">
+            <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.style}}" *ngIf="currentStatus == 'phoneNumber'">
               <app-phone-number [currentUser]='currentUser' [isMyAccount]="isMyAccount"></app-phone-number>
             </div>
             <!-- Reset Password -->
-            <div class="card-body" *ngIf="currentStatus == 'resetPassword'">
+            <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.style}}" *ngIf="currentStatus == 'resetPassword'">
               <app-password [currentUser]='currentUser' [isMyAccount]="isMyAccount"></app-password>
             </div>
             <!-- Update Address -->
-            <div class="card-body" *ngIf="currentStatus == 'mailAddress'">
+            <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.style}}" *ngIf="currentStatus == 'mailAddress'">
               <app-address [currentUser]='currentUser' [isMyAccount]="isMyAccount"></app-address>
             </div>
           </div>

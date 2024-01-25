@@ -1,0 +1,64 @@
+<div class="col-6" *ngIf="candidateP2Right == true">
+    <div class="row">
+      <div class="col-12"><h5>Interview Feedback</h5><hr></div>
+      <div class="row m-2">
+        <div class="col-5 text-end">
+          <label>Interview Time: </label>
+        </div>
+        <div class="col-7 text-start">
+          <label>{{currentCandidate.details.interviewDate}}</label>
+        </div>
+      </div>
+      <div class="row m-2">
+        <div class="col-5 text-end">
+          <label>Candidate Status: </label>
+        </div>
+        <div class="col-5">
+          <select class="form-select" [(ngModel)]="currentCandidate.details.candidateInterviewStatus">
+            <option *ngFor="let i of menuData.INTERVIEW_STATUS">{{i}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row m-2">
+        <div class="col-5 text-end">
+          <label> Feedback: </label>
+        </div>
+        <div class="col-7">
+          <textarea class="form-control" [value]="currentCandidate.details.interviewerFeedback" [(ngModel)]="currentCandidate.details.interviewerFeedback"></textarea>
+          <!--<input type="text" list="interviewFeedback" class="form-control" [(ngModel)]="currentCandidate.details.interviewerFeedback">-->
+          <!--<datalist id = 'interviewFeedback'>
+            <option *ngFor="let i of menuData.INTERVIEW_FEEDBACK">{{i}}</option>
+          </datalist>-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-6" *ngIf="candidateP2Right == false">
+    <div class="row">
+      <div class="col-12"><h5>Interview Feedback</h5><hr></div>
+      <div class="row m-2">
+        <div class="col-5 text-end">
+          <label>Interview Time: </label>
+        </div>
+        <div class="col-7 text-start">
+          <label>{{currentCandidate.details.interviewDate}}</label>
+        </div>
+      </div>
+      <div class="row m-2">
+        <div class="col-5 text-end">
+          <label>Candidate Status: </label>
+        </div>
+        <div class="col-5 text-start">
+          <label>{{currentCandidate.details.candidateInterviewStatus}}</label>
+        </div>
+      </div>
+      <div class="row m-2">
+        <div class="col-5 text-end">
+          <label> Feedback: </label>
+        </div>
+        <div class="col-5 text-start">
+          <p>{{currentCandidate.details.interviewerFeedback}}</p>
+        </div>
+      </div>
+    </div>
+  </div>

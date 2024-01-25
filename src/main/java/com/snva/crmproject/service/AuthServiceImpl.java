@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AuthServiceImpl {
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthServiceImpl.class);
@@ -14,11 +16,10 @@ public class AuthServiceImpl {
     @Autowired
     AuthenticationRepository authenticationRepository;
 
-    public User getUserDetailsbyUserName(String username) {
+    public Optional<User> getUserByUsername(String username) {
         LOGGER.info("Pulling data for " + username + " user");
-        User user = authenticationRepository.findUserByUsername(username).get();
+        return authenticationRepository.findUserByUsername(username);
 
-        return user;
     }
 
 }

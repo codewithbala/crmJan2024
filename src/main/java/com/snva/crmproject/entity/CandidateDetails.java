@@ -198,19 +198,19 @@ public class CandidateDetails {
 		this.candidateInterviewStatus = candidateInterviewStatus;
 	}
 
-	public boolean islOISent() {
+	public boolean isLOISent() {
 		return lOISent;
 	}
 
-	public void setlOISent(boolean lOISent) {
+	public void setLOISent(boolean lOISent) {
 		this.lOISent = lOISent;
 	}
 
-	public boolean islOIAccepted() {
+	public boolean isLOIAccepted() {
 		return lOIAccepted;
 	}
 
-	public void setlOIAccepted(boolean lOIAccepted) {
+	public void setLOIAccepted(boolean lOIAccepted) {
 		this.lOIAccepted = lOIAccepted;
 	}
 

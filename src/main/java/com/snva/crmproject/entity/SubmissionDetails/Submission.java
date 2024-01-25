@@ -2,6 +2,7 @@ package com.snva.crmproject.entity.SubmissionDetails;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.snva.crmproject.entity.CandidateDetails;
@@ -14,7 +15,10 @@ import lombok.Data;
 
 @Data
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@JsonIdentityInfo(
+	    generator = ObjectIdGenerators.PropertyGenerator.class,
+	    property = "id" // Assuming 'id' is the primary key
+	)
 public class Submission {
 
     @Id

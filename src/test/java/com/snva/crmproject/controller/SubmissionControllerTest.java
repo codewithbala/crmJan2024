@@ -61,61 +61,8 @@ public class SubmissionControllerTest {
 	private static String resourceCall = "/api/v1/submissions";
 	private static String authorization = TestUser.getBase64Credentials();
 
-	//@BeforeEach
-	public void setup() {
-
+	private Submission Setup() {
 		Submission newSubmission = new Submission();
-	    newSubmission.setBdeName("John Doe");
-	    newSubmission.setPositionTitle("Software Engineer");
-	    newSubmission.setBillRate(50.0);
-	    newSubmission.setBillRateAnnual(100000.0);
-	    newSubmission.setSubmissionStatus("Submitted");
-	    newSubmission.setDateOfSubmission(new Date());
-	    newSubmission.setProjectStartDate(new Date());
-	    newSubmission.setProjectEndDate(new Date());
-	    newSubmission.setRemarks("Candidate looks promising");
-
-	    testCandidate = new CandidateDetails();
-        testCandidate.setCandidateId("CAND123");
-        candidateDetailsRepository.save(testCandidate);
-        
-        
-		Vendor testVendor = new Vendor();
-		testVendor.setVendorName("Vendor Corp");
-		testVendor.setSpoc("spoc");
-		testVendor.setVendorName("walmart");
-		testVendor.setCity("Los Angels");
-		testVendor.setState("CA");
-		testVendor.setEmail("123@gmail.com");
-		vendorRepository.save(testVendor);
-
-		CustomerInterview testInterview = new CustomerInterview();
-		testInterview.setInterviewDate(new Date());
-		testInterview.setInterviewTime(new Date());
-		testInterview.setInterviewResult("Positive");
-		testInterview.setInterviewFeedback("Good technical skills");
-		customerInterviewRepository.save(testInterview);
-
-		
-		EndClient testEndClient = new EndClient();
-		testEndClient.setEndClient("Walmart");
-		testEndClient.setCity("Los Angeles");
-		endClientRepository.save(testEndClient);
-
-		submissionRepository.save(testSubmission);
-	}
-
-	@AfterEach
-	public void cleanup() {
-		//submissionRepository.delete(testSubmission);
-		//candidateDetailsRepository.delete(testCandidate);
-	}
-
-	@Test
-	@Transactional
-	public void testCreateSubmission() throws Exception {
-	    // Create a new Submission object
-	    Submission newSubmission = new Submission();
 	    newSubmission.setBdeName("Jane Doe");
 	    newSubmission.setPositionTitle("Senior Developer");
 	    newSubmission.setBillRate(60.0);
@@ -156,20 +103,25 @@ public class SubmissionControllerTest {
 		newSubmission.setVendor(testVendor);
 	    newSubmission.setEndClient(testEndClient);
 	    newSubmission.setCustomerInterview(testInterview);
-	    
+
+        return newSubmission;
+    }
 
 
-	    String submissionJson = objectMapper.writeValueAsString(newSubmission);
-	    submissionJson = submissionJson.replaceAll("\"id\":\\d+", "\"id\":null");
 
-	    System.out.println("json is " + submissionJson);	
+	@Test
+	@Transactional
+	public void testCreateSubmission() throws Exception {
+		  Submission newSubmission = Setup();
 
-	 
-	    mockMvc.perform(post(resourceCall)
-	            .contentType(MediaType.APPLICATION_JSON)
-	            .content(submissionJson)
-	            .header("Authorization", authorization))
-	            .andExpect(status().isOk());
+	        String submissionJson = objectMapper.writeValueAsString(newSubmission);
+	        submissionJson = submissionJson.replaceAll("\"id\":\\d+", "\"id\":null");
+
+	        mockMvc.perform(post(resourceCall)
+	                .contentType(MediaType.APPLICATION_JSON)
+	                .content(submissionJson)
+	                .header("Authorization", authorization))
+	                .andExpect(status().isOk());
 	}
 	@Test
     @Transactional
@@ -190,7 +142,7 @@ public class SubmissionControllerTest {
         updatedSubmissionJson = updatedSubmissionJson.replaceAll("\"id\":\\d+", "\"id\":null");
 
         // Perform a PUT request to update the submission
-        mockMvc.perform(put(resourceCall + "/{id}", 2)
+        mockMvc.perform(put(resourceCall + "/{id}", 1)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(updatedSubmissionJson)
                 .header("Authorization", authorization))

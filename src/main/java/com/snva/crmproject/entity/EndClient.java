@@ -69,4 +69,10 @@ public class EndClient {
 		this.state = state;
 	}
 
+	@Override
+	public String toString() {
+		return "EndClient [id=" + id + ", endClient=" + endClient + ", city=" + city + ", state=" + state
+				+ ", submission=" + submission + "]";
+	}
+
 }

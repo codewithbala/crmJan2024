@@ -4,6 +4,8 @@ import java.util.Date;
 
 import com.snva.crmproject.entity.CandidateDetails;
 import com.snva.crmproject.entity.EndClient;
+import com.snva.crmproject.entity.Vendor;
+import com.snva.crmproject.entity.customerInterview.CustomerInterview;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -16,9 +18,9 @@ public class Submission {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne
     @JoinColumn(name = "candidate_id")
-    private CandidateDetails candidateDetails;
+    private CandidateDetails candidateDetails;  //One to One mapping to Candidate Detail Entity
 
     
     @Column(name = "date_of_submission", nullable = false)
@@ -32,13 +34,14 @@ public class Submission {
     private String positionTitle;
 
    
-    @Column(name = "vendor_id")
-    private Long vendorId; // Placeholder for Vendor entity
+    @OneToOne
+    @JoinColumn(name = "id")
+    private Vendor vendor; ///One to One mapping to Vendor Entity.
 
     
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne
     @JoinColumn(name = "id")
-    private EndClient endClient;  // @ManyToOne for EndClient
+    private EndClient endClient;  //One to One mapping to end client Entity.
 
     @Column(name = "bill_rate")
     private double billRate;
@@ -49,8 +52,10 @@ public class Submission {
     @Column(name = "submission_status", nullable = false)
     private String submissionStatus;
 
-    @Column(name = "interview_id")
-    private Long interviewId; // Placeholder for CustomerInterview entity
+    @OneToOne
+    @JoinColumn(name = "id")
+    private CustomerInterview customerInterview; //One to One mapping to interview ID Entity.
+
 
     @Column(name = "project_start_date")
     @Temporal(TemporalType.DATE)
@@ -97,13 +102,6 @@ public class Submission {
 
 
 
-	public Long getVendorId() {
-		return vendorId;
-	}
-
-	public void setVendorId(Long vendorId) {
-		this.vendorId = vendorId;
-	}
 
 
 
@@ -131,14 +129,13 @@ public class Submission {
 		this.submissionStatus = submissionStatus;
 	}
 
-	public Long getInterviewId() {
-		return interviewId;
-	}
+	 public CustomerInterview getCustomerInterview() {
+	        return customerInterview;
+	    }
 
-	public void setInterviewId(Long interviewId) {
-		this.interviewId = interviewId;
-	}
-
+	    public void setCustomerInterview(CustomerInterview customerInterview) {
+	        this.customerInterview = customerInterview;
+	    }
 	public Date getProjectStartDate() {
 		return projectStartDate;
 	}
@@ -184,21 +181,30 @@ public class Submission {
 	        this.candidateDetails = candidateDetails;
 	    }
 
+		public Vendor getVendor() {
+			return vendor;
+		}
+
+		public void setVendor(Vendor vendor) {
+			this.vendor = vendor;
+		}
+
 		public Submission(Long id, CandidateDetails candidateDetails, Date dateOfSubmission, String bdeName,
-				String positionTitle, Long vendorId, EndClient endClient, double billRate, double billRateAnnual,
-				String submissionStatus, Long interviewId, Date projectStartDate, Date projectEndDate, String remarks) {
+				String positionTitle, Vendor vendor, EndClient endClient, double billRate, double billRateAnnual,
+				String submissionStatus, CustomerInterview customerInterview, Date projectStartDate,
+				Date projectEndDate, String remarks) {
 			super();
 			this.id = id;
 			this.candidateDetails = candidateDetails;
 			this.dateOfSubmission = dateOfSubmission;
 			this.bdeName = bdeName;
 			this.positionTitle = positionTitle;
-			this.vendorId = vendorId;
+			this.vendor = vendor;
 			this.endClient = endClient;
 			this.billRate = billRate;
 			this.billRateAnnual = billRateAnnual;
 			this.submissionStatus = submissionStatus;
-			this.interviewId = interviewId;
+			this.customerInterview = customerInterview;
 			this.projectStartDate = projectStartDate;
 			this.projectEndDate = projectEndDate;
 			this.remarks = remarks;
@@ -207,12 +213,14 @@ public class Submission {
 		@Override
 		public String toString() {
 			return "Submission [id=" + id + ", candidateDetails=" + candidateDetails + ", dateOfSubmission="
-					+ dateOfSubmission + ", bdeName=" + bdeName + ", positionTitle=" + positionTitle + ", vendorId="
-					+ vendorId + ", endClient=" + endClient + ", billRate=" + billRate + ", billRateAnnual="
-					+ billRateAnnual + ", submissionStatus=" + submissionStatus + ", interviewId=" + interviewId
-					+ ", projectStartDate=" + projectStartDate + ", projectEndDate=" + projectEndDate + ", remarks="
-					+ remarks + "]";
+					+ dateOfSubmission + ", bdeName=" + bdeName + ", positionTitle=" + positionTitle + ", vendor="
+					+ vendor + ", endClient=" + endClient + ", billRate=" + billRate + ", billRateAnnual="
+					+ billRateAnnual + ", submissionStatus=" + submissionStatus + ", customerInterview="
+					+ customerInterview + ", projectStartDate=" + projectStartDate + ", projectEndDate="
+					+ projectEndDate + ", remarks=" + remarks + "]";
 		}
+
+		
 
 	
 }

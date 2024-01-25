@@ -1,9 +1,12 @@
 package com.snva.crmproject.entity;
 
+import com.snva.crmproject.entity.SubmissionDetails.Submission;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 
@@ -21,6 +24,11 @@ public class Vendor {
 	    private String phone;
 	    private String state;
 	    private String city;
+	    
+	    @OneToOne(mappedBy = "vendor")
+	    private Submission submission;
+	    
+	    
 		public Vendor(Long id, String vendorTier, String vendorName, String spoc, String poc, String email,
 				String phone, String state, String city) {
 			super();

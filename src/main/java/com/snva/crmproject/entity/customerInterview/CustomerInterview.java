@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 
+import com.snva.crmproject.entity.SubmissionDetails.Submission;
+
 @Entity
 @Table(name = "customer_interview")
 public class CustomerInterview {
@@ -20,6 +22,12 @@ public class CustomerInterview {
     @Temporal(TemporalType.TIME)
     private Date interviewTime;
 
+    
+    @OneToOne(mappedBy = "customerInterview")
+    private Submission submission;
+    
+    
+    
     private String interviewResult;
     private String interviewFeedback;
 

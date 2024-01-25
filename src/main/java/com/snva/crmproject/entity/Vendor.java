@@ -13,6 +13,7 @@ import jakarta.persistence.OneToOne;
 @Entity
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Vendor {
+
 	
 	 	@Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)

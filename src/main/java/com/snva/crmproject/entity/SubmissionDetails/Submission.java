@@ -18,8 +18,8 @@ public class Submission {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "candidate_id")
+    @ManyToOne
+    @JoinColumn(name = "candidate_id", nullable = false)
     private CandidateDetails candidateDetails;  //One to One mapping to Candidate Detail Entity
 
     

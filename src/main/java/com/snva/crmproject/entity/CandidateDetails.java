@@ -1,7 +1,9 @@
 package com.snva.crmproject.entity;
 
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -46,9 +48,12 @@ public class CandidateDetails {
 	@JoinColumn(name = "loi_id")
 	private LetterOfIntent letterOfIntent;
 	
-    @OneToOne(mappedBy = "candidateDetails", cascade = CascadeType.ALL)
-    private Submission submission;
+	@OneToMany(mappedBy = "candidateDetails")
+	private List<Submission> submissions = new ArrayList<>();
 
+	 public CandidateDetails() {
+	    }
+	 
 	public CandidateDetails(String candidateId, String skillSet, int communicationSkill, String addressLine1,
 			String addressLine2, String addressCity, String addressState, String addressCounty, String addressZipCode,
 			String source, String remarks, String interviewDate, String interviewer, String interviewerFeedback,
@@ -75,10 +80,14 @@ public class CandidateDetails {
 		this.joinedBatch = joinedBatch;
 		this.startDate = startDate;
 	}
-	public CandidateDetails() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    public List<Submission> getSubmissions() {
+        return submissions;
+    }
+
+    public void setSubmissions(List<Submission> submissions) {
+        this.submissions = submissions;
+    }
+    
 	public String getCandidateId() {
 		return candidateId;
 	}

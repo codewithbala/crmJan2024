@@ -1,5 +1,7 @@
 package com.snva.crmproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.snva.crmproject.entity.SubmissionDetails.Submission;
 
 import jakarta.persistence.*;
@@ -9,6 +11,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class EndClient {
 
     @Id
@@ -19,12 +22,9 @@ public class EndClient {
     private String city;
     private String state;
 
-    
     @OneToOne(mappedBy = "endClient")
-    private Submission submission;
-    
-    
-    
+	private Submission submission;
+
 	public EndClient() {
 
     }

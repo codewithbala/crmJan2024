@@ -1,5 +1,7 @@
 package com.snva.crmproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.snva.crmproject.entity.SubmissionDetails.Submission;
 
 import jakarta.persistence.Entity;
@@ -9,7 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 
 @Entity
-
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Vendor {
 	
 	 	@Id
@@ -26,8 +28,7 @@ public class Vendor {
 	    private String city;
 	    
 	    @OneToOne(mappedBy = "vendor")
-	    private Submission submission;
-	    
+		private Submission submission;
 	    
 		public Vendor(Long id, String vendorTier, String vendorName, String spoc, String poc, String email,
 				String phone, String state, String city) {
@@ -45,8 +46,7 @@ public class Vendor {
 		public Vendor() {
 			
 		}
-		
-		
+
 		public Long getId() {
 			return id;
 		}

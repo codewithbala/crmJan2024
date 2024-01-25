@@ -2,6 +2,8 @@ package com.snva.crmproject.entity.SubmissionDetails;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.snva.crmproject.entity.CandidateDetails;
 import com.snva.crmproject.entity.EndClient;
 import com.snva.crmproject.entity.Vendor;
@@ -12,6 +14,7 @@ import lombok.Data;
 
 @Data
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Submission {
 
     @Id
@@ -20,10 +23,21 @@ public class Submission {
 
     @ManyToOne
     @JoinColumn(name = "candidate_id", nullable = false)
-    private CandidateDetails candidateDetails;  //One to One mapping to Candidate Detail Entity
+	private CandidateDetails candidateDetails;  //One to One mapping to Candidate Detail Entity
 
-    
-    @Column(name = "date_of_submission", nullable = false)
+	@OneToOne
+	@JoinColumn(name = "id")
+	private Vendor vendor; ///One to One mapping to Vendor Entity.
+
+	@OneToOne
+	@JoinColumn(name = "id")
+	private EndClient endClient;  //One to One mapping to end client Entity.
+
+	@OneToOne
+	@JoinColumn(name = "id")
+	private CustomerInterview customerInterview; //One to One mapping to interview ID Entity.
+
+	@Column(name = "date_of_submission", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateOfSubmission;
 
@@ -33,17 +47,7 @@ public class Submission {
     @Column(name = "position_title", nullable = false)
     private String positionTitle;
 
-   
-    @OneToOne
-    @JoinColumn(name = "id")
-    private Vendor vendor; ///One to One mapping to Vendor Entity.
-
-    
-    @OneToOne
-    @JoinColumn(name = "id")
-    private EndClient endClient;  //One to One mapping to end client Entity.
-
-    @Column(name = "bill_rate")
+	@Column(name = "bill_rate")
     private double billRate;
 
     @Column(name = "bill_rate_annual")
@@ -52,9 +56,6 @@ public class Submission {
     @Column(name = "submission_status", nullable = false)
     private String submissionStatus;
 
-    @OneToOne
-    @JoinColumn(name = "id")
-    private CustomerInterview customerInterview; //One to One mapping to interview ID Entity.
 
 
     @Column(name = "project_start_date")

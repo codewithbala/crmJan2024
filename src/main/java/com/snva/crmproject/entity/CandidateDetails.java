@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.snva.crmproject.entity.SubmissionDetails.Submission;
 import com.snva.crmproject.entity.batchDetails.Batch;
 
@@ -14,6 +16,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "CandidateDetails")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "candidateId")
 public class CandidateDetails {
 
 	@Id
@@ -36,24 +39,24 @@ public class CandidateDetails {
 	private boolean lOIAccepted;
 	private boolean joinedBatch;
 	private String startDate;
-	
+
     @ManyToMany(mappedBy = "candidates")
     private Set<Batch> batches = new HashSet<>();
 
 	@OneToOne
-    @JoinColumn(name = "tech_interview_id")  
+    @JoinColumn(name = "tech_interview_id")
     private TechInterview techInterview;
 
 	@OneToOne
 	@JoinColumn(name = "loi_id")
 	private LetterOfIntent letterOfIntent;
-	
+
 	@OneToMany(mappedBy = "candidateDetails")
 	private List<Submission> submissions = new ArrayList<>();
 
 	 public CandidateDetails() {
 	    }
-	 
+
 	public CandidateDetails(String candidateId, String skillSet, int communicationSkill, String addressLine1,
 			String addressLine2, String addressCity, String addressState, String addressCounty, String addressZipCode,
 			String source, String remarks, String interviewDate, String interviewer, String interviewerFeedback,
@@ -87,7 +90,7 @@ public class CandidateDetails {
     public void setSubmissions(List<Submission> submissions) {
         this.submissions = submissions;
     }
-    
+
 	public String getCandidateId() {
 		return candidateId;
 	}
@@ -178,7 +181,7 @@ public class CandidateDetails {
 	public void setCandidateInterviewStatus(String candidateInterviewStatus) {
 		this.candidateInterviewStatus = candidateInterviewStatus;
 	}
-	
+
 	public boolean getLOISent() {
 		return lOISent;
 	}
@@ -203,14 +206,14 @@ public class CandidateDetails {
 	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
-	
-	
+
+
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "candidateId")
 	@JsonBackReference
 	private CandidateBasicDetails candidateBasicDetails;
 
-	
+
 	public CandidateBasicDetails getCandidateBasicDetails() {
         return candidateBasicDetails;
     }

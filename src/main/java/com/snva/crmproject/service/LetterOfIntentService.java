@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.snva.crmproject.entity.LetterOfIntent;
-import com.snva.crmproject.repository.candidate.LetterOfIntentRepository;
+import com.snva.crmproject.repository.LetterOfIntentRepository;
 
 @Service
 public class LetterOfIntentService {

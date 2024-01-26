@@ -100,8 +100,8 @@ public class CandidateServiceImpl implements CandidateService {
             existingDetails.setInterviewDate(updatedCandidate.getDetails().getInterviewDate());
             existingDetails.setInterviewerFeedback(updatedCandidate.getDetails().getInterviewerFeedback());
             existingDetails.setCandidateInterviewStatus(updatedCandidate.getDetails().getCandidateInterviewStatus());
-            existingDetails.setLOISent(updatedCandidate.getDetails().getLOISent());
-            existingDetails.setLOIAccepted(updatedCandidate.getDetails().getLOIAccepted());
+            existingDetails.setLOISent(updatedCandidate.getDetails().isLOISent());
+            existingDetails.setLOIAccepted(updatedCandidate.getDetails().isLOIAccepted());
             existingDetails.setJoinedBatch(updatedCandidate.getDetails().isJoinedBatch());
             existingDetails.setStartDate(updatedCandidate.getDetails().getStartDate());
             

@@ -1,12 +1,17 @@
 package com.snva.crmproject.entity.customerInterview;
 
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 import java.util.Date;
 
+import com.snva.crmproject.entity.SubmissionDetails.Submission;
+
 @Entity
 @Table(name = "customer_interview")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "interviewID")
 public class CustomerInterview {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +24,9 @@ public class CustomerInterview {
     @Column(name = "interview_time")
     @Temporal(TemporalType.TIME)
     private Date interviewTime;
+
+    @OneToOne(mappedBy = "customerInterview")
+    private Submission submission;
 
     private String interviewResult;
     private String interviewFeedback;

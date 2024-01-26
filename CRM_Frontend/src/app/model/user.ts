@@ -7,6 +7,8 @@ export class User
   accountNonLocked: boolean = false;*/
 
   userId:number = - 1;
+  
+  id:number = - 1;
   accountNonLocked:boolean = true;
   password:string = "";
   authorities?:string="";
@@ -21,6 +23,17 @@ export class User
   addressState:string = "";
   addressCountry:string = "";
   addressZipCode:string = "";
-
+  account_non_blocked:boolean=false;
+  userPersonalDetails:{
+    firstName:string;
+    lastName:string ;
+    phone:string;
+    addressLine1:string ;
+    addressLine2:string ;
+    addressCity:string ;
+    addressState:string ;
+    addressCountry:string ;
+    addressZipCode:string ;
+}
 
 }

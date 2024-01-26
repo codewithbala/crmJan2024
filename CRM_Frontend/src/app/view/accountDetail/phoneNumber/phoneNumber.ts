@@ -31,7 +31,7 @@ export class PhoneNumber
     let check = this.inputCheck.isPhoneNumber(newPhone);
     if(check == 'yes')
     {
-      this.currentUser.phone = newPhone;
+      this.currentUser.userPersonalDetails.phone = newPhone;
       this.accountService.updateUser(this.currentUser).subscribe(
           data =>
           {

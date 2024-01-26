@@ -42,19 +42,19 @@ export class AddressComponent implements OnInit
   loadCountryStateCity()
   {
     this.getCountries();
-    if(this.currentUser.addressCountry  != undefined && this.currentUser.addressCountry != '')
+    if(this.currentUser.userPersonalDetails.addressCountry  != undefined && this.currentUser.userPersonalDetails.addressCountry != '')
     {
-      this.addressCountry = this.currentUser.addressCountry;
+      this.addressCountry = this.currentUser.userPersonalDetails.addressCountry;
       this.getStates();
     }
-    if(this.currentUser.addressState  != undefined && this.currentUser.addressState  != '')
+    if(this.currentUser.userPersonalDetails.addressState  != undefined && this.currentUser.userPersonalDetails.addressState  != '')
     {
-      this.addressState   = this.currentUser.addressState;
+      this.addressState   = this.currentUser.userPersonalDetails.addressState;
       this.getLGAs();
     }
-    if(this.currentUser.addressCity  != undefined && this.currentUser.addressCity  != '')
+    if(this.currentUser.userPersonalDetails.addressCity  != undefined && this.currentUser.userPersonalDetails.addressCity  != '')
     {
-      this.addressCity    = this.currentUser.addressCity;
+      this.addressCity    = this.currentUser.userPersonalDetails.addressCity;
     }
   }
 
@@ -71,12 +71,12 @@ export class AddressComponent implements OnInit
     let check = this.inputCheck.isAddress(addressLine1, addressLine2, this.addressCountry, this.addressState, this.addressCity, addressZipCode);
     if(check == 'yes')
     {
-      this.currentUser.addressCountry = this.addressCountry;
-      this.currentUser.addressState   = this.addressState;
-      this.currentUser.addressCity    = this.addressCity;
-      this.currentUser.addressLine1   = addressLine1;
-      this.currentUser.addressLine2   = addressLine2;
-      this.currentUser.addressZipCode = addressZipCode;
+      this.currentUser.userPersonalDetails.addressCountry = this.addressCountry;
+      this.currentUser.userPersonalDetails.addressState   = this.addressState;
+      this.currentUser.userPersonalDetails.addressCity    = this.addressCity;
+      this.currentUser.userPersonalDetails.addressLine1   = addressLine1;
+      this.currentUser.userPersonalDetails.addressLine2   = addressLine2;
+      this.currentUser.userPersonalDetails.addressZipCode = addressZipCode;
       this.accountService.updateUser(this.currentUser).subscribe(
           data =>
           {

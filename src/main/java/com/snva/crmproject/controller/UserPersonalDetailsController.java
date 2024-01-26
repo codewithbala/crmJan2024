@@ -23,12 +23,13 @@ public class UserPersonalDetailsController {
 
     @PostMapping
     public ResponseEntity<UserPersonalDetails> createPersonalDetails(@RequestBody UserPersonalDetails personalDetails) {
-        UserPersonalDetails createdBatch = personalDetailsService.createPersonalDetails(personalDetails);
+    	UserPersonalDetails createdBatch = personalDetailsService.createPersonalDetails(personalDetails);
         return ResponseEntity.ok(createdBatch);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<UserPersonalDetails> getPersonalDetailsById(@PathVariable Long id) {
+    	System.out.println(id);
         return personalDetailsService.findPersonalDetailsById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -42,6 +43,7 @@ public class UserPersonalDetailsController {
     @PutMapping("/{id}")
     public ResponseEntity<UserPersonalDetails> updatePersonalDetails(@PathVariable Long id,
                                                                      @RequestBody UserPersonalDetails personalDetails) {
+    	System.out.println(personalDetails);
         UserPersonalDetails updatedBatch = personalDetailsService.updatePersonalDetails(id, personalDetails);
         if (updatedBatch != null) {
             return ResponseEntity.ok(updatedBatch);

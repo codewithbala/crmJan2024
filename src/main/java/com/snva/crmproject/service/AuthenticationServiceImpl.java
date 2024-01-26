@@ -49,7 +49,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public User updatePassword(User user) {
         User userDb = authenticationRepository.findUserByUsername(user.getUsername()).get();
         userDb.setPassword(user.getPassword());
-        LOGGER.info("Updating password of " + user.getUsername() + " user");
+        LOGGER.info("Updating password of " + user + " user");
         return authenticationRepository.save(userDb);
     }
 
@@ -73,6 +73,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public Optional<User> getUserByUserId(long userId) {
         LOGGER.info("Pulling user from repository for id:" + userId);
+        LOGGER.info(authenticationRepository.findById(userId)+"");
+        LOGGER.info(userPersonalDetailsRepository.findById(userId)+"");
         return authenticationRepository.findById(userId);
     }
 

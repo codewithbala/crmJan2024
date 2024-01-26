@@ -4,9 +4,9 @@
       <div class="{{uiconfigure.ACCOUNT_DETAIL.MENU_BAR.CARD.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.MENU_BAR.CARD.style}}">
         <div class="{{uiconfigure.ACCOUNT_DETAIL.MENU_BAR.CARD.BODY.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.MENU_BAR.CARD.BODY.style}}">
           <!-- left menu bar Read and Write-->
-          <app-menu-bar *ngIf="authorization == 'readAndWrite'" [firstName]='currentUser.firstName' [lastName]='currentUser.lastName' (currentStatus) = 'changeStatus($event)'></app-menu-bar>
+          <app-menu-bar *ngIf="authorization == 'readAndWrite'" [firstName]='currentUser.userPersonalDetails.firstName' [lastName]='currentUser.userPersonalDetails.lastName' (currentStatus) = 'changeStatus($event)'></app-menu-bar>
           <!-- left menu bar Read Only-->
-          <app-menu-bar-read-only *ngIf="authorization != 'readAndWrite'" [firstName]='currentUser.firstName' [lastName]='currentUser.lastName'></app-menu-bar-read-only>
+          <app-menu-bar-read-only *ngIf="authorization != 'readAndWrite'" [firstName]='currentUser.userPersonalDetails.firstName' [lastName]='currentUser.userPersonalDetails.lastName'></app-menu-bar-read-only>
         </div>
       </div>
     </div>

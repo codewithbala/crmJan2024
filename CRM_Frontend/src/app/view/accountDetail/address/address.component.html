@@ -5,7 +5,7 @@
             <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE1.LABEL.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE1.LABEL.TEXT.style}}">Line 1</label>
         </div>
         <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE1.VALUE.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE1.VALUE.style}}">
-            <input class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE1.VALUE.INPUT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE1.VALUE.INPUT.style}}" type="text" value="{{this.currentUser.addressLine1}}" id="addressLine1">
+            <input class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE1.VALUE.INPUT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE1.VALUE.INPUT.style}}" type="text" value="{{this.currentUser.userPersonalDetails.addressLine1}}" id="addressLine1">
         </div>
     </div>
     <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE2.ROW.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE2.ROW.style}}">
@@ -13,7 +13,7 @@
             <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE2.LABEL.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE2.LABEL.TEXT.style}}">Line 2</label>
         </div>
         <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE2.VALUE.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE2.VALUE.style}}">
-            <input class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE2.VALUE.INPUT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE2.VALUE.INPUT.style}}" type="text" value="{{this.currentUser.addressLine2}}" id="addressLine2">
+            <input class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE2.VALUE.INPUT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.ADDRESS.LINE2.VALUE.INPUT.style}}" type="text" value="{{this.currentUser.userPersonalDetails.addressLine2}}" id="addressLine2">
         </div>
     </div>
     <div class="row m-3">
@@ -52,7 +52,7 @@
             <label class="text_font text-white">ZipCode</label>
         </div>
         <div class="col-4 text-end">
-            <input class="form-control text_font" type="text" value="{{this.currentUser.addressZipCode}}" id="addressZipCode">
+            <input class="form-control text_font" type="text" value="{{this.currentUser.userPersonalDetails.addressZipCode}}" id="addressZipCode">
         </div>
     </div>
     <div id="errorMessage"></div>

@@ -11,7 +11,7 @@
                     <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.style}}">User Name</label>
                 </div>
                 <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.style}}">
-                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.style}}">{{this.currentUser.firstName + " " + this.currentUser.lastName}}</label>
+                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.style}}">{{this.currentUser.userPersonalDetails.firstName + " " + this.currentUser.userPersonalDetails.lastName}}</label>
                 </div>
             </div>
             <div class="row">
@@ -27,7 +27,7 @@
                     <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.style}}">Status</label>
                 </div>
                 <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.style}}">
-                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.style}}">{{this.currentUser.accountNonLocked | SNVApipeGetAccountStatus}}</label>
+                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.style}}">{{this.currentUser.account_non_blocked| SNVApipeGetAccountStatus}}</label>
                 </div>
             </div>
             <div class="row">
@@ -35,7 +35,7 @@
                     <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.style}}">Phone</label>
                 </div>
                 <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.style}}">
-                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.style}}">{{this.currentUser.phone}}</label>
+                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.style}}">{{this.currentUser.userPersonalDetails.phone}}</label>
                 </div>
             </div>
             <div class="row">

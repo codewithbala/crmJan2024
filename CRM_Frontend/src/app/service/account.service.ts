@@ -15,7 +15,8 @@ export class AccountService
 
   getUserById(userId:number):Observable<User>
   {
-    return this.httpClient.get<User>('http://localhost:8080/getUserById/'+ userId)
+    console.log(userId)
+    return this.httpClient.get<User>('http://localhost:8080/api/v1/users/'+ userId)
   }
 
   getAllUser():Observable<User[]>{
@@ -24,8 +25,9 @@ export class AccountService
 
   updateUser(user:User):Observable<User>
   {
+    console.log(user)
     delete user['authorities'];
-    return this.httpClient.post<User>('http://localhost:8080/updateUser',  user);
+    return this.httpClient.put<User>('http://localhost:8080/api/v1/users/personal-details/'+ user.id,user.userPersonalDetails);
   }
 
   suspendUser(user:User):Observable<User>
@@ -49,15 +51,17 @@ export class AccountService
         "password":user.username,
         "role":user.role,
         "accountNonLocked":true,
+        "userPersonalDetails":{
         "firstName":user.firstName,
         "lastName":user.lastName,
-        "phone":user.phone,
-        "addressLine1":" ",
-        "addressLine2":" ",
-        "addressCity":" ",
-        "addressState":" ",
-        "addressCountry":" ",
-        "addressZipCode":" "
+          "phone":user.phone,
+          "addressLine1":" ",
+          "addressLine2":" ",
+          "addressCity":" ",
+          "addressState":" ",
+          "addressCountry":" ",
+          "addressZipCode":" "}
+        
       }
     return this.httpClient.post<User>('http://localhost:8080' + this.roleCheck.getCreateURLByRole(user.role),  sendUser);
   }

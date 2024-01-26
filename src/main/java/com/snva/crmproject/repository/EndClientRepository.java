@@ -6,3 +6,5 @@ import com.snva.crmproject.entity.EndClient;
 public interface EndClientRepository extends JpaRepository<EndClient, Long> {
    
 }
+
+

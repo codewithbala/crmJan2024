@@ -27,6 +27,7 @@ export class AccountDetailView implements OnInit
 
   constructor(private router:ActivatedRoute, private accountService:AccountService, private redirectController:RedirectController, private roleCheck:RoleCheck, public uiconfigure:UIconfigure)
   {
+    
   }
 
   ngOnInit(): void
@@ -41,6 +42,7 @@ export class AccountDetailView implements OnInit
       this.authorization = "readAndWrite";
       this.canSuspend = false;
       this.isMyAccount = true;
+      console.log(this.currentUser);
     }
     else
     {
@@ -48,11 +50,12 @@ export class AccountDetailView implements OnInit
         data=>
         {
           this.currentUser = data;
+          console.log(data);
           this.authorization = this.roleCheck.updateAccountCheck(myAccount.role, this.currentUser.role);
           this.canSuspend = this.roleCheck.deleteAccountCheck(myAccount.role, this.currentUser.role);
 
           this.isMyAccount = false;
-
+          console.log(this.currentUser);
           if(this.authorization == "notAccess")
           {
             this.erroeMessage = "Access Forbidden 403";

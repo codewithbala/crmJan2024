@@ -29,16 +29,16 @@ public class Submission {
     @JoinColumn(name = "candidate_id", nullable = false)
 	private CandidateDetails candidateDetails;  //One to One mapping to Candidate Detail Entity
 
-	@OneToOne
-	@JoinColumn(name = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "vendor_id")
 	private Vendor vendor; ///One to One mapping to Vendor Entity.
 
-	@OneToOne
-	@JoinColumn(name = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "end_client_id")
 	private EndClient endClient;  //One to One mapping to end client Entity.
 
-	@OneToOne
-	@JoinColumn(name = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_interview_id")
 	private CustomerInterview customerInterview; //One to One mapping to interview ID Entity.
 
 	@Column(name = "date_of_submission", nullable = false)

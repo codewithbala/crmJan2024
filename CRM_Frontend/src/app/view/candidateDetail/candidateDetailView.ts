@@ -71,7 +71,7 @@ export class CandidateDetailView implements OnInit
         data=>
         {
           this.currentCandidate.candidateId=data.candidateId;
-          this.currentCandidate.recruiterName = myAccount.firstName + " " + myAccount.lastName;
+          this.currentCandidate.recruiterName = myAccount.userPersonalDetails.firstName + " " + myAccount.userPersonalDetails.lastName;
           this.candidateP1Right = this.roleCheck.updateCandidateP1Check(myAccount.role);
           this.getCountries();
         })

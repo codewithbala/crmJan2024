@@ -252,6 +252,17 @@ export class RoleCheck
       return false;
     }
   }
+  addSubmissionCheck(myRole:string):boolean
+  {
+    if(myRole == this.role[3] || myRole == this.role[6])
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
 
   updateCandidateP1Check(myRole:string):boolean
   {

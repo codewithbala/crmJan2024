@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit
   canAddAccount:boolean = false;
   canSeeAccount:boolean = false;
   addCandidate:boolean  = false;
+  addSubmission:boolean  = false;
 
   ngOnInit(): void
   {
@@ -29,6 +30,7 @@ export class HeaderComponent implements OnInit
     this.canAddAccount = this.roleCheck.addAccountCheck(myAccount.role);
     this.addCandidate  = this.roleCheck.addCandidateCheck(myAccount.role);
     this.canSeeAccount = this.roleCheck.seeAccountCheck(myAccount.role);
+    this.addSubmission = this.roleCheck.addSubmissionCheck(myAccount.role);
   }
 
   logout()
@@ -49,6 +51,11 @@ export class HeaderComponent implements OnInit
   candidatelist()
   {
     window.location.href = this.roleCheck.getFrontendRoleType(this.userRole) + "/manage/candidate";
+  }
+
+  viewSubmission()
+  {
+    window.location.href = this.roleCheck.getFrontendRoleType(this.userRole) + "/check/submissions";
   }
 
   goDashboard()

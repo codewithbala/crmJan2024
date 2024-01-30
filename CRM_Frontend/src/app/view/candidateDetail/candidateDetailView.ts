@@ -662,4 +662,9 @@ export class CandidateDetailView implements OnInit
         });
 
       }
+      
+      submissionPage() {
+        this.route.navigate([`${this.myRole}/check/candidate/submission/${this.candidateId}`])
+        }
+        
 }

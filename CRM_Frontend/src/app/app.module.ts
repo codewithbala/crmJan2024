@@ -46,6 +46,8 @@ import { PasswordComponent } from './view/accountDetail/password/password.compon
 import { AddressComponent } from './view/accountDetail/address/address.component';
 import { CandidateTechViewComponent } from './view/candidate-tech-view/candidate-tech-view.component';
 import { CandidateBDViewComponent } from './view/candidate-bdview/candidate-bdview.component';
+import { CandidateSubmissionsComponent } from './view/candidate-submissions/candidate-submissions.component';
+import { ViewAllSubmissionsComponent } from './view/view-all-submissions/view-all-submissions.component';
 
 
 @NgModule({
@@ -81,7 +83,9 @@ import { CandidateBDViewComponent } from './view/candidate-bdview/candidate-bdvi
         PasswordComponent,
         AddressComponent,
         CandidateTechViewComponent,
-        CandidateBDViewComponent
+        CandidateBDViewComponent,
+        CandidateSubmissionsComponent,
+        ViewAllSubmissionsComponent
     ],
   imports: [
     BrowserModule,

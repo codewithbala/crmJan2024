@@ -1,4 +1,5 @@
 <div class="container mt-4 mb-4 pt-4" style="min-height: 800px;">
+  <button class="btn btn-primary" (click)="submissionPage()">View Submissions</button>
   <div *ngIf="pageStatus=='recruiter'"><!-- For Recruiter -->
 
     <app-candidate-recruiter-detail [currentCandidate]="currentCandidate" [candidateP1Right]='candidateP1Right'

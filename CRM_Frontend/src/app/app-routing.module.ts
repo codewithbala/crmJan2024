@@ -9,6 +9,8 @@ import {CandidateListView} from "./view/candidateList/candidateListView";
 import {CandidateDetailView} from "./view/candidateDetail/candidateDetailView";
 import { HomePageView } from './view/homePage/homePageView';
 import {TestComponent} from "./view/test/test.component";
+import { CandidateSubmissionsComponent } from './view/candidate-submissions/candidate-submissions.component';
+import { ViewAllSubmissionsComponent } from './view/view-all-submissions/view-all-submissions.component';
 
 
 const routes: Routes = [
@@ -26,6 +28,9 @@ const routes: Routes = [
   // For All Account
   {path:":role/manage/candidate"           , component:CandidateListView       }, // TODO
   {path:":role/check/candidate/detail/:id" , component:CandidateDetailView     }, // TODO
+
+  {path:":role/check/submission/:id" , component:CandidateSubmissionsComponent     }, // TODO
+  {path:":role/check/submissions" , component:ViewAllSubmissionsComponent     }, // TODO
 
   // For Test
   {path:"test"                              , component:TestComponent          }, // TODO

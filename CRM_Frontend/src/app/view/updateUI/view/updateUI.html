@@ -1,0 +1,40 @@
+<div class="container" style="min-height: 600px">
+    <div class="card">
+        <h2 class="">UI Configure</h2>
+    </div>
+
+    <div class="row" *ngIf="part == ''">
+        <div class="card">
+            <div class="row">
+                <div class="col-2" (click)="changePart('header')">Header</div>
+                <div class="col-2" (click)="changePart('footer')">Footer</div>
+                <div class="col-2" (click)="changePart('accountDetail')">AccountDetail</div>
+                <div class="col-2" (click)="changePart('accountList')">AccountList</div>
+                <div class="col-2" (click)="changePart('candidateForm')">CandidateForm</div>
+                <div class="col-2" (click)="changePart('candidateList')">CandidateList</div>
+                <div class="col-2" (click)="changePart('candidateSubmission')">Submission</div>
+                <div class="col-2" (click)="changePart('background')">Background</div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="part != ''">
+        <app-html-element-pre-view
+             [part]="this.part"
+             [uiModel]="this.uiModelList"
+        >
+        </app-html-element-pre-view>
+        <app-html-element-configure
+                [uiModel]  = "this.currenUiModel"
+                [part]     = "this.part"
+        >
+        </app-html-element-configure>
+    <div class="card">
+        <button (click)="showchild()">show element</button>
+    </div>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+<div class="row ms-4 text-start">
+    <div class="col-12"><h5>Box-Color</h5></div>
+</div>
+<div class="row m-1 mt-0 pt-0">
+    <div class="col-12">
+        <div class="row mt-1">
+            <div class="col-2">R</div>
+            <div class="col-7"><input class="form-range" type="range" min="0" max="255" [(ngModel)] = 'this.boxColor.rChannel'></div>
+            <div class="col-3"><input class="form-control pt-0 pb-0" type="number" min="0" max="255" [(ngModel)] = 'this.boxColor.rChannel'></div>
+        </div>
+        <div class="row mt-1">
+            <div class="col-2">G</div>
+            <div class="col-7"><input class="form-range" type="range" min="0" max="255" [(ngModel)] = 'this.boxColor.gChannel'></div>
+            <div class="col-3"><input class="form-control pt-0 pb-0" type="number" min="0" max="255" [(ngModel)] = 'this.boxColor.gChannel'></div>
+        </div>
+        <div class="row mt-1">
+            <div class="col-2">B</div>
+            <div class="col-7"><input class="form-range" type="range" min="0" max="255" [(ngModel)] = 'this.boxColor.bChannel'></div>
+            <div class="col-3"><input class="form-control pt-0 pb-0" type="number" min="0" max="255" [(ngModel)] = 'this.boxColor.bChannel'></div>
+        </div>
+        <div class="row mt-1">
+            <div class="col-2">A</div>
+            <div class="col-7"><input class="form-range" type="range" min="0" max="1" step="0.05" [(ngModel)] = 'this.boxColor.aChannel'></div>
+            <div class="col-3"><input class="form-control pt-0 pb-0" type="number" min="0" max="1" [(ngModel)] = 'this.boxColor.aChannel'></div>
+        </div>
+    </div>
+</div>
+

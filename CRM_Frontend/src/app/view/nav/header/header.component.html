@@ -1,42 +1,45 @@
-<nav class="{{uiconfigure.HEADER.css}}" style="{{uiconfigure.HEADER.style}}">
-<div class="container-fluid justify-content-between">
-  <div class="collapse navbar-collapse " id="navbar">
-    <label class="{{uiconfigure.HEADER.TITLE.css}}" style="{{uiconfigure.HEADER.TITLE.style}}" routerLink="">
+<nav class="{{uiconfigure.header[0].class}}" style="{{uiconfigure.header[0].style}}">
+  <div class="{{uiconfigure.header[1].class}}" style="{{uiconfigure.header[1].style}}">
+    <div class="{{uiconfigure.header[2].class}}" style="{{uiconfigure.header[2].style}}" id="SNVA_LOGO">
       {{title}}
-    </label>
-    <ul class="navbar-nav mb-2 mb-lg-0">
-      <li class="nav-item dropdown " style="caret-color: black;" >
-        <a class="{{uiconfigure.HEADER.MENU_TITLE.css}}" style="{{uiconfigure.HEADER.MENU_TITLE.style}}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          ManageTools
-        </a>
-        <div class="{{uiconfigure.HEADER.MENU.css}}" style="{{uiconfigure.HEADER.MENU.style}}" aria-labelledby="navbarSuperDropdownMenuLink">
-          <a class="{{uiconfigure.HEADER.ITEM.css}}" style="{{uiconfigure.HEADER.ITEM.style}}" (click)="showAddNewUser()" *ngIf="canAddAccount==true">Add New User</a>
-          <a class="{{uiconfigure.HEADER.ITEM.css}}" style="{{uiconfigure.HEADER.ITEM.style}}" (click)="accountlist()"    *ngIf="canAddAccount==true">Manage Users</a>
-          <a class="{{uiconfigure.HEADER.ITEM.css}}" style="{{uiconfigure.HEADER.ITEM.style}}" (click)="newCandidate()"   *ngIf="addCandidate==true" >New Candidate</a>
-          <a class="{{uiconfigure.HEADER.ITEM.css}}" style="{{uiconfigure.HEADER.ITEM.style}}" (click)="candidatelist()">Manage Candidate</a>
-          <a class="{{uiconfigure.HEADER.ITEM.css}}" style="{{uiconfigure.HEADER.ITEM.style}}" (click)="viewSubmission()">Manage Submission</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown " style="caret-color: black;" >
-        <a class="{{uiconfigure.HEADER.MENU_TITLE.css}}" style="{{uiconfigure.HEADER.MENU_TITLE.style}}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          QuickLink
-        </a>
-        <div class="{{uiconfigure.HEADER.MENU.css}}" style="{{uiconfigure.HEADER.MENU.style}}" aria-labelledby="navbarSuperDropdownMenuLink">
-          <a class="{{uiconfigure.HEADER.ITEM.css}}" style="{{uiconfigure.HEADER.ITEM.style}}" (click)="goDashboard()">MyDashboard</a>
-          <a class="{{uiconfigure.HEADER.ITEM.css}}" style="{{uiconfigure.HEADER.ITEM.style}}" (click)="myAccount()">MyAccount</a>
-        </div>
-      </li>
-    </ul>
-    <span class="nav-item dropdown ms-auto me-4" style="caret-color: black;" >
-      <a class="{{uiconfigure.HEADER.ICON.css}}" style="{{uiconfigure.HEADER.ICON.style}}" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    </div>
+    <button class="{{uiconfigure.header[3].class}}" style="{{uiconfigure.header[3].style}}" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="{{uiconfigure.header[4].class}}" style="{{uiconfigure.header[4].style}}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            ManageTools
+          </a>
+          <div class="{{uiconfigure.header[5].class}}" style="{{uiconfigure.header[5].style}}" aria-labelledby="navbarSuperDropdownMenuLink">
+            <a class="{{uiconfigure.header[6].class}}" style="{{uiconfigure.header[6].style}}" (click)="showAddNewUser()" *ngIf="canAddAccount==true">Add New User</a>
+            <a class="{{uiconfigure.header[6].class}}" style="{{uiconfigure.header[6].style}}" (click)="accountlist()"    *ngIf="canAddAccount==true">Manage Users</a>
+            <a class="{{uiconfigure.header[6].class}}" style="{{uiconfigure.header[6].style}}" (click)="newCandidate()"   *ngIf="addCandidate==true" >New Candidate</a>
+            <a class="{{uiconfigure.header[6].class}}" style="{{uiconfigure.header[6].style}}" (click)="candidatelist()">Manage Candidate</a>
+            <a class="{{uiconfigure.header[6].class}}" style="{{uiconfigure.header[6].style}}" (click)="viewSubmission()">Manage Submission</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="{{uiconfigure.header[4].class}}" style="{{uiconfigure.header[4].style}}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            QuickLink
+          </a>
+          <div class="{{uiconfigure.header[5].class}}" style="{{uiconfigure.header[5].style}}" aria-labelledby="navbarSuperDropdownMenuLink">
+            <a class="{{uiconfigure.header[6].class}}" style="{{uiconfigure.header[6].style}}" (click)="goDashboard()">MyDashboard</a>
+            <a class="{{uiconfigure.header[6].class}}" style="{{uiconfigure.header[6].style}}" (click)="myAccount()">MyAccount</a>
+          </div>
+        </li>
+      </ul>
+      <span class="nav-item dropdown ms-auto me-4">
+      <a class="{{uiconfigure.header[7].class}}" style="{{uiconfigure.header[7].style}}" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="bi bi-person-circle"></i> {{userName}}
       </a>
-      <div class="{{uiconfigure.HEADER.ACCOUNT.css}}" style="{{uiconfigure.HEADER.ACCOUNT.style}}" aria-labelledby="navbarDropdownMenuLink">
-        <a class="{{uiconfigure.HEADER.ACCOUNT_ITEM.css}}" style="{{uiconfigure.HEADER.ACCOUNT_ITEM.style}}" (click)="myAccount()">My Account</a>
-        <a class="{{uiconfigure.HEADER.ACCOUNT_ITEM.css}}" style="{{uiconfigure.HEADER.ACCOUNT_ITEM.style}}" routerLink="">Message</a>
-        <a class="{{uiconfigure.HEADER.ACCOUNT_ITEM.css}}" style="{{uiconfigure.HEADER.ACCOUNT_ITEM.style}}" (click)="logout()">Log Out</a>
+      <div class="{{uiconfigure.header[8].class}}" style="{{uiconfigure.header[8].style}}" aria-labelledby="navbarDropdownMenuLink">
+        <a class="{{uiconfigure.header[9].class}}" style="{{uiconfigure.header[9].style}}" (click)="myAccount()">My Account</a>
+        <a class="{{uiconfigure.header[9].class}}" style="{{uiconfigure.header[9].style}}" >Message</a>
+        <a class="{{uiconfigure.header[9].class}}" style="{{uiconfigure.header[9].style}}" (click)="logout()">Log Out</a>
       </div>
     </span>
+    </div>
   </div>
-</div>
 </nav>

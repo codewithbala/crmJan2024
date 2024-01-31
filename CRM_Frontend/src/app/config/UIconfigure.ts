@@ -1,62 +1,21 @@
 import {Injectable} from "@angular/core";
+import * as configure  from '../../assets/configure.json';
+import {UiModel} from "../view/updateUI/model/uiModel";
 
 @Injectable({
     providedIn: 'root'
 })
 export class UIconfigure
 {
-    public HEADER =
+    public myConfigure:any = configure;
+    public header:UiModel[] = [];
+    public footer:UiModel[] = []
+
+    constructor()
     {
-        css:'navbar navbar-expand-lg navbar-light text-white cardBackGround border-bottom border-success',
-        style:'',
-        TITLE:
-        {
-            css:'title',
-            style:'',
-        },
-        MENU_TITLE:
-        {
-            css:'nav-link dropdown-toggle ms-4 text-white text_middle text_font',
-            style:'',
+        this.header = this.myConfigure.header;
+        this.footer = this.myConfigure.footer;
 
-        },
-        MENU:
-        {
-            css:'dropdown-menu ps-2 pe-2 bg-dark text-white border-success',
-            style:'',
-
-        },
-        ITEM:
-        {
-            css:'dropdown-item text_font text-white',
-            style:'',
-        },
-        ICON:
-        {
-            css:'nav-link dropdown-toggle ms-4 text-white text_font text_middle',
-            style:'',
-        },
-        ACCOUNT:
-        {
-            css:'dropdown-menu dropdown-menu-end ps-2 pe-2 bg-dark text-white border-success',
-            style:'',
-        },
-        ACCOUNT_ITEM:
-        {
-            css:'dropdown-item text_font text-white',
-            style:'',
-        },
-    }
-
-    public FOOTER =
-    {
-        css:'navbar navbar-expand-lg navbar-light justify-content-center text-white cardBackGround border-top border-success',
-        style:'',
-        LINK:
-        {
-            css:'text-reset fw-bold',
-            style:''
-        }
     }
 
     public BACKGROUND =
@@ -139,7 +98,7 @@ export class UIconfigure
                                             style:'',
                                             ICON:
                                             {
-                                                css:'col-4 pe-4 justify-content-end',
+                                                css:'col-3 pe-4 justify-content-end',
                                                 style:'',
                                                 IMG:
                                                 {

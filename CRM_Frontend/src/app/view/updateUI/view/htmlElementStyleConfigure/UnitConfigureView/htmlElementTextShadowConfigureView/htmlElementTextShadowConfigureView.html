@@ -1,0 +1,73 @@
+<div class="row ms-4 text-start">
+    <div class="col-12"><h5>Text-Shadow</h5></div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div class="row ">
+            <div class="col-4 text-start ps-4 pt-1" style="width:9em">
+                <h6>My Shadows</h6>
+            </div>
+            <div class="col-4 text-start">
+                <button class="btn btn-primary py-0" (click)="add()">add</button>
+            </div>
+        </div>
+        <div class="row rounded-3 ms-2 me-2 mt-1 ps-2" *ngFor="let shadow of this.shadowList" style="{{'border: solid ' + shadow.color.toString()}}">
+            <div class="col-9">{{shadow.toString()}}</div>
+            <div class="col-2">
+                <i class="bi bi-search h4" (click)="view(shadow)"></i>
+            </div>
+            <div class="col-1">
+                <i class="bi bi-x-circle text-danger" (click)="delete(shadow)"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 border" style="height:220px" *ngIf="currentCopy.toString() != '' || currentShadow != ''">
+        <div class="row justify-content-center pt-4" style="height:50%">
+            <h1 style="{{'text-shadow:' + currentCopy.toString()}}">T</h1>
+        </div>
+        <div class="row">
+            <div class="col-6 mt-1">
+                <div class="row mt-1">
+                    <div class="col-3 ps-0 pe-0">X-></div>
+                    <div class="col-6 p-0"><input class="form-control pt-0 pb-0" [(ngModel)]='currentCopy.xShadow.size'></div>
+                    <div class="col-3 p-0 ps-1">
+                        <select class="form-control ps-1 pe-1 pt-0 pb-0 text-center" [(ngModel)]='currentCopy.xShadow.unit'>
+                            <option *ngFor="let htmlUnit of this.htmlParameter.htmlUnit">{{htmlUnit}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-3 ps-0 pe-0">Y-></div>
+                    <div class="col-6 p-0"><input class="form-control pt-0 pb-0" [(ngModel)]='currentCopy.yShadow.size'></div>
+                    <div class="col-3 p-0 ps-1">
+                        <select class="form-control ps-1 pe-1 pt-0 pb-0 text-center" [(ngModel)]='currentCopy.yShadow.unit'>
+                            <option *ngFor="let htmlUnit of this.htmlParameter.htmlUnit">{{htmlUnit}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-3 ps-0 pe-0">blur</div>
+                    <div class="col-6 p-0"><input class="form-control pt-0 pb-0" [(ngModel)]='currentCopy.blur.size'></div>
+                    <div class="col-3 p-0 ps-1">
+                        <select class="form-control ps-1 pe-1 pt-0 pb-0 text-center" [(ngModel)]='currentCopy.blur.unit'>
+                            <option *ngFor="let htmlUnit of this.htmlParameter.htmlUnit">{{htmlUnit}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row mt-1">
+                    <div class="col-3 p-0">color</div>
+                    <div class="col-4 p-0"><input class="form-control-color ms-0 mt-1 p-0" type="color" style="height:1.5em" [(ngModel)] = 'inputColor' (change)="change()"></div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-3 p-0">alpha</div>
+                    <div class="col-4 p-0 ps-1"><input class="form-control ms-0 pt-0 pb-0" type="number" max="100" min="0" value="" oninput="if(value>100)value=100;if(value<0)value=0" [(ngModel)] = 'inputAplha' (change)="change()"></div>
+                </div>
+                <div class="row mt-1 justify-content-end pe-2 pb-2">
+                    <button class="btn btn-primary px-1 py-0" style="width:4em;" (click)="save()">save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

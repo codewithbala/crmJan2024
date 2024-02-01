@@ -10,8 +10,8 @@ export class Submission {
     billRateAnnual:    number;
     submissionStatus:  string;
     customerInterview: CustomerInterview = new CustomerInterview;
-    projectStartDate:  Date;
-    projectEndDate:    Date;
+    projectStartDate:  string;
+    projectEndDate:    string;
     remarks:           string;
 }
 
@@ -20,19 +20,24 @@ export class CandidateDetails {
 }
 
 export class CustomerInterview {
-    interviewDate:     Date;
+    interviewID?:number;
+    cInterviewID:      number;
+    interviewDate:     string;
     interviewTime:     string;
     interviewResult:   string;
-    interviewFeedback: Date;
+    interviewFeedback: string;
 }
 
 export class EndClient {
+    id?:number;
+    endClientId: number;
     endClient: string;
     city:      string;
     state:     string;
 }
 
 export class Vendor {
+    id?:number;
     vendorTier: string;
     vendorName: string;
     spoc:       string;
@@ -41,5 +46,6 @@ export class Vendor {
     phone:      string;
     state:      string;
     city:       string;
+    vendorId:    number;
 }
 

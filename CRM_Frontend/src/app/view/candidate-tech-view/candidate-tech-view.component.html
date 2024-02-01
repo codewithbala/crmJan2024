@@ -25,10 +25,10 @@
         </div>
         <div class="col-7">
           <textarea class="form-control" [value]="currentCandidate.details.interviewerFeedback" [(ngModel)]="currentCandidate.details.interviewerFeedback"></textarea>
-          <!--<input type="text" list="interviewFeedback" class="form-control" [(ngModel)]="currentCandidate.details.interviewerFeedback">-->
-          <!--<datalist id = 'interviewFeedback'>
+          <input type="text" list="interviewFeedback" class="form-control" [(ngModel)]="currentCandidate.details.interviewerFeedback">
+          <datalist id = 'interviewFeedback'>
             <option *ngFor="let i of menuData.INTERVIEW_FEEDBACK">{{i}}</option>
-          </datalist>-->
+          </datalist>
         </div>
       </div>
     </div>

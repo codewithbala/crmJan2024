@@ -119,6 +119,7 @@ public class SubmissionServiceImpl implements SubmissionService {
     public Submission updateSubmission(Long id, Submission submissionDetails) {
         return submissionRepository.findById(id)
             .map(existingSubmission -> {
+            	System.out.println("Update");
                 existingSubmission.setDateOfSubmission(submissionDetails.getDateOfSubmission());
                 existingSubmission.setBdeName(submissionDetails.getBdeName());
                 existingSubmission.setPositionTitle(submissionDetails.getPositionTitle());

@@ -50,6 +50,7 @@ public class SubmissionController {
     @PutMapping("/{id}")
     public ResponseEntity<Submission> updateSubmission(@PathVariable Long id, @RequestBody Submission submission) {
         LOGGER.info("Updating data for submission for id " + id);
+        LOGGER.info("Updating data for submission for id " + submission);
     	Submission updatedSubmission = submissionService.updateSubmission(id, submission);
         return ResponseEntity.ok(updatedSubmission);
     }

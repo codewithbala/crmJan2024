@@ -16,9 +16,18 @@ public class EndClient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name="id")
+    private Long endClientId;
 
-    private String endClient;
+    public Long getEndClientId() {
+		return endClientId;
+	}
+
+	public void setEndClientId(Long endClientId) {
+		this.endClientId = endClientId;
+	}
+
+	private String endClient;
     private String city;
     private String state;
 
@@ -30,11 +39,11 @@ public class EndClient {
     }
 
 	public Long getId() {
-		return id;
+		return endClientId;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.endClientId = id;
 	}
 
 	public String getEndClient() {
@@ -63,7 +72,7 @@ public class EndClient {
 
 	public EndClient(Long id, String endClient, String city, String state) {
 		super();
-		this.id = id;
+		this.endClientId = id;
 		this.endClient = endClient;
 		this.city = city;
 		this.state = state;
@@ -71,7 +80,7 @@ public class EndClient {
 
 	@Override
 	public String toString() {
-		return "EndClient [id=" + id + ", endClient=" + endClient + ", city=" + city + ", state=" + state
+		return "EndClient [id=" + endClientId + ", endClient=" + endClient + ", city=" + city + ", state=" + state
 				+ ", submission=" + submission + "]";
 	}
 

@@ -1,0 +1,52 @@
+<div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.TITLE.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.TITLE.style}}">Account Info</div>
+<div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.style}}">
+    <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.style}}">
+        <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.ICON.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.ICON.style}}">
+            <img class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.ICON.IMG.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.ICON.IMG.style}}" [src]="imageUrl" alt="Profile Picture" *ngIf="imageUrl" />
+            <input class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.ICON.INPUT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.ICON.INPUT.style}}" type="file" (change)="onFileSelected($event)" accept="image/*" />
+        </div>
+        <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.style}}">
+            <div class="row">
+                <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.style}}">
+                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.style}}">User Name</label>
+                </div>
+                <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.style}}">
+                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.style}}">{{this.currentUser.userPersonalDetails.firstName + " " + this.currentUser.userPersonalDetails.lastName}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.style}}">
+                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.style}}">Role</label>
+                </div>
+                <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.style}}">
+                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.style}}">{{this.currentUser.role | SNVApipeGetAccountRole}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.style}}">
+                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.style}}">Status</label>
+                </div>
+                <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.style}}">
+                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.style}}">{{this.currentUser.account_non_blocked| SNVApipeGetAccountStatus}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.style}}">
+                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.style}}">Phone</label>
+                </div>
+                <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.style}}">
+                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.style}}">{{this.currentUser.userPersonalDetails.phone}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.style}}">
+                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.LABEL.TEXT.style}}">Email</label>
+                </div>
+                <div class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.style}}">
+                    <label class="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.css}}" style="{{uiconfigure.ACCOUNT_DETAIL.WORKSPACE.CARD.BODY.CONTAINER.BODY.INFO.ROW.DATA.VALUE.TEXT.style}}">{{this.currentUser.username}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="errorMessage"></div>
+</div>

@@ -1,0 +1,43 @@
+<div class="card text_font border-success bg-dark">
+  <h1 class="text_middle text-white m-3 mt-4 border-bottom ">Add New Account</h1>
+  <div class="row m-2 ms-4">
+    <div class="col-5 text-start">
+      <label class="form-label text_font text-white">FirstName</label>
+      <input type="text" class="form-control" name="firstname" id="firstName" required>
+    </div>
+    <div class="col-5 text-start">
+      <label class="form-label text_font text-white">LastName</label>
+      <input type="text" class="form-control" name="lastname" id="lastName" required>
+    </div>
+  </div>
+  <div class="row m-2 ms-4">
+    <div class="col-11 text-start">
+      <label class="form-label text_font text-white">UserID/Email</label>
+      <input type="email" class="form-control" name="username" id="username" required>
+    </div>
+  </div>
+  <div class="row m-2 ms-4">
+    <div class="col-11 text-start">
+      <label class="form-label text_font text-white">Phone Number</label>
+      <input type="text" class="form-control" name="phone" id="phone" required>
+    </div>
+  </div>
+  <div class="row m-2 ms-4">
+    <div class="col-9 text-start">
+      <label class="form-label text_font text-white">Role</label>
+      <select id="role" class="form-control text_font">
+        <option *ngFor="let r of roleList">{{r}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row m-2 justify-content-end">
+    <div class="col-8">
+      <div id="errorMessage"></div>
+    </div>
+    <div class="col-4">
+      <button class="btn btn-primary px-4 py-1" (click)="submit()">Submit</button>
+    </div>
+  </div>
+</div>
+
+

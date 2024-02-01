@@ -1,0 +1,42 @@
+<div class="container mt-4 mb-4 pt-4" style="min-height: 800px;">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <!-- <div class="card cardBackGround border border-success ">
+          <label class="text-white">This is just a search bar</label>
+        </div> -->
+      </div>
+      <div class="col-12 mt-2">
+        <div class="card cardBackGround border border-success ">
+          <div class="row text-white text_font text_middle text-center m-2 border-bottom border-success">
+            <div class="col-2">Id</div>
+            <div class="col-3">Business D</div>
+            <div class="col-3">Candidate Id</div>
+            <div class="col-2">Vendor</div>
+            <div class="col-1">End Client</div>
+            <div class="col-1">
+              <button class="btn btn-lg btn-success px-2 py-0 mb-1" (click)="showAddNewSubmission()" *ngIf="addCandidateRight == true"><i class="bi bi-person-add"></i></button>
+            </div>
+          </div>
+          <div class="text-white text_font text_table text-center m-2" style="height: 400px; overflow: auto">
+            <div *ngFor="let submission of submissions">
+              <div class="row py-0 border-bottom border-secondary" (click)="showSubmissionDetail(submission.id)">
+                <div class="col-2">{{submission.id}}</div>
+                <div class="col-3">{{submission.bdeName}}</div>
+                <div class="col-3" *ngIf="submission.candidateDetails.candidateId==null">{{submission.candidateDetails}}</div>
+                <div class="col-3" *ngIf="submission.candidateDetails.candidateId!=null">{{submission.candidateDetails.candidateId}}</div>
+                <div class="col-2">{{submission.vendor.vendorName}}</div>
+                <div class="col-1">{{submission.endClient.endClient}}</div>
+                <div class="col-1">
+                  <i class="bi bi-search" ></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row m-2 text-white text_font justify-content-end border-top border-success">
+            Page:1
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

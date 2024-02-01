@@ -1,0 +1,60 @@
+<div class="container mt-4 mb-4 pt-4" style="min-height: 800px">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <div class="card cardBackGround border border-success">
+        <div class="row text-white text_font text_middle text-center m-2 border-bottom border-success" >
+          <div class="col-2">#ID</div>
+          <div class="col-4">User Name</div>
+          <div class="col-3">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white text-start" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{currentRole}}
+              </a>
+              <div class="dropdown-menu ps-2 pe-2 bg-dark text-white border-success" style="width: 12em" aria-labelledby="navbarDropdownMenuLink">
+                <div class="dropdown-item border-bottom border-secondary text-white" *ngFor="let s of menuData.USER_ROLE" (click)="filterSetRole(s)">
+                  {{s}}
+                </div>
+              </div>
+            </li>
+          </div>
+          <div class="col-2">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white text-start" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{currentStatus}}
+              </a>
+              <div class="dropdown-menu ps-2 pe-2 bg-dark text-white border-success" aria-labelledby="navbarDropdownMenuLink">
+                <div class="dropdown-item border-bottom border-secondary text-white" *ngFor="let s of menuData.USER_STATUS" (click)="filterSetStatus(s)">
+                  {{s}}
+                </div>
+              </div>
+            </li>
+          </div>
+          <div class="col-1">
+            <button class="btn btn-lg btn-success px-2 py-0 mb-1" (click)="showAddNewAccountView()" *ngIf="canAddAccount==true"><i class="bi bi-person-add"></i></button>
+          </div>
+        </div>
+        <div class="text-white text_font text_table text-center m-2" style="height: 520px; overflow: auto">
+          <div class="row py-0 border-bottom border-secondary" *ngFor="let account of showAccountList" >
+            <div class="col-2">{{account.id}}</div>
+            <div class="col-4">{{account.userPersonalDetails.firstName + ' ' + account.userPersonalDetails.lastName | SNVApipeStringCutOff:12}}</div>
+            <div class="col-3 text-start">
+              <i class="bi bi-person-fill text-danger"  *ngIf="this.roleCheck.getFrontendRoleType(account.role) == 'SuperAdmin'"></i>
+              <i class="bi bi-person-fill text-warning" *ngIf="this.roleCheck.getFrontendRoleType(account.role) == 'Admin'"     ></i>
+              <i class="bi bi-person-fill text-success" *ngIf="this.roleCheck.getFrontendRoleType(account.role) == 'User'"      ></i>
+              {{this.roleCheck.getFrontendRoleName(account.role)}}
+            </div>
+            <div class="col-2">{{this.roleCheck.getUserStatus(account.account_non_blocked)}}</div>
+            <div class="col-1 pe-4">
+              <i class="bi bi-search" (click)="showAccountDetail(account.id)"></i>
+            </div>
+          </div>
+        </div>
+        <div class="row m-2 text-success text_middle text_font justify-content-end border-top border-success">
+          <div class="col-1 mt-2"><i class="bi bi-arrow-left-square" (click)="prevPage()"></i></div>
+          <div class="col-1 mt-2"> {{page}} </div>
+          <div class="col-1 mt-2"><i class="bi bi-arrow-right-square" (click)="nextPage()"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

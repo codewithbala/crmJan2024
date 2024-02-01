@@ -29,7 +29,6 @@ public class Submission {
     @JoinColumn(name = "candidate_id", nullable = false)
 	private CandidateDetails candidateDetails;  //One to One mapping to Candidate Detail Entity
 
-
 	@OneToOne (cascade=CascadeType.ALL)
 	@JoinColumn(name = "id" )
 	private Vendor vendor; ///One to One mapping to Vendor Entity.
@@ -40,7 +39,6 @@ public class Submission {
 
 	@OneToOne (cascade=CascadeType.ALL)
 	@JoinColumn(name = "id")
-
 	private CustomerInterview customerInterview; //One to One mapping to interview ID Entity.
 
 	@Column(name = "date_of_submission", nullable = false)

@@ -1,0 +1,132 @@
+{
+  "header": [
+    {
+      "id": "0",
+      "path": "header",
+      "class": "navbar navbar-expand-lg",
+      "style": "",
+      "name": "header",
+      "model": "read only",
+      "parentId": "-1"
+    },
+    {
+      "id": "1",
+      "path": "header/container",
+      "class": "container-fluid border-bottom border-success border-1",
+      "style": "background-color:rgba(22,22,22,0.75);",
+      "name" : "navbar background",
+      "model": "style only",
+      "parentId": "0"
+    },
+    {
+      "id": "2",
+      "path": "header/title",
+      "class": "",
+      "style": "color:rgba(241,159,5,1);font-size:3em;",
+      "name" : "Logo",
+      "model": "style only",
+      "parentId": "1"
+    },
+    {
+      "id": "3",
+      "path": "header/togglerButton",
+      "class": "navbar-toggler",
+      "style": "background-color:rgba(255,255,244,1)",
+      "name" : "toggler Button",
+      "model": "style only",
+      "parentId": "1"
+    },
+    {
+      "id": "4",
+      "path": "header/menuTitle",
+      "class": "nav-link dropdown-toggle ms-5",
+      "style": "color:rgba(255,255,255,1);font-size:1.3em;font-family:'courier new',courier,monospace;",
+      "name" : "menu button",
+      "model": "style only",
+      "parentId": "1"
+    },
+    {
+      "id": "5",
+      "path": "header/menuCard",
+      "class": "dropdown-menu border-success ms-5",
+      "style": "background-color:rgba(22,22,22,0.75);",
+      "name" : "menu Background",
+      "model": "style only",
+      "parentId": "-1"
+    },
+    {
+      "id": "6",
+      "path": "header/menuItem",
+      "class": "dropdown-item",
+      "style": "color:rgba(255,255,255,1); font-size: 1em; font-family:'courier new', courier, monospace;",
+      "name" : "menu list item",
+      "model": "style only",
+      "parentId": "5"
+    },
+    {
+      "id": "7",
+      "path": "header/accountTitle",
+      "class": "nav-link dropdown-toggle ms-4",
+      "style": "color:rgba(255,255,255,1); font-size: 1.3em; font-family:'courier new', courier, monospace;",
+      "name" : "account menu button",
+      "model": "style only",
+      "parentId": "1"
+    },
+    {
+      "id": "8",
+      "path": "header/accountCard",
+      "class": "dropdown-menu border-success text-end",
+      "style": "background-color:rgba(22,22,22,0.75);",
+      "name" : "account menu background",
+      "model": "style only",
+      "parentId": "-1"
+    },
+    {
+      "id": "9",
+      "path": "header/accountItem",
+      "class": "dropdown-item",
+      "style": "color:rgba(255,255,255,1); font-size: 1em; font-family:'courier new', courier, monospace;",
+      "name" : "account menu list item",
+      "model": "style only",
+      "parentId": "8"
+    }
+  ],
+  "footer": [
+    {
+      "id": "0",
+      "path": "footer",
+      "class": "navbar navbar-expand-lg",
+      "style": "",
+      "name" : "footer",
+      "model": "read only",
+      "parentId": "-1"
+    },
+    {
+      "id": "1",
+      "path": "footer/container",
+      "class": "container-fluid border-top border-success justify-content-center",
+      "style": "background-color:rgba(22,22,22,0.75);",
+      "name" : "footer background",
+      "model": "style only",
+      "parentId": "0"
+    },
+    {
+      "id": "2",
+      "path": "footer/text",
+      "class": "text-white text-center mt-2 mb-2",
+      "style": "",
+      "name" : "footer text",
+      "model": "style only",
+      "parentId": "1"
+    },
+    {
+      "id": "3",
+      "path": "footer/link",
+      "class": "text-reset fw-bold",
+      "style": "",
+      "name" : "footer link",
+      "model": "style only",
+      "parentId": "1"
+    }
+  ]
+}

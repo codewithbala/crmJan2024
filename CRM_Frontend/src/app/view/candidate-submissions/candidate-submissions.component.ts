@@ -10,6 +10,7 @@ import { RoleCheck } from 'src/app/tools/role-check';
 import { ApiResponse, CountryRegionResponse } from 'src/models';
 import CountryRegion from "countryregionjs";
 
+
 @Component({
   selector: 'app-candidate-submissions',
   templateUrl: './candidate-submissions.component.html',
@@ -25,6 +26,7 @@ export class CandidateSubmissionsComponent {
   submission:Submission = new Submission();
   submissionId:string;
   submissionStatus=["Submitted","Placed","Declined"];
+
   addressCity:string = '';
   addressState:string = '';
   addressCountry:string = ''
@@ -33,6 +35,7 @@ export class CandidateSubmissionsComponent {
   lgas: CountryRegionResponse[] = [];
   countryRegion: any = null;
   ONE: number = 1;
+
 
   bsConfig = Object.assign({}, {dateInputFormat: 'YYYY-MM-DD', showWeekNumbers: false, showMouthNumber:true});
   constructor(private router:ActivatedRoute,private candidateService:CandidateService,private submissionService:SubmissionService,
@@ -45,7 +48,9 @@ export class CandidateSubmissionsComponent {
      // @ts-ignore
      let myAccount = JSON.parse( window.sessionStorage.getItem('SNVA_CRM_USER') );
     console.log(myAccount);
+
     this.getStates();
+
     this.candidateService.getAllCandidates().subscribe(data=>{
       this.candidateList = data;
       console.log(this.candidateList[0].candidateId);
@@ -168,4 +173,5 @@ export class CandidateSubmissionsComponent {
         this.submission.endClient.state =this.addressState;
       }
     
+
 }

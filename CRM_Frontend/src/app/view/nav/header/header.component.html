@@ -1,8 +1,8 @@
-<nav class="{{uiconfigure.HEADER.css}}" style="{{uiconfigure.HEADER.style}}">
-<div class="container-fluid justify-content-between">
-  <div class="collapse navbar-collapse " id="navbar">
-    <label class="{{uiconfigure.HEADER.TITLE.css}}" style="{{uiconfigure.HEADER.TITLE.style}}" routerLink="">
+<nav class="{{uiconfigure.header[0].class}}" style="{{uiconfigure.header[0].style}}">
+  <div class="{{uiconfigure.header[1].class}}" style="{{uiconfigure.header[1].style}}">
+    <div class="{{uiconfigure.header[2].class}}" style="{{uiconfigure.header[2].style}}" id="SNVA_LOGO">
       {{title}}
+
     </label>
     <ul class="navbar-nav mb-2 mb-lg-0">
       <li class="nav-item dropdown " style="caret-color: black;" >
@@ -29,14 +29,15 @@
     </ul>
     <span class="nav-item dropdown ms-auto me-4" style="caret-color: black;" >
       <a class="{{uiconfigure.HEADER.ICON.css}}" style="{{uiconfigure.HEADER.ICON.style}}" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
             <i class="bi bi-person-circle"></i> {{userName}}
       </a>
-      <div class="{{uiconfigure.HEADER.ACCOUNT.css}}" style="{{uiconfigure.HEADER.ACCOUNT.style}}" aria-labelledby="navbarDropdownMenuLink">
-        <a class="{{uiconfigure.HEADER.ACCOUNT_ITEM.css}}" style="{{uiconfigure.HEADER.ACCOUNT_ITEM.style}}" (click)="myAccount()">My Account</a>
-        <a class="{{uiconfigure.HEADER.ACCOUNT_ITEM.css}}" style="{{uiconfigure.HEADER.ACCOUNT_ITEM.style}}" routerLink="">Message</a>
-        <a class="{{uiconfigure.HEADER.ACCOUNT_ITEM.css}}" style="{{uiconfigure.HEADER.ACCOUNT_ITEM.style}}" (click)="logout()">Log Out</a>
+      <div class="{{uiconfigure.header[8].class}}" style="{{uiconfigure.header[8].style}}" aria-labelledby="navbarDropdownMenuLink">
+        <a class="{{uiconfigure.header[9].class}}" style="{{uiconfigure.header[9].style}}" (click)="myAccount()">My Account</a>
+        <a class="{{uiconfigure.header[9].class}}" style="{{uiconfigure.header[9].style}}" >Message</a>
+        <a class="{{uiconfigure.header[9].class}}" style="{{uiconfigure.header[9].style}}" (click)="logout()">Log Out</a>
       </div>
     </span>
+    </div>
   </div>
-</div>
 </nav>

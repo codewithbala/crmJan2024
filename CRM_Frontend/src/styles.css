@@ -1,5 +1,9 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
+#SNVA_LOGO:hover
+{
+  color: grey !important;
+}
 .dropdown-item:hover
 {
   background: grey;
@@ -9,7 +13,6 @@
 .cardBackGround
 {
   background-color:rgba(22,22,22,0.75);
-  color:black;
 }
 
 .title{

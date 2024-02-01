@@ -21,7 +21,8 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "strictPropertyInitialization": false,
-    "lib": ["ESNext", "ES2022", "ES2021", "dom"]
+    "lib": ["ESNext", "ES2022", "ES2021", "dom"],
+    "allowJs": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

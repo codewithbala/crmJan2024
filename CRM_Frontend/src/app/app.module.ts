@@ -15,7 +15,6 @@ import { AccountDetailView } from './view/accountDetail/accountDetailView';
 import { CandidateListView } from './view/candidateList/candidateListView';
 import { CandidateDetailView } from './view/candidateDetail/candidateDetailView';
 import { HomePageView } from './view/homePage/homePageView';
-import { TestComponent } from './view/test/test.component';
 import { HeaderComponent } from './view/nav/header/header.component';
 import { FooterComponent } from './view/nav/footer/footer.component';
 import { DeleteUserConfirmView } from './view/popView/deleteUserConfirmView/deleteUserConfirmView';
@@ -50,6 +49,20 @@ import { CandidateSubmissionsComponent } from './view/candidate-submissions/cand
 import { ViewAllSubmissionsComponent } from './view/view-all-submissions/view-all-submissions.component';
 
 
+import { UpdateUI } from "./view/updateUI/view/updateUI"
+import { HtmlElementStyleConfigureView } from "./view/updateUI/view/htmlElementStyleConfigure/htmlElementStyleConfigureView";
+import { HtmlElementTextFontConfigureView } from './view/updateUI/view/htmlElementStyleConfigure/UnitConfigureView/htmlElementTextFontConfigureView/htmlElementTextFontConfigureView';
+import { HtmlElementTextPositionConfigureView } from './view/updateUI/view/htmlElementStyleConfigure/UnitConfigureView/htmlElementTextPositionConfigureView/htmlElementTextPositionConfigureView';
+import { HtmlElementBoxPositionConfigureView } from './view/updateUI/view/htmlElementStyleConfigure/UnitConfigureView/htmlElementBoxPositionConfigureView/htmlElementBoxPositionConfigureView';
+import { HtmlElementBoxBorderConfigureView } from './view/updateUI/view/htmlElementStyleConfigure/UnitConfigureView/htmlElementBoxBorderConfigureView/htmlElementBoxBorderConfigureView';
+import { HtmlElementBoxColorConfigureView } from './view/updateUI/view/htmlElementStyleConfigure/UnitConfigureView/htmlElementBoxColorConfigureView/htmlElementBoxColorConfigureView';
+import { HtmlElementBoxShadowConfigureView } from './view/updateUI/view/htmlElementStyleConfigure/UnitConfigureView/htmlElementBoxShadowConfigureView/htmlElementBoxShadowConfigureView';
+import { HtmlElementTextShadowConfigureView } from './view/updateUI/view/htmlElementStyleConfigure/UnitConfigureView/htmlElementTextShadowConfigureView/htmlElementTextShadowConfigureView';
+import { HtmlElementPreView } from './view/updateUI/view/htmlElementPreView/htmlElementPreView';
+import { HtmlElementListView } from './view/updateUI/view/htmlElementListView/htmlElementListView';
+
+
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -59,7 +72,6 @@ import { ViewAllSubmissionsComponent } from './view/view-all-submissions/view-al
         CandidateListView,
         CandidateDetailView,
         HomePageView,
-        TestComponent,
         HeaderComponent,
         FooterComponent,
         DeleteUserConfirmView,
@@ -85,7 +97,22 @@ import { ViewAllSubmissionsComponent } from './view/view-all-submissions/view-al
         CandidateTechViewComponent,
         CandidateBDViewComponent,
         CandidateSubmissionsComponent,
+
         ViewAllSubmissionsComponent
+
+
+        UpdateUI,
+        HtmlElementStyleConfigureView,
+        HtmlElementTextFontConfigureView,
+        HtmlElementTextPositionConfigureView,
+        HtmlElementBoxPositionConfigureView,
+        HtmlElementBoxBorderConfigureView,
+        HtmlElementBoxColorConfigureView,
+        HtmlElementBoxShadowConfigureView,
+        HtmlElementTextShadowConfigureView,
+        HtmlElementPreView,
+        HtmlElementListView
+
     ],
   imports: [
     BrowserModule,

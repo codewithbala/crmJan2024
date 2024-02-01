@@ -1,13 +1,7 @@
-package com.snva.crmproject.controller;
+package com.snva.crmproject;
 
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.snva.crmproject.controller.LetterOfIntentController;
-import com.snva.crmproject.entity.CandidateDetails;
-import com.snva.crmproject.entity.LetterOfIntent;
-import com.snva.crmproject.service.LetterOfIntentService;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -26,6 +20,12 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.snva.crmproject.controller.LetterOfIntentController;
+import com.snva.crmproject.entity.CandidateDetails;
+import com.snva.crmproject.entity.LetterOfIntent;
+import com.snva.crmproject.service.LetterOfIntentService;
 
 @ContextConfiguration(classes = {LetterOfIntentController.class})
 @ExtendWith(SpringExtension.class)

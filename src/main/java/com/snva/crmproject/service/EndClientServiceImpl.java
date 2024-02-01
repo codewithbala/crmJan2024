@@ -4,52 +4,50 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-import com.snva.crmproject.entity.EndClient;
-import com.snva.crmproject.repository.EndClientRepository;
-
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.snva.crmproject.entity.LetterOfIntent;
+import com.snva.crmproject.repository.candidate.LetterOfIntentRepository;
+
 @Service
-public class EndClientServiceImpl implements EndClientService {
+public class LetterOfIntentService {
 
 	@Autowired
-	EndClientRepository endClientRepository;
+	private LetterOfIntentRepository letterOfIntentRepository;
 
-	@Override
-	public List<EndClient> getAllEndClients() {
-
-		return endClientRepository.findAll();
+	public List<LetterOfIntent> getAllLettersOfIntent() {
+		return letterOfIntentRepository.findAll();
 	}
 
-	@Override
-	public Optional<EndClient> getEndClientById(Long id) {
-
-		return endClientRepository.findById(id);
+	public Optional<LetterOfIntent> getLetterOfIntentById(Long id) {
+		return letterOfIntentRepository.findById(id);
 	}
 
-	@Override
-	public EndClient saveEndClient(EndClient endClient) {
-		return endClientRepository.save(endClient);
+	public LetterOfIntent saveLetterOfIntent(LetterOfIntent letterOfIntent) {
+		return letterOfIntentRepository.save(letterOfIntent);
 	}
 
-	@Override
-	public void deleteEndClient(Long id) {
-		endClientRepository.deleteById(id);
-
+	public void deleteLetterOfIntent(Long id) {
+		letterOfIntentRepository.deleteById(id);
 	}
 
-	@Override
-	public Optional<EndClient> updateEndClient(Long id, EndClient updatedEndClient) {
-		Optional<EndClient> existingEndClient = getEndClientById(id);
-		if (existingEndClient.isPresent()) {
-			EndClient endClient = existingEndClient.get();
-			endClient.setEndClient(updatedEndClient.getEndClient());
-			endClient.setCity(updatedEndClient.getCity());
-			endClient.setState(updatedEndClient.getState());
-			return Optional.of(saveEndClient(endClient));
+	public ResponseEntity<String> updateLetterOfIntent(Long id, LetterOfIntent updatedLetterOfIntent) {
+		Optional<LetterOfIntent> existingLetterOfIntent = letterOfIntentRepository.findById(id);
+		if (existingLetterOfIntent.isPresent()) {
+			LetterOfIntent letterOfIntent = existingLetterOfIntent.get();
+
+			letterOfIntent.setCandidateId(updatedLetterOfIntent.getCandidateId());
+			letterOfIntent.setlOISent(updatedLetterOfIntent.islOISent());
+			letterOfIntent.setlOIAccepted(updatedLetterOfIntent.islOIAccepted());
+			letterOfIntent.setJoinedBatch(updatedLetterOfIntent.isJoinedBatch());
+			letterOfIntent.setStartDate(updatedLetterOfIntent.getStartDate());
+
+			letterOfIntentRepository.save(letterOfIntent);
+
+			return ResponseEntity.ok("Letter of Intent updated successfully");
+		} else {
+			return ResponseEntity.notFound().build();
 		}
-		return Optional.empty();
 	}
-
 }

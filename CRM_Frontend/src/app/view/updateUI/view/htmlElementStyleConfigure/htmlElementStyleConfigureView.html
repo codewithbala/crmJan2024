@@ -1,0 +1,86 @@
+<div class="card">
+    <div class="row">
+        <div class="col-4">
+            <div class="row mt-2 ps-3">
+                <div class="card" style="min-height:200px;">
+                    <div class="{{parentUI.class}}" style="{{parentUI.style}}">
+                        <div class="{{uiModel.class}}" style="{{elementStyle.toString()}}">
+                            Hello Word
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <app-html-element-list-view
+                    [part]="this.part"
+            >
+            </app-html-element-list-view>
+        </div>
+        <div class="col-8">
+            <div class="ps-1 pe-3" style="min-height:600px">
+                <div class="row mt-2">
+                    <div class="{{class1}}" (click)="changeState('background')">
+                        <h3>BackGround</h3>
+                    </div>
+                    <div class="{{class2}}" (click)="changeState('border')">
+                        <h3>Border</h3>
+                    </div>
+                    <div class="{{class3}}" (click)="changeState('text-font')">
+                        <h3>Test-Font</h3>
+                    </div>
+                </div>
+                <div class="row mt-2" *ngIf="state == 'background'">
+                    <div class="col-6">
+                        <app-html-element-box-back-ground-configure-view (change)="changeUiModel()"
+                                [boxColor]="this.elementStyle.boxColor"
+                        >
+                        </app-html-element-box-back-ground-configure-view>
+                    </div>
+                    <div class="col-6">
+                        <app-html-element-box-position-configure-view (change)="changeUiModel()"
+                                [position]="this.elementStyle.boxPosition"
+                        >
+                        </app-html-element-box-position-configure-view>
+                    </div>
+                    <div class="col-12">
+                        <app-html-element-box-shadow-configure-view (change)="changeUiModel()"
+                                [shadowList]="this.elementStyle.boxShadow"
+                        >
+                        </app-html-element-box-shadow-configure-view>
+                    </div>
+                </div>
+                <div class="row mt-2"  *ngIf="state == 'border'">
+                    <div class="col-12">
+                        <app-html-element-box-border-configure-view (change)="changeUiModel()"
+                                [radius]  = "this.elementStyle.boxRadius"
+                                [boxSize] = "this.elementStyle.boxSize"
+                                [border]  = "this.elementStyle.boxBorder"
+                        >
+                        </app-html-element-box-border-configure-view>
+                    </div>
+                </div>
+                <div class="row mt-2" *ngIf="state == 'text-font'">
+                    <div class="col-6" >
+                        <app-html-element-text-configure-view (change)="changeUiModel()"
+                                [title]="'Default Text'"
+                                [color]="this.elementStyle.textColor"
+                                [font] ="this.elementStyle.textFont"
+                        ></app-html-element-text-configure-view>
+                    </div>
+                    <div class="col-6">
+                        <app-html-element-text-position-configure-view (change)="changeUiModel()"
+                                [position]="this.elementStyle.textPosition"
+                        >
+                        </app-html-element-text-position-configure-view>
+                    </div>
+                    <div class="col-12 mt-3">
+                        <app-html-element-text-shadow-configure-view (change)="changeUiModel()"
+                                [shadowList]="this.elementStyle.textShadow"
+                        >
+                        </app-html-element-text-shadow-configure-view>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

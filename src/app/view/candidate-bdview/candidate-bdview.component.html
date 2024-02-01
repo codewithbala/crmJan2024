@@ -1,0 +1,77 @@
+<div class="col-6" *ngIf="candidateP3Right == true">
+    <div class="row mt-4">
+      <div class="col-5 text-end">
+        <label>LOI Sent:</label>
+      </div>
+      <div class="col-6">
+        <select  id="loiSent" class="form-select text_font">
+          <option>{{loiSent}}</option>
+          <option *ngFor="let l of menuData.LOI_SENT">{{l}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-5 text-end">
+        <label>LOI Accept:</label>
+      </div>
+      <div class="col-6">
+        <select  id="loiAccepted" class="form-select text_font">
+          <option>{{loiAccepted}}</option>
+          <option *ngFor="let l of menuData.LOI_ACCEPTED">{{l}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-5 text-end">
+        <label>Joined Batch:</label>
+      </div>
+      <div class="col-6">
+        <select  id="joinBatch" class="form-select text_font">
+          <option>{{joinedBatch}}</option>
+          <option *ngFor="let l of menuData.JOIN_BATCH">{{l}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-5 text-end">
+        <label>Batch Start Date:</label>
+      </div>
+      <div class="col-6">
+        <input type="text" class="form-control" placeholder="{{currentCandidate.details.startDate}}" bsDatepicker formControlName="effectiveTime" placement="top" [bsConfig]="bsConfig" id="batchStartDate">
+      </div>
+    </div>
+  </div>
+  <div class="col-6" *ngIf="candidateP3Right == false">
+    <div class="row mt-4">
+      <div class="col-5 text-end">
+        <label>LOI Sent:</label>
+      </div>
+      <div class="col-6 text-start">
+        <label>{{loiSent}}</label>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-5 text-end">
+        <label>LOI Accepted:</label>
+      </div>
+      <div class="col-6 text-start">
+        <label>{{loiAccepted}}</label>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-5 text-end">
+        <label>Joined Batch:</label>
+      </div>
+      <div class="col-6 text-start">
+        <label>{{joinedBatch}}</label>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-5 text-end">
+        <label>Batch Start Date:</label>
+      </div>
+      <div class="col-6 text-start">
+        <label>{{currentCandidate.details.startDate}}</label>
+      </div>
+    </div>
+  </div>

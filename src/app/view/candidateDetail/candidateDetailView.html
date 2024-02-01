@@ -1,0 +1,74 @@
+<div class="container mt-4 mb-4 pt-4" style="min-height: 800px;">
+  <div *ngIf="pageStatus=='recruiter'"><!-- For Recruiter -->
+
+    <app-candidate-recruiter-detail [currentCandidate]="currentCandidate" [candidateP1Right]='candidateP1Right'
+      [countries]='countries' [states]='states' [lgas]='lgas' [bsConfig]='bsConfig' [candidateId]='candidateId'
+      [addressCity]="addressCity" [addressState]="addressState" [addressCountry]="addressCountry"
+      (addEvent)="add($event)" (saveEvent)="save($event)" (countryChangeEvent)="handleCountryChange()"
+      (stateChangeEvent)="handleStateChange()" (changeStatusEvent)="chanegStatus($event)"
+      ></app-candidate-recruiter-detail>
+
+  </div>
+
+  <div *ngIf="pageStatus =='techBD'">
+    <div class="row g-3 m-2">
+      <div class="col-sm-1 p-2">
+        <div class="d-flex justify-content-center align-items-center" (click)="chanegStatus('recruiter')">
+          <button class="btn btn-secondary btn-lg ps-2">
+            <i class="bi bi-arrow-left"></i>
+          </button>
+        </div>
+      </div>
+      <div class="col-sm-10 p-2">
+        <div class="card cardBackGround border-success text-white text_font">
+          <div class="row mt-2">
+            <div class="col-4">
+              <h5>CandidateName:</h5>
+            </div>
+            <div class="col-4">
+              <h5>RecruiterName:</h5>
+            </div>
+            <div class="col-4">
+              <h5>Interviewer:</h5>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-4">
+              <h5>{{currentCandidate.firstName + ' ' + currentCandidate.middleName + " " + currentCandidate.lastName}}
+              </h5>
+            </div>
+            <div class="col-4">
+              <h5>{{currentCandidate.recruiterName}}</h5>
+            </div>
+            <div class="col-4">
+              <h5>{{currentCandidate.details.interviewer}}</h5>
+            </div>
+          </div>
+          <hr>
+          <div class="row mt-2 mb-4">
+
+            <!-- Tech -->
+
+            <candidate-tech-view [candidateP2Right]="candidateP2Right"
+              [currentCandidate]="currentCandidate"></candidate-tech-view>
+            <!-- BD -->
+            <candidate-bdview [bsConfig]="bsConfig" [candidateP3Right]="candidateP3Right"
+              [currentCandidate]="currentCandidate" [joinedBatch]="joinedBatch" [loiAccepted]="loiAccepted"
+              [loiAccepted]="loiAccepted" [loiSent]="loiSent">
+            </candidate-bdview>
+            <div class="row mt-5">
+              <div class="col-9">
+                <div id="errorMessage"></div>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-success px-4" (click)="save(currentCandidate)">SAVE</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-1 p-2">
+      </div>
+    </div>
+  </div>
+</div>

@@ -48,7 +48,9 @@
                         <h5>Vendor Information</h5>
                     <hr>
                         <div class="row">
-                            <div class="col-8">
+
+                            <div class="col-3">
+
                                 <label for="school">Vendor Tier:</label>
                                 <input type="text" id="school" name="school" class="form-control" [(ngModel)]="submission.vendor.vendorTier">
                             </div>
@@ -68,31 +70,31 @@
                                 <label for="emailId">Email ID:</label>
                                 <input type="email" id="emailId" name="emailId" class="form-control" [(ngModel)]="submission.vendor.email">
                             </div>
-                            <div class="col-6">
+
+                            <div class="col-4">
                                 <label for="phoneNumber">Phone Number:</label>
                                 <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control" [(ngModel)]="submission.vendor.phone">
                             </div>
-                            <div class="col-12">
-                                    <div class="col-5">
+                      
+                                    <div class="col-4">
                                         <label class="text_font text-white">State</label>
                                         <select id="addressState" class="form-select text_font" formControlName="state"
                                             (change)="handleStateChange()" [(ngModel)]="submission.vendor.state">
-                                            <!-- <option>{{this.addressState}}</option> -->
-                                            <!-- <option *ngFor="let state of states">{{ state.label}}</option> -->
+                                            <option>{{submission.vendor.state}}</option>
+                                            <option *ngFor="let state of states">{{ state.label}}</option>
                                         </select>
                                     </div>
-                                
-                                <div class="row mt-2">
+                           
                                     <div class="col-6">
                                         <label class="text_font text-white">City</label>
-                                        <select id="addressCity" class="form-select text_font" formControlName="lga" [(ngModel)]="submission.vendor.city">
-                                            <!-- <option>{{this.addressCity}}</option> -->
-                                            <!-- <option *ngFor="let lga of lgas">{{ lga.label }}</option> -->
+                                        <select id="addressCity" class="form-select text_font" (change)="handleLgaChange()" formControlName="lga" [(ngModel)]="submission.vendor.city">
+                                            <option>{{submission.vendor.city}}</option>
+                                            <option *ngFor="let lga of lgas">{{ lga.label }}</option>
                                         </select>
                                     </div>
-                                </div>
                                 
-                            </div>
+                         
+
                            
                         </div>
                        
@@ -105,13 +107,22 @@
                                 <label for="emailId">End Client</label>
                                 <input type="text" id="emailId" name="emailId" class="form-control" [(ngModel)]="submission.endClient.endClient">
                             </div>
-                            <div class="col-6">
-                                <label for="emailId">City</label>
-                                <input type="text" id="emailId" name="emailId" class="form-control" [(ngModel)]="submission.endClient.city">
+
+                            <div class="col-5">
+                                <label class="text_font text-white">State</label>
+                                <select id="addressEQState" class="form-select text_font" formControlName="state"
+                                    (change)="handleEQStateChange()" [(ngModel)]="submission.vendor.state">
+                                    <option>{{submission.endClient.state}}</option>
+                                    <option *ngFor="let state of states">{{ state.label}}</option>
+                                </select>
                             </div>
                             <div class="col-6">
-                                <label for="emailId">State</label>
-                                <input type="text" id="emailId" name="emailId" class="form-control" [(ngModel)]="submission.endClient.state">
+                                <label class="text_font text-white">City</label>
+                                <select id="addressEQCity" class="form-select text_font" (change)="handleEQLgaChange()" formControlName="lga" [(ngModel)]="submission.vendor.city">
+                                    <option>{{submission.endClient.city}}</option>
+                                    <option *ngFor="let lga of lgas">{{ lga.label }}</option>
+                                </select>
+
                             </div>
                         </div>
                         <div class="row mt-2">
@@ -121,11 +132,13 @@
                     <div class="row mt-2">
                         <div class="col-5">
                             <label>Date:</label>
-                            <input type="text" class="form-control" placeholder="{{submission.customerInterview.interviewDate}}" bsDatepicker formControlName="effectiveTime" placement="top" [bsConfig]="bsConfig" id="interviewDate" [(ngModel)]="submission.customerInterview.interviewDate">
+
+                            <input type="date" class="form-control" [(ngModel)]="submission.customerInterview.interviewDate">
                         </div>
                         <div class="col-5">
                             <label>Time:</label>
-                            <input type="text" class="form-control" [(ngModel)]="submission.customerInterview.interviewTime">
+                            <input type="time" class="form-control" [(ngModel)]="submission.customerInterview.interviewTime">
+
                         </div>
                         <div class="col-5">
                             <label>Result:</label>
@@ -146,30 +159,31 @@
             
             <div class="row m-2 text-start">
                 
-                <div class="col-6">
+
+                <div class="col">
                     <h5>Project Details</h5>
                     <hr>
                     <div class="row mt-2">
-                        <div class="col-6">
+                        <div class="col-3">
                             <label>Project Start Date:</label>
-                            <input type="text" class="form-control" placeholder="{{submission.projectStartDate}}" bsDatepicker formControlName="effectiveTime" placement="top" [bsConfig]="bsConfig" id="interviewDate" [(ngModel)]="submission.customerInterview.interviewDate">
+                            <input type="date" class="form-control" placeholder="{{submission.projectStartDate}}"[(ngModel)]="submission.projectStartDate">
                         </div>
-                        <div class="col-6">
+                        <div class="col-2">
                             <label>Project End Date</label>
-                            <div class="row">
-                                <input type="text" class="form-control" placeholder="{{submission.projectEndDate}}" bsDatepicker formControlName="effectiveTime" placement="top" [bsConfig]="bsConfig" id="interviewDate" [(ngModel)]="submission.customerInterview.interviewDate">
-                        </div>
+                            
+                                <input type="date" class="form-control" placeholder="{{submission.projectEndDate}}" [(ngModel)]="submission.projectEndDate">
+                        
                         </div>
                     </div>
-                    <div class="row mt-4">
-                        <div class="col-10">
+                   
+                        <div class="col-3">
                             <label>Remarks:</label>
-                            <textarea id="w3review" name="remarks" rows="4" cols="50" [(ngModel)]="submission.remarks">
+                            <textarea id="w3review" name="remarks" rows="4" cols="100" [(ngModel)]="submission.remarks">
                               
                                 </textarea>
                             </div>
-                    </div>
-                  
+                    
+
                     
                    
                     <div class="row mt-5 mb-3">

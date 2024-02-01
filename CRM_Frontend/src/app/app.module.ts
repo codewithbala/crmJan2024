@@ -48,6 +48,7 @@ import { CandidateBDViewComponent } from './view/candidate-bdview/candidate-bdvi
 import { CandidateSubmissionsComponent } from './view/candidate-submissions/candidate-submissions.component';
 import { ViewAllSubmissionsComponent } from './view/view-all-submissions/view-all-submissions.component';
 
+
 import { UpdateUI } from "./view/updateUI/view/updateUI"
 import { HtmlElementStyleConfigureView } from "./view/updateUI/view/htmlElementStyleConfigure/htmlElementStyleConfigureView";
 import { HtmlElementTextFontConfigureView } from './view/updateUI/view/htmlElementStyleConfigure/UnitConfigureView/htmlElementTextFontConfigureView/htmlElementTextFontConfigureView';
@@ -96,7 +97,9 @@ import { HtmlElementListView } from './view/updateUI/view/htmlElementListView/ht
         CandidateTechViewComponent,
         CandidateBDViewComponent,
         CandidateSubmissionsComponent,
-        ViewAllSubmissionsComponent,
+
+        ViewAllSubmissionsComponent
+
 
         UpdateUI,
         HtmlElementStyleConfigureView,
@@ -109,6 +112,7 @@ import { HtmlElementListView } from './view/updateUI/view/htmlElementListView/ht
         HtmlElementTextShadowConfigureView,
         HtmlElementPreView,
         HtmlElementListView
+
     ],
   imports: [
     BrowserModule,

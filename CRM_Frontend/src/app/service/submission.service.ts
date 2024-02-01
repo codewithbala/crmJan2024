@@ -22,6 +22,11 @@ export class SubmissionService {
   }
   putSubmission(submission:Submission){
     console.log(submission);
+
+    delete submission.customerInterview.interviewID;
+    delete submission.endClient.id;
+    delete submission.vendor.id;
+
     return this.http.put<Submission>(`${this.baseURL}/${submission.id}`,submission)
   }
 

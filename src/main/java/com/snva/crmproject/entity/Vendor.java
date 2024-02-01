@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.snva.crmproject.entity.SubmissionDetails.Submission;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,7 +18,8 @@ public class Vendor {
 	
 	 	@Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private Long id;
+	    @Column(name="id")
+	 	private Long vendorId;
 
 	    private String vendorTier;
 	    private String vendorName;
@@ -34,7 +36,7 @@ public class Vendor {
 		public Vendor(Long id, String vendorTier, String vendorName, String spoc, String poc, String email,
 				String phone, String state, String city) {
 			super();
-			this.id = id;
+			this.vendorId = id;
 			this.vendorTier = vendorTier;
 			this.vendorName = vendorName;
 			this.spoc = spoc;
@@ -49,10 +51,17 @@ public class Vendor {
 		}
 
 		public Long getId() {
-			return id;
+			return vendorId;
 		}
 		public void setId(Long id) {
-			this.id = id;
+			this.vendorId = id;
+		}
+		
+		public Long getVendorId() {
+			return vendorId;
+		}
+		public void setVendorId(Long vendorId) {
+			this.vendorId = vendorId;
 		}
 		public String getVendorTier() {
 			return vendorTier;
@@ -101,6 +110,12 @@ public class Vendor {
 		}
 		public void setCity(String city) {
 			this.city = city;
+		}
+		@Override
+		public String toString() {
+			return "Vendor [vendorId=" + vendorId + ", vendorTier=" + vendorTier + ", vendorName=" + vendorName
+					+ ", spoc=" + spoc + ", poc=" + poc + ", email=" + email + ", phone=" + phone + ", state=" + state
+					+ ", city=" + city + ", submission=" + submission + "]";
 		}   
 	    
 	}

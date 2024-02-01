@@ -1,5 +1,4 @@
 <div class="container mt-4 mb-4 pt-4" style="min-height: 800px;">
-  <button class="btn btn-primary" (click)="submissionPage()">View Submissions</button>
   <div *ngIf="pageStatus=='recruiter'"><!-- For Recruiter -->
 
     <app-candidate-recruiter-detail [currentCandidate]="currentCandidate" [candidateP1Right]='candidateP1Right'
@@ -15,7 +14,7 @@
     <div class="row g-3 m-2">
       <div class="col-sm-1 p-2">
         <div class="d-flex justify-content-center align-items-center" (click)="chanegStatus('recruiter')">
-          <button class="btn btn-primary btn-lg ps-2">
+          <button class="btn btn-secondary btn-lg ps-2">
             <i class="bi bi-arrow-left"></i>
           </button>
         </div>

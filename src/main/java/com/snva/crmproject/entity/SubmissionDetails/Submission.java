@@ -29,15 +29,15 @@ public class Submission {
     @JoinColumn(name = "candidate_id", nullable = false)
 	private CandidateDetails candidateDetails;  //One to One mapping to Candidate Detail Entity
 
-	@OneToOne
-	@JoinColumn(name = "id")
+	@OneToOne (cascade=CascadeType.ALL)
+	@JoinColumn(name = "id" )
 	private Vendor vendor; ///One to One mapping to Vendor Entity.
 
-	@OneToOne
+	@OneToOne (cascade=CascadeType.ALL)
 	@JoinColumn(name = "id")
 	private EndClient endClient;  //One to One mapping to end client Entity.
 
-	@OneToOne
+	@OneToOne (cascade=CascadeType.ALL)
 	@JoinColumn(name = "id")
 	private CustomerInterview customerInterview; //One to One mapping to interview ID Entity.
 
@@ -63,12 +63,12 @@ public class Submission {
 
 
     @Column(name = "project_start_date")
-    @Temporal(TemporalType.DATE)
-    private Date projectStartDate;
+
+    private String projectStartDate;
 
     @Column(name = "project_end_date")
-    @Temporal(TemporalType.DATE)
-    private Date projectEndDate;
+
+    private String projectEndDate;
 
     @Column(name = "remarks")
     private String remarks;
@@ -141,19 +141,19 @@ public class Submission {
 	    public void setCustomerInterview(CustomerInterview customerInterview) {
 	        this.customerInterview = customerInterview;
 	    }
-	public Date getProjectStartDate() {
+	public String getProjectStartDate() {
 		return projectStartDate;
 	}
 
-	public void setProjectStartDate(Date projectStartDate) {
+	public void setProjectStartDate(String projectStartDate) {
 		this.projectStartDate = projectStartDate;
 	}
 
-	public Date getProjectEndDate() {
+	public String getProjectEndDate() {
 		return projectEndDate;
 	}
 
-	public void setProjectEndDate(Date projectEndDate) {
+	public void setProjectEndDate(String projectEndDate) {
 		this.projectEndDate = projectEndDate;
 	}
 
@@ -196,8 +196,8 @@ public class Submission {
 
 		public Submission(Long id, CandidateDetails candidateDetails, Date dateOfSubmission, String bdeName,
 				String positionTitle, Vendor vendor, EndClient endClient, double billRate, double billRateAnnual,
-				String submissionStatus, CustomerInterview customerInterview, Date projectStartDate,
-				Date projectEndDate, String remarks) {
+				String submissionStatus, CustomerInterview customerInterview, String projectStartDate,
+				String projectEndDate, String remarks) {
 			super();
 			this.id = id;
 			this.candidateDetails = candidateDetails;

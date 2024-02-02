@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {UIconfigure} from "../../../config/UIconfigure";
+import {UiModel} from "../../updateUI/model/uiModel";
 
 @Component({
   selector: 'app-footer',
@@ -8,7 +9,11 @@ import {UIconfigure} from "../../../config/UIconfigure";
 })
 export class FooterComponent
 {
+  @Input() model:string;
+  @Input() ui:UiModel[];
+
   constructor(public uiconfigure:UIconfigure)
   {
+    this.ui = this.uiconfigure.footer;
   }
 }

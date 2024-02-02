@@ -10,7 +10,6 @@ export class SNVAHtmlTextShadow
 
     constructor(input:string)
     {
-        console.log("#######" + input);
         let list = input.trim().split(' ').filter((s) => {return s != '';});
         if(list.length == 2)
         {

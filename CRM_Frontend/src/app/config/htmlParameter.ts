@@ -24,7 +24,6 @@ export class HtmlParameter
         this.htmlBorderStyle = this.htmlParameter.HTML_BORDER_STYLE;
         this.htmlShadowStyle = this.htmlParameter.HTML_SHADOW_TYPE;
         this.htmlSizeStyle   = this.htmlParameter.HTML_SIZE_TYPE;
-
         this.htmlTextFont    = this.htmlParameter.HTML_TEXT_Font;
         this.htmlTextStyle   = this.htmlParameter.HTML_TEXT_STYLE;
         this.htmlTextWeight  = this.htmlParameter.HTML_TEXT_WEIGHT;

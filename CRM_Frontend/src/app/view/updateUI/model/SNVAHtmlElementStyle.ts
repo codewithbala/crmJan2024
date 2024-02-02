@@ -42,7 +42,6 @@ export class SNVAHtmlElementStyle
             }
             else if(pairs[0].includes('border') && !pairs[0].includes('radius'))
             {
-                console.log('#####' + pairs[0] + '->' + pairs[1]);
                 this.boxBorder.set(pairs[0], pairs[1]);
             }
             else if(pairs[0].includes('width') || pairs[0].includes('height'))

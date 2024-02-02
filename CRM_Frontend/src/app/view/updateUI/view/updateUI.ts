@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UIconfigure} from "../../../config/UIconfigure";
 import {UiService} from "../service/uiService";
 import {UiModel} from "../model/uiModel";
+import {compose} from "@ngrx/store";
 
 @Component({
   selector: 'app-test',
@@ -13,7 +14,6 @@ export class UpdateUI implements OnInit
   part:string = '' // html part
 
   uiModelList:UiModel[] = [];
-
   currenUiModel  : UiModel = new UiModel();
 
   constructor(private uiService:UiService, public uiconfigure:UIconfigure)
@@ -21,27 +21,23 @@ export class UpdateUI implements OnInit
 
   ngOnInit(): void
   {
-    this.currenUiModel.id=2;
-    this.currenUiModel.path  = 'header/title'
-    this.currenUiModel.class = ''
-    this.currenUiModel.style = 'color:rgba(241,159,5,1);font-size:3em;'
-    this.currenUiModel.name = "Logo"
-    this.currenUiModel.model = "style only"
-    this.currenUiModel.parentId = 1
+
   }
 
-  changePart(s:string)
+  changeParts(s:string)
   {
     this.part = s;
+  }
 
-    this.uiService.getUiConfigureByPart(this.part).subscribe(
-        data =>
-        {
-          this.uiModelList = data;
-          console.log(data);
-        }
-    )
-
+  getElementUI(id:number)
+  {
+    this.uiModelList.forEach(u =>
+    {
+      if(u.id == id)
+      {
+        this.currenUiModel = u;
+      }
+    })
   }
 
   showchild()

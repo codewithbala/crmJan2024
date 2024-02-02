@@ -1,0 +1,19 @@
+<div  class="card">
+    <h2>Pre-View</h2>
+    <div>
+        <app-footer *ngIf="part=='footer'"
+                [model]="'edit'"
+                [ui]="this.uiModelList"
+        >
+        </app-footer>
+        <app-header *ngIf="part=='header'"
+                    [title]="'Logo'"
+                    [model]="'edit'"
+                    [ui]="this.uiModelList"
+        >
+        </app-header>
+    </div>
+    <div class="col-12">
+        <button (click)="showCurrentElement()">showCurrentElement</button>
+    </div>
+</div>

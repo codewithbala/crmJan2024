@@ -1,0 +1,22 @@
+<div class="card">
+    <SNVAuiPartPreView
+            [part]="this.part"
+            [uiModelList]="this.uiModelList"
+    ></SNVAuiPartPreView>
+</div>
+<div class="card">
+    <div class="row">
+        <div class="col-4">
+            <SNVAuiElementListView
+                    [part]="this.part"
+                    [uiModelList]="this.uiModelList"
+                    (currentElement)="setCurrentElement($event)"
+            ></SNVAuiElementListView>
+        </div>
+        <div class="col-8">
+            <SNVAuiElementEditView
+                    [(uiModel)]="this.currentElement"
+            ></SNVAuiElementEditView>
+        </div>
+    </div>
+</div>

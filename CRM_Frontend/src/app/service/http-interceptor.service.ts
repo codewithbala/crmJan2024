@@ -15,23 +15,24 @@ import {User} from "../model/user";
 export class HttpInterceptorService {
   constructor(private auth: AuthenticationService) {}
   intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler
+      req: HttpRequest<any>,
+      next: HttpHandler
   ): Observable<HttpEvent<any>>
   {
     console.log("intercepted");
     // @ts-ignore
     let user:User = JSON.parse( window.sessionStorage.getItem('SNVA_CRM_USER') );
-    if ((this.auth.authenticated && req.url.indexOf("basicauth") === -1 )|| user != null)
+    console.log("######test####" + req.url);
+    if ( ((this.auth.authenticated && req.url.indexOf("basicauth") === -1 )|| user != null) && !req.url.includes(':3000')   )
     {
       console.log("authenticated");
       const authReq = req.clone(
-        {
-        headers: new HttpHeaders(
           {
-          Authorization: `${this.auth.getAuthenticatedUser()}`,
-        }),
-      });
+            headers: new HttpHeaders(
+                {
+                  Authorization: `${this.auth.getAuthenticatedUser()}`,
+                }),
+          });
       return next.handle(authReq);
     }
     else

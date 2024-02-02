@@ -12,7 +12,6 @@ export class SNVAHtmlBoxShadow
 
     constructor(input:string)
     {
-        console.log("#######" + input);
         let list = input.trim().split(' ').filter((s) => {return s != '';});
         if(list.length == 2)
         {
@@ -126,7 +125,6 @@ export class SNVAHtmlBoxShadow
         }
         else if(list.length == 5)
         {
-            console.log("has 5 input values" + list);
             if(list[0] == 'inset')
             {
                 this.inset = true;
@@ -154,7 +152,6 @@ export class SNVAHtmlBoxShadow
             }
             else if(this.isColor(list[0]))
             {
-                console.log("has 5 input values ##" + list[0]);
                 this.color   = new SNVAHtmlColor(list[0]);
                 this.xShadow = new SNVAHtmlUnit(list[1]);
                 this.yShadow = new SNVAHtmlUnit(list[2]);

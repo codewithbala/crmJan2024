@@ -10,7 +10,6 @@ export class SNVAHtmlBoxBorderColor
 
     set(name:string, value:string)
     {
-        console.log("#########" + name + "->" + value);
         let nameT = name.trim();
         if(nameT == 'border-color')
         {

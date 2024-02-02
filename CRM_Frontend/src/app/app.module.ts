@@ -15,7 +15,6 @@ import { AccountDetailView } from './view/accountDetail/accountDetailView';
 import { CandidateListView } from './view/candidateList/candidateListView';
 import { CandidateDetailView } from './view/candidateDetail/candidateDetailView';
 import { HomePageView } from './view/homePage/homePageView';
-import { TestComponent } from './view/test/test.component';
 import { HeaderComponent } from './view/nav/header/header.component';
 import { FooterComponent } from './view/nav/footer/footer.component';
 import { DeleteUserConfirmView } from './view/popView/deleteUserConfirmView/deleteUserConfirmView';
@@ -49,6 +48,20 @@ import { CandidateBDViewComponent } from './view/candidate-bdview/candidate-bdvi
 import { CandidateSubmissionsComponent } from './view/candidate-submissions/candidate-submissions.component';
 import { ViewAllSubmissionsComponent } from './view/view-all-submissions/view-all-submissions.component';
 
+import { UpdateUI } from "./view/updateUI/view/updateUI"
+import { SNVAuiElementEditView } from "./view/updateUI/view/SNVAuiPartEditView/SNVAuiElementEditView/SNVAuiElementEditView";
+import { HtmlElementTextFontConfigureView } from './view/updateUI/view/SNVAuiPartEditView/SNVAuiElementEditView/UnitConfigureView/htmlElementTextFontConfigureView/htmlElementTextFontConfigureView';
+import { HtmlElementTextPositionConfigureView } from './view/updateUI/view/SNVAuiPartEditView/SNVAuiElementEditView/UnitConfigureView/htmlElementTextPositionConfigureView/htmlElementTextPositionConfigureView';
+import { HtmlElementBoxPositionConfigureView } from './view/updateUI/view/SNVAuiPartEditView/SNVAuiElementEditView/UnitConfigureView/htmlElementBoxPositionConfigureView/htmlElementBoxPositionConfigureView';
+import { HtmlElementBoxBorderConfigureView } from './view/updateUI/view/SNVAuiPartEditView/SNVAuiElementEditView/UnitConfigureView/htmlElementBoxBorderConfigureView/htmlElementBoxBorderConfigureView';
+import { HtmlElementBoxColorConfigureView } from './view/updateUI/view/SNVAuiPartEditView/SNVAuiElementEditView/UnitConfigureView/htmlElementBoxColorConfigureView/htmlElementBoxColorConfigureView';
+import { HtmlElementBoxShadowConfigureView } from './view/updateUI/view/SNVAuiPartEditView/SNVAuiElementEditView/UnitConfigureView/htmlElementBoxShadowConfigureView/htmlElementBoxShadowConfigureView';
+import { HtmlElementTextShadowConfigureView } from './view/updateUI/view/SNVAuiPartEditView/SNVAuiElementEditView/UnitConfigureView/htmlElementTextShadowConfigureView/htmlElementTextShadowConfigureView';
+import { SNVAuiPartPreView } from './view/updateUI/view/SNVAuiPartEditView/SNVAuiPartPreView/SNVAuiPartPreView';
+import { Text } from './view/updateUI/view/test/text';
+import { SNVAuiPartListView } from './view/updateUI/view/SNVAuiPartListView/SNVAuiPartListView';
+import { SNVAuiPartEditView } from './view/updateUI/view/SNVAuiPartEditView/SNVAuiPartEditView';
+import { SNVAuiElementListView } from './view/updateUI/view/SNVAuiPartEditView/SNVAuiElementListView/SNVAuiElementListView';
 
 @NgModule({
     declarations: [
@@ -59,7 +72,6 @@ import { ViewAllSubmissionsComponent } from './view/view-all-submissions/view-al
         CandidateListView,
         CandidateDetailView,
         HomePageView,
-        TestComponent,
         HeaderComponent,
         FooterComponent,
         DeleteUserConfirmView,
@@ -85,7 +97,22 @@ import { ViewAllSubmissionsComponent } from './view/view-all-submissions/view-al
         CandidateTechViewComponent,
         CandidateBDViewComponent,
         CandidateSubmissionsComponent,
-        ViewAllSubmissionsComponent
+        ViewAllSubmissionsComponent,
+
+        UpdateUI,
+        SNVAuiElementEditView,
+        HtmlElementTextFontConfigureView,
+        HtmlElementTextPositionConfigureView,
+        HtmlElementBoxPositionConfigureView,
+        HtmlElementBoxBorderConfigureView,
+        HtmlElementBoxColorConfigureView,
+        HtmlElementBoxShadowConfigureView,
+        HtmlElementTextShadowConfigureView,
+        SNVAuiPartPreView,
+        Text,
+        SNVAuiPartListView,
+        SNVAuiPartEditView,
+        SNVAuiElementListView
     ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import {RoleCheck} from "../../../tools/role-check";
 import {AddNewUser} from "../../popView/addNewUser/addNewUser";
 import {BsModalService} from "ngx-bootstrap/modal";
 import {UIconfigure} from "../../../config/UIconfigure";
+import {UiModel} from "../../updateUI/model/uiModel";
 
 @Component({
   selector: 'app-header',
@@ -12,16 +13,23 @@ import {UIconfigure} from "../../../config/UIconfigure";
 })
 export class HeaderComponent implements OnInit
 {
-  constructor(private router:Router, private modalService: BsModalService, private roleCheck:RoleCheck, public uiconfigure:UIconfigure){}
-
   @Input() title:any;
   @Input() userID:any;
   @Input() userName: any;
   @Input() userRole: any;
+
+  @Input() model:string;
+  @Input() ui:UiModel[];
+
   canAddAccount:boolean = false;
   canSeeAccount:boolean = false;
   addCandidate:boolean  = false;
   addSubmission:boolean  = false;
+
+  constructor(private router:Router, private modalService: BsModalService, private roleCheck:RoleCheck, public uiconfigure:UIconfigure)
+  {
+    this.ui = this.uiconfigure.header;
+  }
 
   ngOnInit(): void
   {

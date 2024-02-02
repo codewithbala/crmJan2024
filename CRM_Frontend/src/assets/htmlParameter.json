@@ -45,7 +45,8 @@
   "HTML_TEXT_Font":
           [
             "",
-            "'courier new',courier,monospace;"
+            "'courier new',courier,monospace",
+            "Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif"
           ],
   "HTML_TEXT_STYLE":
           [

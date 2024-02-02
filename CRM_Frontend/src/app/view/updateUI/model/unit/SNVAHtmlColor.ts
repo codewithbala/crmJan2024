@@ -80,6 +80,7 @@ export class SNVAHtmlColor
 
     setTransparency(input:any):void
     {
+        console.log('[SNVAHtmlColor]:'+input);
         this.aChannel = parseFloat(input) / 100;
     }
 

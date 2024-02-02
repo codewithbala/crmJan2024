@@ -1,0 +1,50 @@
+<div class="row ms-4 text-start">
+    <div class="col-12"><h5>Text-Font</h5></div>
+</div>
+<div class="row p-0 pt-1">
+    <div class="col-2 p-0">font</div>
+    <div class="col-9 p-0">
+        <select class="form-control"  [(ngModel)] = 'this.font.fontFamily'>
+            <option *ngFor="let font of this.htmlParameter.htmlTextFont">{{font}}</option>
+        </select>
+    </div>
+</div>
+<div class="row p-0 pt-1">
+    <div class="col-2 p-0">color</div>
+    <div class="col-2 p-0"><input class="form-control-color m-0 p-0" type="color" [(ngModel)] = 'this.inputColor' (change)="change()"></div>
+    <div class="col-4 p-0">transparency(%)</div>
+    <div class="col-3 p-0"><input class="form-control" type="number" max="100" min="0" value="" oninput="if(value>100)value=100;if(value<0)value=0" [(ngModel)] = 'this.inputAplha'  (change)="change()"></div>
+</div>
+<div class="row p-0 pt-1">
+    <div class="col-2 p-0">style</div>
+    <div class="col-3 p-0">
+        <select class="form-control"  [(ngModel)] = 'this.font.fontStyle'>
+            <option *ngFor="let fontStyle of this.htmlParameter.htmlTextStyle" >{{fontStyle}}</option>
+        </select>
+    </div>
+    <div class="col-2 p-0">weight</div>
+    <div class="col-3 p-0">
+        <select class="form-control"  [(ngModel)] = 'this.font.fontWeight'>
+            <option *ngFor="let fontWeight of this.htmlParameter.htmlTextWeight" >{{fontWeight}}</option>
+        </select>
+    </div>
+</div>
+<div class="row p-0 pt-1">
+    <div class="col-2 p-0">size</div>
+    <div class="col-3 p-0"><input class="form-control" [(ngModel)] = 'this.font.fontSize.size'></div>
+    <div class="col-2 p-0 ms-1">
+        <select class="form-control" [(ngModel)] = 'this.font.fontSize.unit'>
+            <option *ngFor="let htmlUnit of this.htmlParameter.htmlUnit">{{htmlUnit}}</option>
+        </select>
+    </div>
+</div>
+<div class="row p-0 pt-1">
+    <div class="col-2 p-0">align</div>
+    <div class="col-3 p-0">
+        <select class="form-control" [(ngModel)] = 'this.font.textAlign'>
+            <option *ngFor="let alignStyle of this.htmlParameter.htmlTextAlign" >{{alignStyle}}</option>
+        </select>
+    </div>
+</div>
+
+

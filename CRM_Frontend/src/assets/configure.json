@@ -12,9 +12,9 @@
     {
       "id": "1",
       "path": "header/container",
-      "class": "container-fluid border-bottom border-success border-1",
-      "style": "background-color:rgba(22,22,22,0.75);",
-      "name" : "navbar background",
+      "class": "container-fluid",
+      "style": "background-color:rgba(22,22,22,0.75);border-bottom-style:solid;border-bottom-color:#198754;border-bottom-width:1px;",
+      "name" : "background",
       "model": "style only",
       "parentId": "0"
     },
@@ -31,7 +31,7 @@
       "id": "3",
       "path": "header/togglerButton",
       "class": "navbar-toggler",
-      "style": "background-color:rgba(255,255,244,1)",
+      "style": "background-color:rgba(255,255,244,1);",
       "name" : "toggler Button",
       "model": "style only",
       "parentId": "1"
@@ -40,7 +40,7 @@
       "id": "4",
       "path": "header/menuTitle",
       "class": "nav-link dropdown-toggle ms-5",
-      "style": "color:rgba(255,255,255,1);font-size:1.3em;font-family:'courier new',courier,monospace;",
+      "style": "color:rgba(255,255,255,1);font-size:1.3em;font-family:Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;",
       "name" : "menu button",
       "model": "style only",
       "parentId": "1"
@@ -58,7 +58,7 @@
       "id": "6",
       "path": "header/menuItem",
       "class": "dropdown-item",
-      "style": "color:rgba(255,255,255,1); font-size: 1em; font-family:'courier new', courier, monospace;",
+      "style": "color:rgba(255,255,255,1);font-family:Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;",
       "name" : "menu list item",
       "model": "style only",
       "parentId": "5"
@@ -66,8 +66,8 @@
     {
       "id": "7",
       "path": "header/accountTitle",
-      "class": "nav-link dropdown-toggle ms-4",
-      "style": "color:rgba(255,255,255,1); font-size: 1.3em; font-family:'courier new', courier, monospace;",
+      "class": "nav-link dropdown-toggle me-4",
+      "style": "color:rgba(255,255,255,1);font-family:Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;",
       "name" : "account menu button",
       "model": "style only",
       "parentId": "1"
@@ -75,7 +75,7 @@
     {
       "id": "8",
       "path": "header/accountCard",
-      "class": "dropdown-menu border-success text-end",
+      "class": "dropdown-menu dropdown-menu-end pe-0",
       "style": "background-color:rgba(22,22,22,0.75);",
       "name" : "account menu background",
       "model": "style only",
@@ -85,7 +85,7 @@
       "id": "9",
       "path": "header/accountItem",
       "class": "dropdown-item",
-      "style": "color:rgba(255,255,255,1); font-size: 1em; font-family:'courier new', courier, monospace;",
+      "style": "color:rgba(255,255,255,1);font-family:Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;",
       "name" : "account menu list item",
       "model": "style only",
       "parentId": "8"
@@ -95,7 +95,7 @@
     {
       "id": "0",
       "path": "footer",
-      "class": "navbar navbar-expand-lg",
+      "class": "navbar navbar-expand-lg pb-0",
       "style": "",
       "name" : "footer",
       "model": "read only",
@@ -104,27 +104,27 @@
     {
       "id": "1",
       "path": "footer/container",
-      "class": "container-fluid border-top border-success justify-content-center",
-      "style": "background-color:rgba(22,22,22,0.75);",
-      "name" : "footer background",
+      "class": "container-fluid",
+      "style": "background-color:rgba(22,22,22,0.75);height:50px;border-top-style:solid;border-top-color:#198754;border-top-width:1px;color:#ffffff;",
+      "name" : "background",
       "model": "style only",
       "parentId": "0"
     },
     {
       "id": "2",
       "path": "footer/text",
-      "class": "text-white text-center mt-2 mb-2",
-      "style": "",
-      "name" : "footer text",
+      "class": "",
+      "style": "width:100%;text-align:center;text-shadow:2px 2px 1px rgba(0,0,0,0.6);",
+      "name" : "text",
       "model": "style only",
       "parentId": "1"
     },
     {
       "id": "3",
       "path": "footer/link",
-      "class": "text-reset fw-bold",
-      "style": "",
-      "name" : "footer link",
+      "class": "",
+      "style": "color:#ffffff;font-weight:bold;",
+      "name" : "link",
       "model": "style only",
       "parentId": "1"
     }

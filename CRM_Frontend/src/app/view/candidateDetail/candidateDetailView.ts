@@ -86,7 +86,7 @@ export class CandidateDetailView implements OnInit
         this.candidateP1Right = this.roleCheck.updateCandidateP1Check(myAccount.role);
         this.candidateP2Right = this.roleCheck.updateCandidateP2Check(myAccount.role);
         this.candidateP3Right = this.roleCheck.updateCandidateP3Check(myAccount.role);
-          if(data.details.LOISent)
+          if(data.details.loisent)
           {
             this.loiSent = 'Yes';
           }
@@ -94,14 +94,14 @@ export class CandidateDetailView implements OnInit
           {
             this.joinedBatch  = 'Yes';
           }
-          if(data.details.LOIAccepted)
+          if(data.details.loiaccepted)
           {
             this.loiAccepted= 'Yes';
           }
         if(this.candidateP1Right == true)
         {
           this.workExpYear  = parseInt(data.workExperience.substring(0,data.workExperience.indexOf('year(s)')));
-          this.workExpMouth = parseInt(data.workExperience.substring(data.workExperience.indexOf(')')+2,data.workExperience.indexOf('mouth(s)')));
+          this.workExpMouth = parseInt(data.workExperience.substring(data.workExperience.indexOf(')')+2,data.workExperience.indexOf('month(s)')));
           this.addressCountry = data.details.addressCounty;
           this.addressState = data.details.addressState;
           this.addressCity = data.details.addressCity;
@@ -125,7 +125,6 @@ export class CandidateDetailView implements OnInit
   add(candidate:CandidateBack)
   {
     (document.getElementById('errorMessage') as HTMLInputElement).innerHTML = '';
-    candidate.workExperience = this.workExpYear + ' year(s) ' + this.workExpMouth + ' mouth(s)';
     candidate.details.interviewDate = (document.getElementById('interviewDate') as HTMLInputElement).value;
     candidate.details.addressCounty = (document.getElementById('addressCountry') as HTMLInputElement).value;
     candidate.details.addressState  = (document.getElementById('addressState') as HTMLInputElement).value;
@@ -160,7 +159,6 @@ export class CandidateDetailView implements OnInit
 
     if(this.candidateP1Right == true)
     {
-      candidate.workExperience = this.workExpYear + ' year(s) ' + this.workExpMouth + ' mouth(s)';
       let interviewDate = (document.getElementById('interviewDate') as HTMLInputElement).value;
       if(interviewDate != "")
       {
@@ -195,20 +193,20 @@ export class CandidateDetailView implements OnInit
 
       if(loiSent == this.menuData.LOI_SENT[0])
       {
-        candidate.details.LOISent = true;
+        candidate.details.loisent = true;
       }
       else
       {
-        candidate.details.LOISent = false;
+        candidate.details.loisent = false;
       }
 
       if(loiAccepted == this.menuData.LOI_ACCEPTED[0])
       {
-        candidate.details.LOIAccepted = true;
+        candidate.details.loiaccepted = true;
       }
       else
       {
-        candidate.details.LOIAccepted = false;
+        candidate.details.loiaccepted = false;
       }
 
       if(joinedBatch == this.menuData.JOIN_BATCH[0])
@@ -345,8 +343,8 @@ export class CandidateDetailView implements OnInit
     candidate.details.interviewer              = tmp.details.interviewer
     candidate.details.interviewerFeedback      = tmp.details.interviewerFeedback
     candidate.details.candidateInterviewStatus = tmp.details.candidateInterviewStatus
-    candidate.details.LOISent                  = tmp.details.LOISent
-    candidate.details.LOIAccepted              = tmp.details.LOIAccepted
+    candidate.details.loisent                  = tmp.details.loisent
+    candidate.details.loiaccepted              = tmp.details.loiaccepted
     candidate.details.joinedBatch              = tmp.details.joinedBatch
     candidate.details.startDate                = tmp.details.startDate
 
@@ -462,11 +460,11 @@ export class CandidateDetailView implements OnInit
           "<div class='col-5 text-end'>Interview Status : </div>" +
           "<div class='col-3 text-start'>"+ this.tmpCandidate.details.candidateInterviewStatus + "</div><div class='col-1 text-center'>-></div><div class='col-3 text-start'>" + this.currentCandidate.details.candidateInterviewStatus + "</div><br>"
     }
-    if(this.tmpCandidate.details.LOISent != this.currentCandidate.details.LOISent)
+    if(this.tmpCandidate.details.loisent != this.currentCandidate.details.loisent)
     {
       let loiSent1 = 'No';
       let loiSent2 = 'Yes';
-      if(this.tmpCandidate.details.LOISent)
+      if(this.tmpCandidate.details.loisent)
       {
         loiSent1 = 'Yes';
         loiSent2 = 'No;'
@@ -475,11 +473,11 @@ export class CandidateDetailView implements OnInit
           "<div class='col-5 text-end'>LOI Sent : </div>" +
           "<div class='col-3 text-start'>"+ loiSent1 + "</div><div class='col-1 text-center'>-></div><div class='col-3 text-start'>" + loiSent2 + "</div><br>"
     }
-    if(this.tmpCandidate.details.LOIAccepted != this.currentCandidate.details.LOIAccepted)
+    if(this.tmpCandidate.details.loiaccepted != this.currentCandidate.details.loiaccepted)
     {
       let LOIAccepted1 = 'No';
       let LOIAccepted2 = 'Yes';
-      if(this.tmpCandidate.details.LOIAccepted)
+      if(this.tmpCandidate.details.loiaccepted)
       {
         LOIAccepted1 = 'Yes';
         LOIAccepted2 = 'No;'
@@ -492,7 +490,7 @@ export class CandidateDetailView implements OnInit
     {
       let joinedBatch1 = 'No';
       let joinedBatch2 = 'Yes';
-      if(this.tmpCandidate.details.LOIAccepted)
+      if(this.tmpCandidate.details.loiaccepted)
       {
         joinedBatch1 = 'Yes';
         joinedBatch2 = 'No;'

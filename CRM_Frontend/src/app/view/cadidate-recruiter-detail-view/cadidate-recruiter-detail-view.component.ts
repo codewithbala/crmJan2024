@@ -70,12 +70,20 @@ changeStatusEvent = new EventEmitter<string>();
 
 add(candidate:CandidateBack)
   {
-  this.addEvent.emit(candidate);
+    
+    candidate.workExperience = this.workExpYear + ' year(s) ' + this.workExpMouth + ' month(s)'; 
+    console.log(candidate); 
+    this.addEvent.emit(candidate);
   }
 
 
   save(candidate:CandidateBack)
   {
+
+    candidate.workExperience= `${this.workExpYear} year(s) ${this.workExpMouth} month(s)`.toString();
+    console.log(this.workExpYear + ' year(s) ' + this.workExpMouth + ' month(s)');
+    console.log(candidate.workExperience);
+    console.log(candidate);
     this.saveEvent.emit(candidate);
   }
 

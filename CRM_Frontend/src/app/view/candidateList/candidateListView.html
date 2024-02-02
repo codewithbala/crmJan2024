@@ -21,10 +21,10 @@
           <div *ngFor="let candidate of allCandidate">
             <div class="row py-0 border-bottom border-secondary" (click)="showCandidateDetail(candidate.candidateId)">
               <div class="col-2">{{candidate.candidateId}}</div>
-              <div class="col-3">{{candidate.firstName + "  "+candidate.middleName+" "+candidate.lastName|SNVApipeStringCutOff:12}}</div>
-              <div class="col-3">{{candidate.recruiterName|SNVApipeStringCutOff:9}}</div>
+              <div class="col-3 text-start">{{candidate.firstName + "  "+candidate.middleName+" "+candidate.lastName|SNVApipeStringCutOff:15}}</div>
+              <div class="col-3 text-start">{{candidate.recruiterName|SNVApipeStringCutOff:15}}</div>
               <div class="col-2">{{candidate.workExperience}}</div>
-              <div class="col-1">{{candidate.visaStatus}}</div>
+              <div class="col-1 text-start">{{candidate.visaStatus}}</div>
               <div class="col-1">
                 <i class="bi bi-search" ></i>
               </div>

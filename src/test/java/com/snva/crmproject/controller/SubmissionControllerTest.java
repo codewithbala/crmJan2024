@@ -69,8 +69,8 @@ public class SubmissionControllerTest {
 	    newSubmission.setBillRateAnnual(120000.0);
 	    newSubmission.setSubmissionStatus("Pending");
 	    newSubmission.setDateOfSubmission(new Date());
-	    newSubmission.setProjectStartDate(new Date());
-	    newSubmission.setProjectEndDate(new Date());
+	    newSubmission.setProjectStartDate("New Date");
+	    newSubmission.setProjectEndDate("New Time");
 	    newSubmission.setRemarks("Excellent candidate with strong skills");
 
 
@@ -88,8 +88,8 @@ public class SubmissionControllerTest {
 		vendorRepository.save(testVendor);
 
 		CustomerInterview testInterview = new CustomerInterview();
-		testInterview.setInterviewDate(new Date());
-		testInterview.setInterviewTime(new Date());
+		testInterview.setInterviewDate("New Date");
+		testInterview.setInterviewTime("New Time");
 		testInterview.setInterviewResult("Positive");
 		testInterview.setInterviewFeedback("Good technical skills");
 	    
@@ -134,8 +134,8 @@ public class SubmissionControllerTest {
         testSubmission.setBillRateAnnual(80000.0);
         testSubmission.setSubmissionStatus("Submitted");
         testSubmission.setDateOfSubmission(new Date());
-        testSubmission.setProjectStartDate(new Date());
-        testSubmission.setProjectEndDate(new Date());
+        testSubmission.setProjectStartDate("New Date");
+        testSubmission.setProjectEndDate("New Time");
         testSubmission.setRemarks("Updated Remarks");
 
         String updatedSubmissionJson = objectMapper.writeValueAsString(testSubmission);

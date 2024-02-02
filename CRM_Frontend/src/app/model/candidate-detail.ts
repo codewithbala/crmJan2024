@@ -15,8 +15,8 @@ export class CandidateDetail
   interviewer:string = '';
   interviewerFeedback:string = '';
   candidateInterviewStatus:string = '';
-   LOISent:boolean = false;
-   LOIAccepted:boolean = false;
+  loisent:boolean = false; 
+  loiaccepted:boolean = false;
    joinedBatch:boolean = false;
    startDate:string = '';
 }

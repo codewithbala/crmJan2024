@@ -37,15 +37,15 @@ public class CustomerInterviewControllerTest {
         void setUp() {
             existingInterview = new CustomerInterview();
             existingInterview.setInterviewID(interviewId);
-            existingInterview.setInterviewDate(new Date());
-            existingInterview.setInterviewTime(new Date());
+            existingInterview.setInterviewDate("New Date");
+            existingInterview.setInterviewTime("New Time");
             existingInterview.setInterviewResult("Passed");
             existingInterview.setInterviewFeedback("Excellent");
 
             updatedInterview = new CustomerInterview();
             updatedInterview.setInterviewID(interviewId);
-            updatedInterview.setInterviewDate(new Date());
-            updatedInterview.setInterviewTime(new Date());
+            updatedInterview.setInterviewDate("New Date");
+            updatedInterview.setInterviewTime("New Time");
             updatedInterview.setInterviewResult("Failed");
             updatedInterview.setInterviewFeedback("Needs improvement");
 

@@ -17,7 +17,7 @@
             <a class="{{ui[6].class}}" style="{{ui[6].style}}" (click)="accountlist()"    *ngIf="canAddAccount==true">Manage Users</a>
             <a class="{{ui[6].class}}" style="{{ui[6].style}}" (click)="newCandidate()"   *ngIf="addCandidate==true" >New Candidate</a>
             <a class="{{ui[6].class}}" style="{{ui[6].style}}" (click)="candidatelist()">Manage Candidate</a>
-            <a class="{{ui[6].class}}" style="{{ui[6].style}}" (click)="viewSubmission()">Manage Submission</a>
+            <a class="{{ui[6].class}}" style="{{ui[6].style}}" (click)="viewSubmission()" *ngIf="addSubmission==true">Manage Submission</a>
           </div>
         </li>
         <li class="nav-item dropdown">

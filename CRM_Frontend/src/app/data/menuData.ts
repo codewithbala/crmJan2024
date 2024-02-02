@@ -23,7 +23,7 @@ export class MenuData
                       'BD'];        //9
   USER_STATUS = ['All Status', 'Active', 'Suspend'];
   USER_STATUS_VALUE = ['Status', 'Active', 'Suspend'];
-  VISA_STATUS = ['F1', 'F1 CPT', 'F1 OPT', 'F1 OPT extension', 'F2', 'H-1b', 'H-2b', 'J1', 'L1', 'M1', 'O1', 'EB', 'BH', 'Others'];
+  VISA_STATUS = ['F1', 'F1 CPT', 'F1 OPT', 'F1 OPT ext', 'F2', 'H-1b', 'H-2b', 'J1', 'L1', 'M1', 'O1', 'EB', 'BH', 'Others'];
   SOURCE = ['LinkedIn', 'Indeed', 'Dice', 'careerBuilder', 'Other'];
   DEGREE = ['PHD', 'Master', 'Bachelor', 'High School', 'Other'];
 

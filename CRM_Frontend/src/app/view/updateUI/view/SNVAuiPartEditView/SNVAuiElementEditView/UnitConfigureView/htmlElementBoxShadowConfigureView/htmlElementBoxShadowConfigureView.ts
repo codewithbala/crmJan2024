@@ -1,6 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {HtmlParameter} from "../../../../../../../config/htmlParameter";
 import {SNVAHtmlBoxShadow} from "../../../../../model/unit/SNVAHtmlBoxShadow";
+import {UiModel} from "../../../../../model/uiModel";
 
 @Component({
   selector: 'app-html-element-box-shadow-configure-view',
@@ -10,6 +11,8 @@ import {SNVAHtmlBoxShadow} from "../../../../../model/unit/SNVAHtmlBoxShadow";
 export class HtmlElementBoxShadowConfigureView
 {
   @Input() shadowList:SNVAHtmlBoxShadow[];
+  @Output() shadowChange:EventEmitter<SNVAHtmlBoxShadow[]> =  new EventEmitter<SNVAHtmlBoxShadow[]>();
+
 
   inputColor:string = '#FFFFFF';
   inputAplha:number = 100;
@@ -32,8 +35,7 @@ export class HtmlElementBoxShadowConfigureView
   view(shadow:SNVAHtmlBoxShadow)
   {
     this.currentShadow = shadow.toString();
-    //this.currentCopy = new SNVAHtmlBoxShadow(shadow.toString());
-    this.currentCopy = shadow;
+    this.currentCopy = new SNVAHtmlBoxShadow(shadow.toString());
     this.inputColor = this.currentCopy.color.getColorValue();
     this.inputAplha = this.currentCopy.color.aChannel * 100;
     this.insetValue = this.currentCopy.inset;
@@ -42,15 +44,18 @@ export class HtmlElementBoxShadowConfigureView
   add()
   {
     this.shadowList.unshift(new SNVAHtmlBoxShadow('0px 0px 0px 0px #000000'));
+    this.shadowChange.emit(this.shadowList);
   }
-  delete()
+
+  delete(shadow:SNVAHtmlBoxShadow)
   {
     for(let i = 0; i< this.shadowList.length; i++)
     {
-      if(this.shadowList[i].toString() == this.currentCopy.toString())
+      if(this.shadowList[i].toString() == shadow.toString())
       {
         this.shadowList.splice(i, 1);
         this.currentShadow = ''
+        this.shadowChange.emit(this.shadowList);
       }
     }
   }
@@ -74,7 +79,8 @@ export class HtmlElementBoxShadowConfigureView
       if(this.shadowList[i].toString() == this.currentShadow)
       {
         this.shadowList[i] = new SNVAHtmlBoxShadow(this.currentCopy.toString());
-        this.currentShadow = this.shadowList[i].toString();
+        this.currentShadow = '';
+        this.shadowChange.emit(this.shadowList);
       }
     }
   }

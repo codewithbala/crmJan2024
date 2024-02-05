@@ -11,10 +11,13 @@
                 <button class="btn btn-primary py-0" (click)="add()">add</button>
             </div>
         </div>
-        <div class="row rounded-3 ms-2 me-2 mt-1 ps-2" *ngFor="let shadow of this.shadowList" style="{{'border: solid ' + shadow.color.toString()}}">
-            <div class="col-10">{{shadow.toString()}}</div>
+        <div class="row rounded-3 ms-2 me-2 mt-1 ps-2" *ngFor="let shadow of this.shadowList" style="{{'border: solid ' + shadow.color.toString()}}" >
+            <div class="col-9">{{shadow.toString()}}</div>
             <div class="col-2">
                 <i class="bi bi-search h4" (click)="view(shadow)"></i>
+            </div>
+            <div class="col-1">
+                <i class="bi bi-x-circle-fill text-danger" (click)="delete(shadow)"></i>
             </div>
         </div>
     </div>
@@ -62,7 +65,7 @@
                     <div class="col-4 p-0 ps-1"><input class="form-control ms-0 pt-0 pb-0" type="number" max="100" min="0" value="" oninput="if(value>100)value=100;if(value<0)value=0" [(ngModel)] = 'inputAplha' (change)="change()"></div>
                 </div>
                 <div class="row mt-1 justify-content-end pe-2 pb-2">
-                    <button class="btn btn-primary px-1 py-0" style="width:4em;" (click)="delete()">Delete</button>
+                    <button class="btn btn-primary px-1 py-0" style="width:4em;" (click)="save()">save</button>
                 </div>
             </div>
         </div>

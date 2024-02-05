@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {User} from "../../../model/user";
 import {DeleteUserConfirmView} from "../../popView/deleteUserConfirmView/deleteUserConfirmView";
 import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
@@ -13,9 +13,10 @@ import {FormControl, FormGroup} from "@angular/forms";
   templateUrl: './canSuspend.html',
   styleUrls: ['./canSuspend.css']
 })
-export class CanSuspend {
+export class CanSuspend
+{
 
-  @Input() canSuspend:any;
+  @Input() canSuspend:boolean=false;
   @Input() currentUser:any;
 
   bsModalRef: BsModalRef;
@@ -25,7 +26,6 @@ export class CanSuspend {
 
   suspendConfirm()
   {
-    console.log(this.currentUser);
     this.bsModalRef = this.modalService.show(DeleteUserConfirmView, {class: 'modal-lg popBox'});
     this.bsModalRef.content.message = "Suspend";
     this.bsModalRef.content.user = this.currentUser;
@@ -37,4 +37,5 @@ export class CanSuspend {
     this.bsModalRef.content.message = "Active";
     this.bsModalRef.content.user = this.currentUser;
   }
+
 }

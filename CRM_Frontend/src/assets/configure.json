@@ -14,7 +14,7 @@
       "path": "header/container",
       "class": "container-fluid",
       "style": "background-color:rgba(22,22,22,0.75);border-bottom-style:solid;border-bottom-color:#198754;border-bottom-width:1px;",
-      "name" : "background",
+      "name": "background",
       "model": "style only",
       "parentId": "0"
     },
@@ -23,7 +23,7 @@
       "path": "header/title",
       "class": "",
       "style": "color:rgba(241,159,5,1);font-size:3em;",
-      "name" : "Logo",
+      "name": "Logo",
       "model": "style only",
       "parentId": "1"
     },
@@ -32,7 +32,7 @@
       "path": "header/togglerButton",
       "class": "navbar-toggler",
       "style": "background-color:rgba(255,255,244,1);",
-      "name" : "toggler Button",
+      "name": "toggler Button",
       "model": "style only",
       "parentId": "1"
     },
@@ -41,7 +41,7 @@
       "path": "header/menuTitle",
       "class": "nav-link dropdown-toggle ms-5",
       "style": "color:rgba(255,255,255,1);font-size:1.3em;font-family:Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;",
-      "name" : "menu button",
+      "name": "menu button",
       "model": "style only",
       "parentId": "1"
     },
@@ -50,7 +50,7 @@
       "path": "header/menuCard",
       "class": "dropdown-menu border-success ms-5",
       "style": "background-color:rgba(22,22,22,0.75);",
-      "name" : "menu Background",
+      "name": "menu Background",
       "model": "style only",
       "parentId": "-1"
     },
@@ -59,7 +59,7 @@
       "path": "header/menuItem",
       "class": "dropdown-item",
       "style": "color:rgba(255,255,255,1);font-family:Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;",
-      "name" : "menu list item",
+      "name": "menu list item",
       "model": "style only",
       "parentId": "5"
     },
@@ -68,7 +68,7 @@
       "path": "header/accountTitle",
       "class": "nav-link dropdown-toggle me-4",
       "style": "color:rgba(255,255,255,1);font-family:Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;",
-      "name" : "account menu button",
+      "name": "account menu button",
       "model": "style only",
       "parentId": "1"
     },
@@ -77,7 +77,7 @@
       "path": "header/accountCard",
       "class": "dropdown-menu dropdown-menu-end pe-0",
       "style": "background-color:rgba(22,22,22,0.75);",
-      "name" : "account menu background",
+      "name": "account menu background",
       "model": "style only",
       "parentId": "-1"
     },
@@ -86,7 +86,7 @@
       "path": "header/accountItem",
       "class": "dropdown-item",
       "style": "color:rgba(255,255,255,1);font-family:Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;",
-      "name" : "account menu list item",
+      "name": "account menu list item",
       "model": "style only",
       "parentId": "8"
     }
@@ -97,7 +97,7 @@
       "path": "footer",
       "class": "navbar navbar-expand-lg pb-0",
       "style": "",
-      "name" : "footer",
+      "name": "footer",
       "model": "read only",
       "parentId": "-1"
     },
@@ -106,7 +106,7 @@
       "path": "footer/container",
       "class": "container-fluid",
       "style": "background-color:rgba(22,22,22,0.75);height:50px;border-top-style:solid;border-top-color:#198754;border-top-width:1px;color:#ffffff;",
-      "name" : "background",
+      "name": "background",
       "model": "style only",
       "parentId": "0"
     },
@@ -115,7 +115,7 @@
       "path": "footer/text",
       "class": "",
       "style": "width:100%;text-align:center;text-shadow:2px 2px 1px rgba(0,0,0,0.6);",
-      "name" : "text",
+      "name": "text",
       "model": "style only",
       "parentId": "1"
     },
@@ -124,7 +124,7 @@
       "path": "footer/link",
       "class": "",
       "style": "color:#ffffff;font-weight:bold;",
-      "name" : "link",
+      "name": "link",
       "model": "style only",
       "parentId": "1"
     }

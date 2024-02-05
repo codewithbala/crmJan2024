@@ -12,7 +12,7 @@ import {UiModel} from "../../../../../model/uiModel";
 export class HtmlElementTextShadowConfigureView
 {
   @Input() shadowList:SNVAHtmlTextShadow[];
-  //@Output() shadowListChange:EventEmitter<SNVAHtmlTextShadow[]> = new EventEmitter<SNVAHtmlTextShadow[]>();
+  @Output() shadowChange:EventEmitter<SNVAHtmlTextShadow[]> = new EventEmitter<SNVAHtmlTextShadow[]>();
 
   inputColor:string = '#FFFFFF';
   inputAplha:number = 100;
@@ -29,38 +29,43 @@ export class HtmlElementTextShadowConfigureView
   {
     this.currentCopy.color.setColorValue(this.inputColor);
     this.currentCopy.color.setTransparency(this.inputAplha);
-    this.shadowList.forEach(
-        s=>
-        {
-          if(this.currentCopy.toString() == s.toString())
-          {
-            this.currentCopy = s;
-          }
-        }
-    )
   }
 
   view(shadow:SNVAHtmlTextShadow)
   {
     this.currentShadow = shadow.toString();
-    this.currentCopy = shadow;
+    this.currentCopy = new SNVAHtmlBoxShadow(shadow.toString());
     this.inputColor = this.currentCopy.color.getColorValue();
     this.inputAplha = this.currentCopy.color.aChannel * 100;
   }
 
   add()
   {
-    this.shadowList.unshift(new SNVAHtmlTextShadow('0px 0px 0px #000000'));
+    this.shadowList.unshift(new SNVAHtmlTextShadow('0px 0px 0px rgba(0,0,0,0)'));
+    this.shadowChange.emit(this.shadowList);
   }
-  delete()
+  delete(shadow:SNVAHtmlTextShadow)
   {
     for(let i = 0; i< this.shadowList.length; i++)
     {
-      if(this.shadowList[i].toString() == this.currentCopy.toString())
+      if(this.shadowList[i].toString() == shadow.toString())
       {
         this.shadowList.splice(i, 1);
         this.currentShadow = '';
-        this.currentCopy = new SNVAHtmlTextShadow('');
+        this.shadowChange.emit(this.shadowList);
+      }
+    }
+  }
+
+  save()
+  {
+    for(let i = 0; i< this.shadowList.length; i++)
+    {
+      if(this.shadowList[i].toString() == this.currentShadow)
+      {
+        this.shadowList[i] = new SNVAHtmlBoxShadow(this.currentCopy.toString());
+        this.currentShadow = '';
+        this.shadowChange.emit(this.shadowList);
       }
     }
   }

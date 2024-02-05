@@ -28,7 +28,5 @@ export class HtmlParameter
         this.htmlTextStyle   = this.htmlParameter.HTML_TEXT_STYLE;
         this.htmlTextWeight  = this.htmlParameter.HTML_TEXT_WEIGHT;
         this.htmlTextAlign   = this.htmlParameter.HTML_TEXT_ALIGN;
-
     }
-
 }

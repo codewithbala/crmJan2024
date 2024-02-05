@@ -52,7 +52,8 @@ export class AccountDetailView implements OnInit
           this.currentUser = data;
           console.log(data);
           this.authorization = this.roleCheck.updateAccountCheck(myAccount.role, this.currentUser.role);
-          this.canSuspend = this.roleCheck.deleteAccountCheck(myAccount.role, this.currentUser.role);
+          //this.canSuspend = this.roleCheck.deleteAccountCheck(myAccount.role, this.currentUser.role);
+          this.canSuspend = true;
 
           this.isMyAccount = false;
           console.log(this.currentUser);

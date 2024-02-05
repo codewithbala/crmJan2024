@@ -99,13 +99,13 @@
   background-color:transparent;
 }
 
-.progress
+.myProgress
 {
   height: 10px;
   width: 100%;
 }
 
-.progress-bar
+.myProgress-bar
 {
   bottom: 0px;
   height: 10px;

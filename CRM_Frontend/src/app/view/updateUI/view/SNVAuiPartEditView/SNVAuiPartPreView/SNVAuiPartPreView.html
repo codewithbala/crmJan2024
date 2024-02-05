@@ -9,11 +9,15 @@
         <app-header *ngIf="part=='header'"
                     [title]="'Logo'"
                     [model]="'edit'"
+                    [userName]="'MyAccount'"
+                    [userRole]="'superAdmin'"
                     [ui]="this.uiModelList"
         >
         </app-header>
     </div>
-    <div class="col-12">
-        <button (click)="showCurrentElement()">showCurrentElement</button>
+    <div class="row p-2 justify-content-end text-end">
+        <div class="col-2">
+            <button class="btn btn-primary" (click)="showCurrentElement()">SAVE</button>
+        </div>
     </div>
 </div>

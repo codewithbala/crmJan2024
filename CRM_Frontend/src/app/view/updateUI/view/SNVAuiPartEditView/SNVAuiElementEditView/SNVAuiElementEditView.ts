@@ -3,6 +3,7 @@ import {SNVAHtmlElementStyle} from "../../../model/SNVAHtmlElementStyle";
 import {UiService} from "../../../service/uiService";
 import {UiModel} from "../../../model/uiModel";
 import {SNVAHtmlTextShadow} from "../../../model/unit/SNVAHtmlTextShadow";
+import {SNVAHtmlBoxShadow} from "../../../model/unit/SNVAHtmlBoxShadow";
 
 @Component({
   selector: 'SNVAuiElementEditView',
@@ -42,6 +43,7 @@ export class SNVAuiElementEditView implements OnInit, DoCheck
   {
     if(this.uiModel.style != this.elementStyle || this.uiModel.class != this.elementClass)
     {
+      console.log("uiModel != element.style");
       this.elementClass = this.uiModel.class;
       this.elementStyle = this.uiModel.style;
       this.snvaHtmlElementStyle = new SNVAHtmlElementStyle(this.elementStyle);
@@ -71,20 +73,22 @@ export class SNVAuiElementEditView implements OnInit, DoCheck
     }
   }
 
+  updateBoxShadow(shadowList:SNVAHtmlBoxShadow[])
+  {
+    this.changeUiModel();
+  }
+
   updateTextShadow(shadowList:SNVAHtmlTextShadow[])
   {
-    console.log("SNVAuiElementEditView -> " + shadowList);
-    this.snvaHtmlElementStyle.textShadow = shadowList;
-    this.elementStyle = this.snvaHtmlElementStyle.toString();
+    this.changeUiModel();
   }
 
   changeUiModel()
   {
-    console.log("#########SNVAuiElementEditView -> " + this.snvaHtmlElementStyle.textShadow);
-    console.log("SNVAuiElementEditView#########");
     this.uiModel.style = this.snvaHtmlElementStyle.toString();
-    //this.elementStyle = this.uiModel.style;
-    //this.elementClass = this.uiModel.class;
+    this.elementStyle = this.uiModel.style;
+    this.elementClass = this.uiModel.class;
     this.uiModelChange.emit(this.uiModel);
   }
+
 }

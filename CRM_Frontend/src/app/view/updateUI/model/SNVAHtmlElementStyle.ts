@@ -55,9 +55,29 @@ export class SNVAHtmlElementStyle
             else if(pairs[0].includes('box-shadow'))
             {
                 let tmp = pairs[1].split(',');
-                tmp.forEach(s => {
-                    this.boxShadow.push(new SNVAHtmlBoxShadow(s));
-                })
+                let shadow = '';
+                for(let i = 0; i < tmp.length; i++)
+                {
+                    if(tmp[i].includes('('))
+                    {
+                        shadow = tmp[i];
+                    }
+                    else if(tmp[i].includes(')') && shadow != '')
+                    {
+                        shadow = shadow + ',' + tmp[i];
+                        let snvaShadow = new SNVAHtmlBoxShadow(shadow);
+                        this.boxShadow.push(snvaShadow);
+                        shadow = '';
+                    }
+                    else if(shadow != '')
+                    {
+                        shadow = shadow + ',' + tmp[i];
+                    }
+                    else
+                    {
+                        this.boxShadow.push(new SNVAHtmlBoxShadow(tmp[i]));
+                    }
+                }
             }
             else if(pairs[0].includes('font') || pairs[0].includes('text-align'))
             {
@@ -70,9 +90,29 @@ export class SNVAHtmlElementStyle
             else if(pairs[0].includes('text-shadow'))
             {
                 let tmp = pairs[1].split(',');
-                tmp.forEach(s => {
-                    this.textShadow.push(new SNVAHtmlTextShadow(s));
-                })
+                let shadow = '';
+                for(let i = 0; i < tmp.length; i++)
+                {
+                    if(tmp[i].includes('('))
+                    {
+                        shadow = tmp[i];
+                    }
+                    else if(tmp[i].includes(')') && shadow != '')
+                    {
+                        shadow = shadow + ',' + tmp[i];
+                        let snvaShadow = new SNVAHtmlTextShadow(shadow);
+                        this.textShadow.push(snvaShadow);
+                        shadow = '';
+                    }
+                    else if(shadow != '')
+                    {
+                        shadow = shadow + ',' + tmp[i];
+                    }
+                    else
+                    {
+                        this.textShadow.push(new SNVAHtmlTextShadow(tmp[i]));
+                    }
+                }
             }
             else
             {

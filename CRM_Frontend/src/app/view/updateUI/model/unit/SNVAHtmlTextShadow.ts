@@ -61,6 +61,7 @@ export class SNVAHtmlTextShadow
 
     toString()
     {
+        console.log('x->' + this.xShadow + ' y->' + this.yShadow + ' blur->' + this.blur + ' color->' + this.color.toString())
         if(this.xShadow.toString() !='' && this.yShadow.toString()!='')
         {
             let result = this.xShadow.toString() + ' ' + this.yShadow.toString();

@@ -1,10 +1,4 @@
 <div class="ps-1 pe-3" style="min-height:600px">
-    <div class="row mt-3">
-        <div class="card text-start">
-            <label>{{'class: ' + uiModel.class}}</label>
-            <label>{{'style: ' + uiModel.style}}</label>
-        </div>
-    </div>
     <div class="row mt-2">
         <div class="{{class1}}" (click)="changeState('background')">
             <h3>BackGround</h3>
@@ -34,7 +28,7 @@
         <div class="col-12">
             <app-html-element-box-shadow-configure-view
                     [shadowList]="this.snvaHtmlElementStyle.boxShadow"
-                    (change)="changeUiModel()"
+                    (shadowChange) = "updateBoxShadow($event)"
             >
             </app-html-element-box-shadow-configure-view>
         </div>
@@ -69,7 +63,7 @@
         <div class="col-12 mt-3">
             <app-html-element-text-shadow-configure-view
                     [shadowList]="this.snvaHtmlElementStyle.textShadow"
-                    (change)="changeUiModel()"
+                    (shadowChange) = "updateTextShadow($event)"
             >
             </app-html-element-text-shadow-configure-view>
         </div>

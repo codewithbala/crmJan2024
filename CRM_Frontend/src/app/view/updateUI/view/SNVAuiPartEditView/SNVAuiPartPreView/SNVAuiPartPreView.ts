@@ -1,14 +1,14 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {SNVAHtmlElementStyle} from "../../../model/SNVAHtmlElementStyle";
+import {Component, Input} from '@angular/core';
 import {UiService} from "../../../service/uiService";
 import {UiModel} from "../../../model/uiModel";
+import {delay} from "rxjs";
 
 @Component({
   selector: 'SNVAuiPartPreView',
   templateUrl: './SNVAuiPartPreView.html',
   styleUrls: ['./SNVAuiPartPreView.css']
 })
-export class SNVAuiPartPreView implements OnInit
+export class SNVAuiPartPreView
 {
   @Input() part:string;
   @Input() uiModelList:UiModel[];
@@ -16,15 +16,17 @@ export class SNVAuiPartPreView implements OnInit
   constructor(private uiService:UiService)
   {}
 
-  ngOnInit(): void
-  {
-    console.log('### htmlElementPreView');
-    console.log(this.uiModelList);
-    console.log("#############")
-  }
-
   showCurrentElement()
   {
-    console.log(this.uiModelList);
+    for (let i = 0; i < this.uiModelList.length; i++)
+    {
+      this.uiService.updateConfigure(this.part, this.uiModelList[i]).subscribe(
+          data =>
+          {
+            console.log("[Save UI]" + data);
+          }
+      )
+    }
   }
+
 }

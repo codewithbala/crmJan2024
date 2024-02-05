@@ -1,4 +1,4 @@
 <div class="col-sm-12 text-end mt-5 pt-2" *ngIf="canSuspend == true">
-    <button class="btn btn-danger  mb-3 btn-lg py-1 px-5 ms-4" (click)="suspendConfirm()" *ngIf="currentUser.accountNonLocked == true" >Suspend</button>
-    <button class="btn btn-success mb-3 btn-lg py-1 px-5 ms-4" (click)="activeConfirm()"  *ngIf="currentUser.accountNonLocked == false">Active</button>
+    <button class="btn btn-danger  mb-3 btn-lg py-1 px-5 ms-4" (click)="suspendConfirm()" *ngIf="currentUser.account_non_blocked == true" >Suspend</button>
+    <button class="btn btn-success mb-3 btn-lg py-1 px-5 ms-4" (click)="activeConfirm()"  *ngIf="currentUser.account_non_blocked == false">Active</button>
 </div>

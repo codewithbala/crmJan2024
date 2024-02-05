@@ -36,7 +36,7 @@
         <div class="text-white text_font text_table text-center m-2" style="height: 520px; overflow: auto">
           <div class="row py-0 border-bottom border-secondary" *ngFor="let account of showAccountList" >
             <div class="col-2">{{account.id}}</div>
-            <div class="col-4">{{account.userPersonalDetails.firstName + ' ' + account.userPersonalDetails.lastName | SNVApipeStringCutOff:12}}</div>
+            <div class="col-4 text-start">{{account.userPersonalDetails.firstName + ' ' + account.userPersonalDetails.lastName | SNVApipeStringCutOff:12}}</div>
             <div class="col-3 text-start">
               <i class="bi bi-person-fill text-danger"  *ngIf="this.roleCheck.getFrontendRoleType(account.role) == 'SuperAdmin'"></i>
               <i class="bi bi-person-fill text-warning" *ngIf="this.roleCheck.getFrontendRoleType(account.role) == 'Admin'"     ></i>

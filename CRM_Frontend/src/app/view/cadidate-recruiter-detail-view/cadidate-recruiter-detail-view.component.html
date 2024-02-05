@@ -7,7 +7,7 @@
           <div class="col-6 text-end"><h5>RecruiterName: {{currentCandidate.recruiterName}}</h5></div>
           <hr>
           <div class="row">
-            <div class="col-3">
+            <div class="col-2">
               <label for="firstName">First Name:</label>
               <input type="text" id="firstName" name="firstName" class="form-control" [(ngModel)]="currentCandidate.firstName">
             </div>
@@ -15,13 +15,13 @@
               <label for="middleName">Middle Name:</label>
               <input type="text" id="middleName" name="middleName" class="form-control" [(ngModel)]="currentCandidate.middleName">
             </div>
-            <div class="col-3">
+            <div class="col-2">
               <label for="lastName">Last Name:</label>
               <input type="text" id="lastName" name="lastName"  class="form-control" [(ngModel)]="currentCandidate.lastName">
             </div>
-            <div class="col-4">
-              <label for="source" style="margin-left:150px">Source:</label>
-              <input type="text" id="source" list="sourceList" name="source" class="form-control" style="margin-left:150px; width:150px" [(ngModel)]="currentCandidate.details.source">
+            <div class="col-6">
+              <label for="source" style="margin-left:200px">Source:</label>
+              <input id="source" list="sourceList" name="source" class="form-control" style="margin-left:200px; width:250px" [(ngModel)]="currentCandidate.details.source">
               <datalist id="sourceList">
                 <option *ngFor="let s of menuData.SOURCE">{{s}}</option>
               </datalist>
@@ -104,38 +104,37 @@
                     <label class="text_font text-white">Line 1</label>
                     <input class="form-control text_font" type="text" [(ngModel)]="currentCandidate.details.addressLine1">
                   </div>
-                  <div class="col-4">
+                  <div class="col-5">
                     <label class="text_font text-white">Line 2</label>
                     <input class="form-control text_font" type="text" [(ngModel)]="currentCandidate.details.addressLine2">
                   </div>
                 </div>
-                <div class="row mt-2">
-                  <div class="col-5">
+                <div class="row mt">
+                  <div class="col-4">
                     <label class="text_font text-white">Country</label>
                     <select id="addressCountry" class="form-select text_font" formControlName="country" (change)="handleCountryChange()">
                       <option>{{this.addressCountry}}</option>
                       <option *ngFor="let country of countries">{{country.label}}</option>
                     </select>
                   </div>
-                  <div class="col-5">
+                  <div class="col-4">
                     <label class="text_font text-white">State</label>
                     <select  id="addressState" class="form-select text_font" formControlName="state" (change)="handleStateChange()">
                       <option>{{this.addressState}}</option>
                       <option *ngFor="let state of states">{{ state.label}}</option>
                     </select>
                   </div>
-                </div>
-                <div class="row mt-2">
-                  <div class="col-6">
+                
+
+                  <div class="col-4">
                     <label class="text_font text-white">City</label>
                     <select  id="addressCity" class="form-select text_font" formControlName="lga">
                       <option>{{this.addressCity}}</option>
                       <option *ngFor="let lga of lgas">{{ lga.label }}</option>
                     </select>
                   </div>
-                </div>
-                <div class="row mt-2">
-                  <div class="col-4">
+             
+                  <div class="col-3">
                     <label class="text_font text-white">ZipCode</label>
                     <input class="form-control text_bold text_font" type="text" [(ngModel)]="currentCandidate.details.addressZipCode">
                   </div>

@@ -1,8 +1,9 @@
-<div class="col-12" *ngIf="candidateP2Right == true">
+<div class="col-12"><h5 class="text-center">Interview Feedback</h5><hr></div>
+<div class="col-6" style="margin: auto;" *ngIf="candidateP2Right == true">
     <div class="row">
-      <div class="col-12"><h5>Interview Feedback</h5><hr></div>
+      
       <div class="row m-2">
-        <div class="col-5 text-end">
+        <div class="col-5 text-start">
           <label>Interview Time: </label>
         </div>
         <div class="col-7 text-start">
@@ -10,7 +11,7 @@
         </div>
       </div>
       <div class="row m-2">
-        <div class="col-5 text-end">
+        <div class="col-5 text-start">
           <label>Candidate Status: </label>
         </div>
         <div class="col-5">
@@ -20,11 +21,11 @@
         </div>
       </div>
       <div class="row m-2">
-        <div class="col-5 text-end">
+        <div class="col-5 text-start">
           <label> Feedback: </label>
         </div>
-        <div class="col-7">
-          <textarea class="form-control" [value]="currentCandidate.details.interviewerFeedback" [(ngModel)]="currentCandidate.details.interviewerFeedback"></textarea>
+        <div class="col-10">
+          <textarea class="form-control" [value]="currentCandidate.details.interviewerFeedback" [(ngModel)]="currentCandidate.details.interviewerFeedback" rows="4" cols="=100"></textarea>
           <datalist id = 'interviewFeedback'>
             <option *ngFor="let i of menuData.INTERVIEW_FEEDBACK">{{i}}</option>
           </datalist>
@@ -32,12 +33,13 @@
       </div>
     </div>
   </div>
-  <div style="width: auto;">
-    <div class="col-6" style="width: auto;" *ngIf="candidateP2Right == false">
+
+
+    <div class="col-6" style="margin: auto;" *ngIf="candidateP2Right == false">
       <div class="row-4">
-        <div class="col-12"><h5>Interview Feedback</h5><hr></div>
+        
         <div class="row m-2">
-          <div class="col-5 text-end">
+          <div class="col-5 text-start">
             <label>Interview Time: </label>
           </div>
           <div class="col-7 text-start">
@@ -45,7 +47,7 @@
           </div>
         </div>
         <div class="row m-2">
-          <div class="col-5 text-end">
+          <div class="col-5 text-start">
             <label>Candidate Status: </label>
           </div>
           <div class="col-5 text-start">
@@ -53,7 +55,7 @@
           </div>
         </div>
         <div class="row m-2">
-          <div class="col-5 text-end">
+          <div class="col-5 text-start">
             <label> Feedback: </label>
           </div>
           <div class="col-5 text-start">
@@ -62,4 +64,3 @@
         </div>
       </div>
     </div>
-  </div>

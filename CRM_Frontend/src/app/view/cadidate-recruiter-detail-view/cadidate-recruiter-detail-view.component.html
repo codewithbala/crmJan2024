@@ -196,27 +196,27 @@
           <div class="row m-2">
             <div class="col-6">
               <div class="row mt-1">
-                <div class="col-4 text-end"><label>Full Name: </label></div>
+                <div class="col-4 text-start"><label>Full Name: </label></div>
                 <div class="col-8 text-start"><label>{{currentCandidate.firstName + ' ' + currentCandidate.middleName +' ' + currentCandidate.lastName}}</label></div>
               </div>
               <div class="row mt-2">
-                <div class="col-4 text-end"><label>Source:</label></div>
+                <div class="col-4 text-start"><label>Source:</label></div>
                 <div class="col-8 text-start"><label>{{currentCandidate.details.source}}</label></div>
               </div>
               <div class="row mt-2">
-                <div class="col-4 text-end"><label>School:</label></div>
+                <div class="col-4 text-start"><label>School:</label></div>
                 <div class="col-8 text-start"><label>{{currentCandidate.school}}</label></div>
               </div>
               <div class="row mt-2">
-                <div class="col-4 text-end"><label>Degree:</label></div>
+                <div class="col-4 text-start"><label>Degree:</label></div>
                 <div class="col-8 text-start"><label>{{currentCandidate.degree}}</label></div>
               </div>
               <div class="row mt-2">
-                <div class="col-4 text-end"><label>Visa Status:</label></div>
+                <div class="col-4 text-start"><label>Visa Status:</label></div>
                 <div class="col-8 text-start"><label>{{currentCandidate.visaStatus}}</label></div>
               </div>
               <div class="row mt-2">
-                <div class="col-4 text-end"><label>SSN:</label></div>
+                <div class="col-4 text-start"><label>SSN:</label></div>
                 <div class="col-8 text-start"><label>{{currentCandidate.ssn}}</label></div>
               </div>
             </div>
@@ -224,11 +224,11 @@
               <h5 class="mt-1">Interview Schedule</h5>
               <hr>
               <div class="row mt-2">
-                <div class="col-4 text-end"><label>Date:</label></div>
+                <div class="col-4 text-start"><label>Date:</label></div>
                 <div class="col-8 text-start"><label>{{currentCandidate.details.interviewDate}}</label></div>
               </div>
               <div class="row mt-2">
-                <div class="col-4 text-end"><label>Interviewer:</label></div>
+                <div class="col-4 text-start"><label>Interviewer:</label></div>
                 <div class="col-8 text-start"><label>{{currentCandidate.details.interviewer}}</label></div>
               </div>
             </div>
@@ -239,18 +239,18 @@
             <h5>Contact Information</h5>
             <hr>
             <div class="row mt-2">
-              <div class="col-4 text-end"><label>Email ID:</label></div>
+              <div class="col-4 text-start"><label>Email ID:</label></div>
               <div class="col-8 text-start"><label>{{currentCandidate.email}}</label></div>
             </div>
             <div class="row mt-2">
-              <div class="col-4 text-end"><label>Phone Number:</label></div>
+              <div class="col-4 text-start"><label>Phone Number:</label></div>
               <div class="col-8 text-start"><label>{{currentCandidate.phoneNumber}}</label></div>
             </div>
             <div class="row mt-2">
-              <div class="col-4 text-end"><label>Address:</label></div>
+              <div class="col-4 text-start"><label>Address:</label></div>
               <div class="col-8 text-start">
                 <div class="row"><label>{{currentCandidate.details.addressLine1}}</label></div>
-                <div class="row" *ngIf="currentCandidate.details.addressLine2 != ''"><label>{{', ' + currentCandidate.details.addressLine2}}</label></div>
+                <div class="row" *ngIf="currentCandidate.details.addressLine2 != ''"><label>{{ currentCandidate.details.addressLine2}}</label></div>
                 <div class="row"><label>{{currentCandidate.details.addressCity + ", " + currentCandidate.details.addressState}}</label></div>
                 <div class="row"><label>{{currentCandidate.details.addressZipCode}}</label></div>
                 <div class="row"><label>{{currentCandidate.details.addressCounty}}</label></div>
@@ -261,15 +261,15 @@
             <h5>Skill Set</h5>
             <hr>
             <div class="row mt-2">
-              <div class="col-4 text-end"><label>Skill:</label></div>
+              <div class="col-4 text-start"><label>Skill:</label></div>
               <div class="col-8 text-start"><label>{{currentCandidate.details.skillSet}}</label></div>
             </div>
             <div class="row mt-2">
-              <div class="col-4 text-end"><label>Experience:</label></div>
+              <div class="col-4 text-start"><label>Experience:</label></div>
               <div class="col-8 text-start"><label>{{currentCandidate.workExperience}}</label></div>
             </div>
             <div class="row mt-2">
-              <div class="col-4 text-end"><label>Communication:</label></div>
+              <div class="col-4 text-start"><label>Communication:</label></div>
               <div class="col-8 text-start"><label>{{currentCandidate.details.communicationSkill}}</label></div>
             </div>
           </div>

@@ -27,4 +27,8 @@ public interface AuthenticationService extends UserDetailsService {
 
 	void deleteUser(Long id);
 
+	User activateUser(User user);
+
+	User activateUser(Long id);
+
 }

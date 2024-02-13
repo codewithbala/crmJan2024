@@ -104,6 +104,21 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         }).orElse(null);
     }
 
+    @Override
+    public User activateUser(User user) {
+        return activateUser(user.getId());
+    }
+
+    @Override
+    public User activateUser(Long id) {
+        LOGGER.info("######Activate User with id:" + id);
+        return authenticationRepository.findById(id).map(existingUser -> {
+            existingUser.setAccountNonLocked(true);
+            return authenticationRepository.save(existingUser);
+        }).orElse(null);
+    }
+
+    
     @Transactional
     public void deleteUser(Long id) {
         authenticationRepository.deleteById(id);

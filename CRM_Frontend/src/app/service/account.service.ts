@@ -33,7 +33,15 @@ export class AccountService
   suspendUser(user:User):Observable<User>
   {
     delete user['authorities'];
+    console.log(user);
     return this.httpClient.post<User>('http://localhost:8080/suspendUser',  user);
+  }
+
+  activateUser(user:User):Observable<User>
+  {
+    delete user['authorities'];
+    console.log(user);
+    return this.httpClient.post<User>('http://localhost:8080/activateUser',  user);
   }
 
   resetPassword(user:User):Observable<User>
